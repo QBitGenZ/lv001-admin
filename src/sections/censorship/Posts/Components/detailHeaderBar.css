@@ -1,13 +1,18 @@
 .detailcontainer {
+  display: block;
   text-align: center;
   width: fit-content;
-  margin-bottom: 20px;
 }
 
-.detailcontainerNumber {
+.detailNumber {
   font-size: 35px;
+  margin:auto;
+  height: 20px;
+  background-color: aquamarine;
 }
 
-.detailcontainerTitle {
+.detailTitle {
   font-size: 16px;
+  margin:auto;
+  height: 20px;
 }

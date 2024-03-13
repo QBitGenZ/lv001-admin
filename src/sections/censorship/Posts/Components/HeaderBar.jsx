@@ -3,7 +3,7 @@ import './HeaderBar.css';
 import DetailHeaderBar from './DetailHeaderBar';
 export default function HeaderBar() {
   return (
-    <div className={'container'}>
+    <div className={'HeaderBar'}>
       <div>
         <DetailHeaderBar
           title={'Tổng số sản phẩm'}
