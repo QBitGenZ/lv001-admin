@@ -1,13 +1,13 @@
 import React from 'react';
-import styles from './index.module.css';
-import StatisComPostCencorSection from './Components/statistical_bar';
-import Posttable from './Components/table';
+import './PostSection.css';
+import HeaderBar from './components/HeaderBar';
+import ProductTable from './components/ProductTable';
 export default function PostCencorSection() {
   return (
     <div>
-      <h2 className={styles.title}>Kiểm duyệt bài viết</h2>
-      <StatisComPostCencorSection/>
-      <Posttable/>
+      <h2>Kiểm duyệt bài viết</h2>
+      <HeaderBar/>
+      <ProductTable/>
     </div>
   );
 }
