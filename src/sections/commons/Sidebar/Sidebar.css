@@ -1,0 +1,105 @@
+#Sidebar {
+    display: block;
+    float: left;
+    width: 21.4%;
+    height: 100vh;
+    background: #F8F8FA;
+
+    text-align: left;
+    padding: 30px 16px;
+
+    box-sizing: border-box;
+}
+
+#Sidebar .menu-container {
+    padding-top: 30px;
+    width: 100%;
+}
+
+#Sidebar .menu-container .Menu-Item {
+    width: calc(100% - 20);
+    margin: 0 10px;
+    padding: 10px;
+}
+
+#Sidebar .menu-container .Menu-Item .menu-main {
+    margin-bottom: 8px;
+}
+
+
+#Sidebar .menu-container .Menu-Item .menu-item-logo{
+    margin-right: 15px;
+}
+
+
+#Sidebar .menu-container .menu-label {
+    color: #000;
+    font-family: 'Inter', serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#Sidebar .menu-container .menu-label .sub-menu-label {
+    color: #000;
+    font-family: 'Inter', serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#Sidebar .menu-container .Menu-Item.show-subs .Sub-Item {
+    display: block;
+    padding: 6px 30px;
+}
+
+
+#Sidebar .menu-container .Menu-Item.show-subs .arrow-icon {
+    transform: rotate(180deg);
+}
+
+
+#Sidebar .menu-container .Menu-Item .Sub-Item {
+    display: none;
+}
+
+/* css cho header cua sidebar */
+#Sidebar .user-info-container {
+    border-bottom: 2px solid #DFDFDF;
+    padding-bottom: 30px;
+}
+
+
+#Sidebar .user-info-container .user-info{
+    margin-top: 10px;
+    padding-left: 6px;
+}
+
+#Sidebar .user-info-container .user-info>*{
+    display: inline-block;
+}
+
+#Sidebar .user-info-container .user-info .user-name {
+    margin-left: 5px;
+
+    color: #000;
+    font-family: 'Inter', serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#Sidebar .user-info-container .user-info .user-role {
+    margin-left: 5px;
+
+    color: #8B8B8B;
+    font-family: 'Inter', serif;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+}

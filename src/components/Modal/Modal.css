@@ -1,0 +1,67 @@
+#Modal {
+    margin: 0 auto;
+}
+
+#Modal .back-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background-color: rgba(0,0,0,0.5);
+}
+
+#Modal .main-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: inline-block;
+    width: 60%;
+    background-color: #FFFFFF;
+}
+
+#Modal .main-container .header {
+    display: block;
+
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    height: 24px;
+    padding: 24px 0;
+
+    border-bottom: 1px solid #C6C6C6;;
+}
+
+#Modal .main-container .title {
+    position:  absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    color:#000;
+    font-family: 'Inter', serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#Modal .main-container .close-button {
+    position: absolute;;
+    right: 15px;
+    color:#000;
+    font-family: 'Inter', serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+}
+
+#Modal .main-container .body {
+    margin: 50px auto 0;
+}
