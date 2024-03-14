@@ -5,14 +5,14 @@ export default function DetailHeaderBar({ title, number, color, }) {
   return (
     <div className={'detailcontainer'}>
       <p
-        className={'.detailNumber'}
+        className={'detailNumber'}
         style={{
           color: color,
         }}
       >
         {number}
       </p>
-      <p className={'.detailTitle'}>{title}</p>
+      <p className={'detailTitle'}>{title}</p>
     </div>
   );
 }
