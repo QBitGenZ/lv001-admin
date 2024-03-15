@@ -5,12 +5,12 @@ import { products, } from './fakedata.js';
 export default function ProductTable() {
   return (
     <div className={'Product-Table'}>
-      <table>
-        <tr>
-          <th>Người đăng</th>
-          <th>Tên sản phẩm</th>
-          <th>Thời gian đăng tải</th>
-          <th>Trạng thái</th>
+      <table id='ProductTable'>
+        <tr className='propdtabletr'>
+          <th className='prodtabletdth prodtableth'>Người đăng</th>
+          <th className='prodtabletdth prodtableth'>Tên sản phẩm</th>
+          <th className='prodtabletdth prodtableth'>Thời gian đăng tải</th>
+          <th className='prodtabletdth prodtableth'>Trạng thái</th>
         </tr>
         {products.map((product) => (
           <TableRow

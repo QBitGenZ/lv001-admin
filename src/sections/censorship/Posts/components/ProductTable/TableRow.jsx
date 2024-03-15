@@ -1,19 +1,20 @@
 import PropTypes from 'prop-types';
 import React, { useState, } from 'react';
 import ProductModal from './ProductModal';
+import Modal from '../../../../../components/Modal';
 export default function TableRow({ user, product_name, created_at, status, }) {
   const [modal, setModal,] = useState(false);
 
   const toggleModal = () => {
-    setModal(!modal);
+    setModal(true);
   };
   return (
     <>
-      <tr onClick={toggleModal} className='ModalBtn'>
-        <td>{user}</td>
-        <td>{product_name}</td>
-        <td>{created_at}</td>
-        <td>
+      <tr onClick={toggleModal} className='ModalBtn propdtabletr'>
+        <td className='prodtabletd prodtabletdth'>{user}</td>
+        <td className='prodtabletd prodtabletdth'>{product_name}</td>
+        <td className='prodtabletd prodtabletdth'>{created_at}</td>
+        <td className='prodtabletd prodtabletdth'>
           <p
             className={
               status == 'Đã duyệt'
@@ -29,7 +30,13 @@ export default function TableRow({ user, product_name, created_at, status, }) {
           </p>{' '}
         </td>
       </tr>
-      {modal && (<ProductModal toggleModal={toggleModal}/>)}
+      {modal && (
+        <Modal
+          title={'Kiểm duyệt sản phẩm'}
+          body={<ProductModal setModal={setModal} />}
+          setShowAdd={setModal}
+        />
+      )}
     </>
   );
 }

@@ -1,3 +1,4 @@
 import PostCencorSection from './Posts';
+import UserCencorSection from './User';
 
-export { PostCencorSection, };
+export { PostCencorSection, UserCencorSection, };
