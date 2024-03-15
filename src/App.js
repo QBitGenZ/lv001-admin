@@ -3,6 +3,7 @@ import React, { useState, } from 'react';
 import { HeaderSection, Sidebar, } from './sections/commons';
 import { EventSection, NotificationSection, } from './sections/publish';
 import { PostCencorSection, UserCencorSection, } from './sections/censorship';
+import { SellerStatisSection, } from './sections/statistical';
 
 function App() {
   const [title, setTitle,] = useState('Kiểm duyệt sản phẩm');
@@ -10,9 +11,9 @@ function App() {
   const renderSection = () => {
     if (title === 'Đăng thông báo') return <NotificationSection />;
     if (title === 'Đăng sự kiện') return <EventSection />;
-    if (title === 'Kiểm duyệt bài viết') return <PostCencorSection/>;
-    if (title === 'Kiểm duyệt thông tin') return <UserCencorSection/>;
-    
+    if (title === 'Kiểm duyệt bài viết') return <PostCencorSection />;
+    if (title === 'Kiểm duyệt thông tin') return <UserCencorSection />;
+    if (title === 'Thống kê người bán') return <SellerStatisSection />;
   };
 
   return (
