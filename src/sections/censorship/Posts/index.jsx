@@ -1,13 +1,14 @@
 import React from 'react';
-import './PostSection.css';
-import HeaderBar from './components/HeaderBar';
-import ProductTable from './components/ProductTable';
+import './ProductSection.css';
+import ProductTable from './components/ProductTable/ProductTable';
+import HeaderBar from './components/HeaderBar/HeaderBar';
 export default function PostCencorSection() {
   return (
-    <div>
-      <h2>Kiểm duyệt bài viết</h2>
-      <HeaderBar/>
-      <ProductTable/>
+    <div id={'ProductSection'}>
+      <div>
+        <HeaderBar />
+        <ProductTable />
+      </div>
     </div>
   );
 }

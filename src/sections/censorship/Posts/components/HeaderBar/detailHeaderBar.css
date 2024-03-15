@@ -1,0 +1,16 @@
+.detailcontainer {
+  display: block;
+  text-align: center;
+  width: fit-content;
+}
+
+.detailNumber {
+  padding-top: 20px;
+  font-size: 35px;
+  margin: auto;
+}
+
+.detailTitle {
+  font-size: 16px;
+  margin: auto;
+}
