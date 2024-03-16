@@ -8,9 +8,9 @@ export default function BuyerTable() {
       <table id='SellerTable'>
         <tr className='propdtabletr'>
           <th className='prodtabletdth prodtableth'>UID</th>
-          <th className='prodtabletdth prodtableth prod'>Người mua</th>
+          <th className='prodtabletdth prodtableth prod'>Đơn vị từ thiện</th>
           <th className='prodtabletdth prodtableth'>SDT</th>
-          <th className='prodtabletdth prodtableth prod'>Địa điểm</th>
+          <th className='prodtabletdth prodtableth prod'>Địa chỉ</th>
         </tr>
         {foundations.map((foundation) => (
           <BuyerTableRow

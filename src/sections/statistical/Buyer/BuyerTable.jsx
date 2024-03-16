@@ -10,7 +10,7 @@ export default function BuyerTable() {
           <th className='prodtabletdth prodtableth'>UID</th>
           <th className='prodtabletdth prodtableth prod'>Người mua</th>
           <th className='prodtabletdth prodtableth'>SDT</th>
-          <th className='prodtabletdth prodtableth prod'>Địa điểm</th>
+          <th className='prodtabletdth prodtableth prod'>Địa chỉ</th>
         </tr>
         {buyers.map((buyer) => (
           <BuyerTableRow
