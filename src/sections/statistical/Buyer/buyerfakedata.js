@@ -1,0 +1,73 @@
+export const buyers = [
+  {
+    'ID': 'ID001',
+    'NameOrg': 'Assignment Fee',
+    'Address': '2464 Royal Ln. Mesa, New Jersey 45463',
+    'SDT': '(308) 555-0121',
+    'email': 'PAINTera@simmmgle.com',
+  },
+  {
+    'ID': 'ID002',
+    'NameOrg': 'watprammmgle sam',
+    'Address': '2464 Royal Ln. Mesa, New Jersey 45463',
+    'SDT': '(308) 555-0121',
+    'email': 'PAINTera@simmmgle.com',
+  },
+  {
+    'ID': 'ID003',
+    'NameOrg': 'Unisys',
+    'Address': '2464 Royal Ln. Mesa, New Jersey 45463',
+    'SDT': '(308) 555-0121',
+    'email': 'PAINTera@simmmgle.com',
+  },
+  {
+    'ID': 'ID004',
+    'NameOrg': '3rd Party',
+    'Address': '2464 Royal Ln. Mesa, New Jersey 45463',
+    'SDT': '(308) 555-0121',
+    'email': 'PAINTera@simmmgle.com',
+  },
+  {
+    'ID': 'ID005',
+    'NameOrg': 'Assignment Fee',
+    'Address': '2464 Royal Ln. Mesa, New Jersey 45463',
+    'SDT': '(308) 555-0121',
+    'email': 'PAINTera@simmmgle.com',
+  },
+  {
+    'ID': 'ID006',
+    'NameOrg': 'watprammmgle sam',
+    'Address': '2464 Royal Ln. Mesa, New Jersey 45463',
+    'SDT': '(308) 555-0121',
+    'email': 'PAINTera@simmmgle.com',
+  },
+  {
+    'ID': 'ID007',
+    'NameOrg': 'Unisys',
+    'Address': '2464 Royal Ln. Mesa, New Jersey 45463',
+    'SDT': '(308) 555-0121',
+    'email': 'PAINTera@simmmgle.com',
+  },
+  {
+    'ID': 'ID008',
+    'NameOrg': '3rd Party',
+    'Address': '2464 Royal Ln. Mesa, New Jersey 45463',
+    'SDT': '(308) 555-0121',
+    'email': 'PAINTera@simmmgle.com',
+  },
+  {
+    'ID': 'ID009',
+    'NameOrg': 'Assignment Fee',
+    'Address': '2464 Royal Ln. Mesa, New Jersey 45463',
+    'SDT': '(308) 555-0121',
+    'email': 'PAINTera@simmmgle.com',
+  },
+  {
+    'ID': 'ID010',
+    'NameOrg': 'watprammmgle sam',
+    'Address': '2464 Royal Ln. Mesa, New Jersey 45463',
+    'SDT': '(308) 555-0121',
+    'email': 'PAINTera@simmmgle.com',
+  },
+];
+  

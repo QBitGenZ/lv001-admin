@@ -18,26 +18,25 @@ table {
   text-align: center;
 }
 
-
 .prodtableth {
   align-items: center;
   text-align: center;
-  background: #F9F9FB;
+  background: #f9f9fb;
   font-weight: bold;
 }
 
-.prod{
-    padding-left: 10px;
-    text-align: left;
-    align-items: left;
+.prod {
+  padding-left: 10px;
+  text-align: left;
+  align-items: left;
 }
 
-.prodtabletr{
-    border-radius: 20px;
+.prodtabletr {
+  border-radius: 20px;
 }
 
 .propdtabletr:nth-child(even) {
-    background: #F9F9FB;
+  background: #f9f9fb;
 }
 
 .propdtabletr:hover {

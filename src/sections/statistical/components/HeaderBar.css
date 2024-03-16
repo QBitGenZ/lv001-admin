@@ -12,8 +12,8 @@
 #SellerStatis-Section .header > * {
   margin-bottom: 10px;
 }
-#SellerStatis-Section .quantity-block{
-    width: 30%;
+#SellerStatis-Section .quantity-block {
+  width: 30%;
 }
 
 #SellerStatis-Section .block {
@@ -60,7 +60,7 @@
   font-weight: 400;
   line-height: normal;
   border: none;
-  width: 55%;
+  width: 60%;
 }
 
 #SellerStatis-Section .search-input:focus {

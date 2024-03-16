@@ -7,8 +7,8 @@ export default function SellerTable() {
     <div className={'Seller-Table'}>
       <table id='SellerTable'>
         <tr className='propdtabletr'>
-          <th className='prodtabletdth prodtableth prod'>Người bán</th>
           <th className='prodtabletdth prodtableth'>UID</th>
+          <th className='prodtabletdth prodtableth prod'>Người bán</th>
           <th className='prodtabletdth prodtableth'>Giới tính</th>
           <th className='prodtabletdth prodtableth'>Tuổi</th>
         </tr>
