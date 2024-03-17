@@ -4,11 +4,13 @@ import { HeaderSection, Sidebar, } from './sections/commons';
 import { EventSection, NotificationSection, } from './sections/publish';
 import { PostCencorSection, UserCencorSection, } from './sections/censorship';
 import { SellerStatisSection, BuyerStatisSection, FoundationStatisSection, } from './sections/statistical';
+import HomePageSection from './sections/homepage';
 
 function App() {
-  const [title, setTitle,] = useState('Kiểm duyệt sản phẩm');
+  const [title, setTitle,] = useState('Trang chủ');
 
   const renderSection = () => {
+    if (title === 'Trang chủ') return <HomePageSection />;
     if (title === 'Đăng thông báo') return <NotificationSection />;
     if (title === 'Đăng sự kiện') return <EventSection />;
     if (title === 'Kiểm duyệt bài viết') return <PostCencorSection />;
