@@ -22,10 +22,6 @@ const data = [
     logo: faSquarePollVertical,
     subs: [
       {
-        id: 1,
-        label: 'Thống kê hệ thống',
-      },
-      {
         id: 2,
         label: 'Thống kê người bán',
       },

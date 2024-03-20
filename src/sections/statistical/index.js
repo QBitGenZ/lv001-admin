@@ -1,3 +1,6 @@
 import SellerStatisSection from './Seller';
-
-export { SellerStatisSection, };
+import BuyerStatisSection from './Buyer';
+import FoundationStatisSection from './Foundation';
+export {
+  SellerStatisSection, BuyerStatisSection, FoundationStatisSection, 
+};

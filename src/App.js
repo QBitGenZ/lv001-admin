@@ -3,17 +3,21 @@ import React, { useState, } from 'react';
 import { HeaderSection, Sidebar, } from './sections/commons';
 import { EventSection, NotificationSection, } from './sections/publish';
 import { PostCencorSection, UserCencorSection, } from './sections/censorship';
-import { SellerStatisSection, } from './sections/statistical';
+import { SellerStatisSection, BuyerStatisSection, FoundationStatisSection, } from './sections/statistical';
+import HomePageSection from './sections/homepage';
 
 function App() {
-  const [title, setTitle,] = useState('Kiểm duyệt sản phẩm');
+  const [title, setTitle,] = useState('Trang chủ');
 
   const renderSection = () => {
+    if (title === 'Trang chủ') return <HomePageSection />;
     if (title === 'Đăng thông báo') return <NotificationSection />;
     if (title === 'Đăng sự kiện') return <EventSection />;
     if (title === 'Kiểm duyệt bài viết') return <PostCencorSection />;
     if (title === 'Kiểm duyệt thông tin') return <UserCencorSection />;
     if (title === 'Thống kê người bán') return <SellerStatisSection />;
+    if (title === 'Thống kê người mua') return <BuyerStatisSection />;
+    if (title === 'Thống kê đơn vị từ thiện') return <FoundationStatisSection />;
   };
 
   return (
