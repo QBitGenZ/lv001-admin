@@ -28,6 +28,7 @@ export default function HomePageSection() {
         <h2>Doanh Thu Theo Tháng</h2>
         <HPChart className={'chart'}/>
       </div>
+      
     </div>
   );
 }
