@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 export default function Login({ setLogin, }) {
   const [username, setUsername,] = useState('');
   const [password, setPassword,] = useState('');
-  function logine() {
+  function logine(e) {
+    e.preventDefault();
     const form = new FormData();
     form.append('username', username);
     form.append('password', password);
@@ -19,11 +20,10 @@ export default function Login({ setLogin, }) {
       .then((data) => {
         setLogin(true);
         console.log(data);
-        localStorage.setItem('access', data);
+        localStorage.setItem('access', data?.access);
       })
       .catch((error) => console.log(error));
   }
-  setLogin(false);
   return (
     <>
       <div>
