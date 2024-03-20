@@ -26,7 +26,7 @@ export default function EventSection() {
       <div className={'body'}>
         {notifications.map((value) => <EventItem key={value.id} event={value}/>)}
       </div>
-      {showAdd && <Modal setShowAdd={setShowAdd} title={'Thêm sự kiện'} body={<AddEvent/>}/> }
+      {showAdd && <Modal setShow={setShowAdd} title={'Thêm sự kiện'} body={<AddEvent/>}/> }
     </div>
   );
 }
