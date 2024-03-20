@@ -19,7 +19,7 @@
     transform: translate(-50%, -50%);
 
     display: inline-block;
-    width: 60%;
+    width: 70%;
     background-color: #FFFFFF;
 }
 
@@ -41,7 +41,6 @@
     position:  absolute;
     left: 50%;
     transform: translateX(-50%);
-
     color:#000;
     font-family: 'Inter', serif;
     font-size: 24px;

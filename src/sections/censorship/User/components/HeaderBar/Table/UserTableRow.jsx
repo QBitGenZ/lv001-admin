@@ -33,7 +33,7 @@ export default function TableRow({ user, created_at, status, }) {
         <Modal
           title={'Kiểm duyệt thông tin tổ chức từ thiện'}
           body={<InfoUserModal setModal={setModal}/>}
-          setShowAdd={setModal}
+          setShow={setModal}
         />
       )}
     </>

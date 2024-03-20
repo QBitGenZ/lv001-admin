@@ -17,5 +17,5 @@ SellerTableRow.propTypes = {
   SellerName: PropTypes.string,
   UID: PropTypes.string,
   Gender: PropTypes.string,
-  Age: PropTypes.number,
+  Age: PropTypes.string,
 };
