@@ -4,7 +4,7 @@ import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
 import { faClose, } from '@fortawesome/free-solid-svg-icons';
 import './Modal.css';
 
-export default function Modal({ title, body, setShowAdd, }) {
+export default function Modal({ title, body, setShow, }) {
 
   useEffect(() => {
     document.body.classList.add('overflow-hidden');
@@ -13,18 +13,13 @@ export default function Modal({ title, body, setShowAdd, }) {
     };
   }, []);
 
-  function handClickClose ()
-  {
-    setShowAdd(false);
-  }
-
   return(
     <div id={'Modal'}>
       <div className={'back-container'}></div>
       <div className={'main-container'}>
         <div className={'header'}>
           <div className={'title'}>{title}</div>
-          <div className={'close-button'} onClick={handClickClose}>
+          <div className={'close-button'} onClick={() => setShow(false)}>
             <FontAwesomeIcon icon={faClose}/>
           </div>
         </div>
@@ -38,5 +33,5 @@ export default function Modal({ title, body, setShowAdd, }) {
 Modal.propTypes = {
   title: PropTypes.string.isRequired,
   body: PropTypes.object.isRequired,
-  setShowAdd: PropTypes.func.isRequired,
+  setShow: PropTypes.func.isRequired,
 };
