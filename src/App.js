@@ -8,6 +8,7 @@ import { SellerStatisSection,
   FoundationStatisSection, } from './sections/statistical';
 import HomePageSection from './sections/homepage';
 import Login from './pages/Login';
+import UpdateInformation from './sections/UpdateInformation';
 
 function App() {
   const [title, setTitle,] = useState('Trang chủ');
@@ -32,6 +33,8 @@ function App() {
     if (title === 'Thống kê người mua') return <BuyerStatisSection />;
     if (title === 'Thống kê đơn vị từ thiện')
       return <FoundationStatisSection />;
+    if (title === 'Thông tin cá nhân')
+      return <UpdateInformation />;
   };
 
   return (

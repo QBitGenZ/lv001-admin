@@ -1,0 +1,120 @@
+#UpdateInformation .container {
+  padding-top: 30px;
+  width: 70%;
+  height: auto;
+  margin: auto;
+  display: flex;
+}
+
+#UpdateInformation > .container > .avatar-like {
+  float: left;
+  width: 200px;
+}
+
+#UpdateInformation > .container > .small-container {
+  padding-left: 30px;
+  align-items: center;
+  padding: auto;
+  display: inline-block;
+  text-align: center;
+  padding-top: 60px;
+}
+
+#UpdateInformation > .container > .small-container > p {
+  align-items: center;
+  text-align: center;
+  width: fit-content;
+  margin: 0px;
+}
+#UpdateInformation > .container > .small-container > .name {
+  color: #000;
+  font-family: "Inter";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+#UpdateInformation > .container > .small-container > .position {
+  color: #8b8b8b;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-top: -50px;
+}
+
+#UpdateInformation > .container > .button-container {
+  padding-top: 50px;
+  color: #aaaaaa;
+  width: 70%;
+  float: right;
+  display: inline;
+  font-size: 28px;
+  font-weight: bold;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#UpdateInformation > .container > .button-container > .update {
+  border-radius: 3px;
+  background: #2581ec;
+  color: #fff;
+  font-family: "Inter";
+  font-size: 15px;
+  float: right;
+  width: fit-content;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 5px;
+  padding: 7px;
+}
+
+#UpdateInformation > .container > .button-container > .logout {
+  color: #000;
+  font-family: "Inter";
+  font-size: 15px;
+  padding: 7px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  float: right;
+  border-radius: 3px;
+  background: #e4e6eb;
+  margin: 5px;
+}
+
+#UpdateInformation > .info-container {
+  width: 60%;
+  height: auto;
+  margin: 50px;
+  text-align: left;
+  border-radius: 5px;
+  background: #f4f4f4;
+  display: inline-flex;
+}
+
+#UpdateInformation > .info-container > .row {
+    padding: 100px;
+    margin: 100px;
+}
+
+#UpdateInformation > .info-container > .th {
+  color: #000;
+  font-family: "Source Sans Pro";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#UpdateInformation > .info-container > table > td {
+  color: #000;
+  font-family: "Source Sans Pro";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

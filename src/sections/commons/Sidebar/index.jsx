@@ -9,7 +9,7 @@ function SidebarSection ({ setTitle, }) {
 
   return (
     <div id={'Sidebar'}>
-      <div className={'user-info-container'}>
+      <div className={'user-info-container'} onClick={()=>setTitle('Thông tin cá nhân')}>
         <img
           src={process.env.PUBLIC_URL + 'assets/images/sidebar/logo.png'}
           alt={'logo'}

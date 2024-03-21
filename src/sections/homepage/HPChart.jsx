@@ -1,36 +1,86 @@
-import { useState, } from 'react';
+import { Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend, } from 'chart.js';
 import React from 'react';
-import Chart from 'react-apexcharts';
+import { Line, } from 'react-chartjs-2';
 export default function HPChart() {
-  const [state,] = useState({
-    options: {
-      chart: {
-        id: 'basic-bar',
-      },
-      xaxis: {
-        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998,],
-      },
-    },
-    series: [
+  ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
+  );
+  const data = {
+    labels: ['Jan', 'Mar', 'May', 'July', 'Oct',],
+    datasets: [
       {
-        name: 'series-1',
-        data: [34, 55, 45, 47, 47, 60, 70, 91,],
+        label: 'Iphone sales',
+        data: [400, 1000, 4000, 800, 1500,],
+        fill: true,
+        backgroundColor: '#006AFF',
+        pointBorderColor: 'black',
+        color: 'pink',
+        pointBorderWidth: 5,
+        pointRadius: 8,
+        tension: 0.4,
       },
       {
-        name: 'series-2',
-        data: [30, 40, 45, 50, 70, 60, 70, 51,],
+        label: 'Iphone sales',
+        data: [500, 1000, 5000, 800, 2500,],
+        fill: true,
+        backgroundColor: '#006AFF',
+        pointBorderColor: 'black',
+        pointBorderWidth: 5,
+        pointRadius: 8,
+        tension: 0.4,
       },
     ],
-  });
+  };
+
+  const options = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    layout: {
+      padding: {
+        bottom: 100,
+      },
+    },
+    scales: {
+      y: {
+        ticks: {
+          color: 'black',
+          font: {
+            size: 18,
+          },
+        },
+        grid: {
+          color: '#243240',
+        },
+      },
+      x: {
+        ticks: {
+          color: 'black',
+          font: {
+            size: 18,
+          },
+        },
+      },
+    },
+  };
   return (
-    <div className={'chart-container'}>
-      <Chart
-        options={state.options}
-        series={state.series}
-        className={'myChart'}
-        type='area'
-        width='500'
-      />
+    <div className={'container'}>
+      <Line className={'chart-container'} data={data} options={options} />
     </div>
   );
 }
