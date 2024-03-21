@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useState, } from 'react';
+import React, { useLayoutEffect, useState, } from 'react';
 import { HeaderSection, Sidebar, } from './sections/commons';
 import { EventSection, NotificationSection, } from './sections/publish';
 import { PostCencorSection, UserCencorSection, } from './sections/censorship';
@@ -12,10 +12,13 @@ import Login from './pages/Login';
 function App() {
   const [title, setTitle,] = useState('Trang chủ');
   const [login, setLogin,] = useState(false);
-  useEffect(() => {
+  useLayoutEffect(() => {
     const access = localStorage.getItem('access');
+    console.log(access);
     if (!access) {
       setLogin(false);
+    }else{
+      setLogin(true);
     }
   }, []);
 

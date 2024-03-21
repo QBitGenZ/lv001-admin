@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState, } from 'react';
 import '../Seller/Table/SellerTable.css';
-import { foundations, } from './foundationfakedata.js';
-import BuyerTableRow from './BuyerTableRow.jsx';
-export default function BuyerTable() {
+import BuyerTableRow from '../Buyer/BuyerTableRow';
+export default function FoundationTable() {
+  const [charities, setCharity,] = useState([]);
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/v1/user?is_philanthropist=true', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('access')}`,
+        Accept: 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setCharity(data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
   return (
     <div className={'Seller-Table'}>
       <table id='SellerTable'>
@@ -12,13 +26,13 @@ export default function BuyerTable() {
           <th className='prodtabletdth prodtableth'>SDT</th>
           <th className='prodtabletdth prodtableth prod'>Địa chỉ</th>
         </tr>
-        {foundations.map((foundation) => (
+        {charities.map((charity) => (
           <BuyerTableRow
-            key={foundation.ID}
-            NameOrg={foundation.NameOrg}
-            ID={foundation.ID}
-            SDT={foundation.SDT}
-            Address={foundation.Address}
+            key={charity.id}
+            NameOrg={charity.full_name}
+            ID={charity.id}
+            SDT={charity.phone}
+            Address={charity.email}
           />
         ))}
       </table>

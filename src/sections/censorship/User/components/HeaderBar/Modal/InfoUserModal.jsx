@@ -73,7 +73,7 @@ export default function InfoUserModal() {
               modalmessage={'Đã duyệt tổ chức từ thiện thành công'}
             />
           }
-          setShowAdd={setAcptModal}
+          setShow={setAcptModal}
         />
       )}
       {rejmodal && (
@@ -85,7 +85,7 @@ export default function InfoUserModal() {
               modalmessage={'Đã từ chối tổ chức từ thiện'}
             />
           }
-          setShowAdd={setRejModal}
+          setShow={setRejModal}
         />
       )}
     </>

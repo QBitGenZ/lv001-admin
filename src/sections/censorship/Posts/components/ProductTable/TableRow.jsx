@@ -34,7 +34,7 @@ export default function TableRow({ user, product_name, created_at, status, }) {
         <Modal
           title={'Kiểm duyệt sản phẩm'}
           body={<ProductModal setModal={setModal} />}
-          setShowAdd={setModal}
+          setShow={setModal}
         />
       )}
     </>

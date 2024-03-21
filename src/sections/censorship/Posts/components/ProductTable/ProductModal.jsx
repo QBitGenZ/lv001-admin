@@ -71,14 +71,14 @@ export default function ProductModal() {
         <Modal
           title={'Kiểm duyệt sản phẩm'}
           body={<AcptModal setAcptModal={setAcptModal} modalmessage={'Đã duyệt sản phẩm thành công'} />}
-          setShowAdd={setAcptModal}
+          setShow={setAcptModal}
         />
       )}
       {rejmodal && (
         <Modal
           title={'Kiểm duyệt sản phẩm'}
           body={<AcptModal setAcptModal={setRejModal} modalmessage={'Đã từ chối sản phẩm'} />}
-          setShowAdd={setRejModal}
+          setShow={setRejModal}
         />
       )}
     </>
