@@ -2,37 +2,40 @@ import PropTypes from 'prop-types';
 import React, { useState, } from 'react';
 import Modal from '../../../../../../components/Modal';
 import InfoUserModal from '../Modal/InfoUserModal';
-export default function TableRow({ user, created_at, status, }) {
+import moment from 'moment';
+export default function UserTableRow({ charity, }) {
   const [modal, setModal,] = useState(false);
 
   const toggleModal = () => {
     setModal(true);
   };
+  console.log(charity);
   return (
+    
     <>
       <tr onClick={toggleModal} className='ModalBtn propdtabletr'>
-        <td className='prodtabletd prodtabletdth'>{user}</td>
-        <td className='prodtabletd prodtabletdth'>{created_at}</td>
+        <td className='prodtabletd prodtabletdth'>{charity?.full_name}</td>
+        <td className='prodtabletd prodtabletdth'>{moment(charity?.create_at).format('HH:mm DD/MM/YYYY')}</td>
         <td className='prodtabletd prodtabletdth'>
           <p
             className={
-              status == 'Đã duyệt'
+              charity.status == 'Đã duyệt'
                 ? 'approved'
-                : status == 'Từ chối'
+                : charity.status == 'Từ chối'
                   ? 'rejected'
-                  : status == 'Báo cáo'
+                  : charity.status == 'Báo cáo'
                     ? 'reported'
                     : 'notapproved'
             }
           >
-            {status}
+            {charity.status}
           </p>{' '}
         </td>
       </tr>
       {modal && (
         <Modal
           title={'Kiểm duyệt thông tin tổ chức từ thiện'}
-          body={<InfoUserModal setModal={setModal}/>}
+          body={<InfoUserModal setModal={setModal} charity={charity} />}
           setShow={setModal}
         />
       )}
@@ -40,9 +43,6 @@ export default function TableRow({ user, created_at, status, }) {
   );
 }
 
-TableRow.propTypes = {
-  user: PropTypes.string,
-  product_name: PropTypes.number,
-  created_at: PropTypes.string,
-  status: PropTypes.string,
+UserTableRow.propTypes = {
+  charity: PropTypes.object,
 };

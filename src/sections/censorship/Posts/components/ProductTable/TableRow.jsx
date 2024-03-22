@@ -2,7 +2,8 @@ import PropTypes from 'prop-types';
 import React, { useState, } from 'react';
 import ProductModal from './ProductModal';
 import Modal from '../../../../../components/Modal';
-export default function TableRow({ user, product_name, created_at, status, }) {
+import moment from 'moment';
+export default function TableRow({ product, }) {
   const [modal, setModal,] = useState(false);
 
   const toggleModal = () => {
@@ -11,29 +12,29 @@ export default function TableRow({ user, product_name, created_at, status, }) {
   return (
     <>
       <tr onClick={toggleModal} className='ModalBtn propdtabletr'>
-        <td className='prodtabletd prodtabletdth'>{user}</td>
-        <td className='prodtabletd prodtabletdth'>{product_name}</td>
-        <td className='prodtabletd prodtabletdth'>{created_at}</td>
+        <td className='prodtabletd prodtabletdth'>{product?.user}</td>
+        <td className='prodtabletd prodtabletdth'>{product?.name}</td>
+        <td className='prodtabletd prodtabletdth'>{moment(product?.create_at).format('HH:mm DD/MM/YYYY')}</td>
         <td className='prodtabletd prodtabletdth'>
           <p
             className={
-              status == 'Đã duyệt'
+              product.status == 'Đã duyệt'
                 ? 'approved'
-                : status == 'Từ chối'
+                : product.status == 'Từ chối'
                   ? 'rejected'
-                  : status == 'Báo cáo'
+                  : product.status == 'Báo cáo'
                     ? 'reported'
                     : 'notapproved'
             }
           >
-            {status}
+            {product.status}
           </p>{' '}
         </td>
       </tr>
       {modal && (
         <Modal
           title={'Kiểm duyệt sản phẩm'}
-          body={<ProductModal setModal={setModal} />}
+          body={<ProductModal setModal={setModal} product={product}/>}
           setShow={setModal}
         />
       )}
@@ -42,8 +43,5 @@ export default function TableRow({ user, product_name, created_at, status, }) {
 }
 
 TableRow.propTypes = {
-  user: PropTypes.string,
-  product_name: PropTypes.number,
-  created_at: PropTypes.string,
-  status: PropTypes.string,
+  product:PropTypes.object,
 };

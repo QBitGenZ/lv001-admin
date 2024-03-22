@@ -8,7 +8,8 @@
 
 #UpdateInformation > .container > .avatar-like {
   float: left;
-  width: 200px;
+  width: 100px;
+  border-radius: 50px;
 }
 
 #UpdateInformation > .container > .small-container {
@@ -86,6 +87,10 @@
   margin: 5px;
 }
 
+#UpdateInformation > .info-container > table {
+  border-spacing: 20px;
+}
+
 #UpdateInformation > .info-container {
   width: 60%;
   height: auto;
@@ -97,8 +102,8 @@
 }
 
 #UpdateInformation > .info-container > .row {
-    padding: 100px;
-    margin: 100px;
+  padding: 100px;
+  margin: 100px;
 }
 
 #UpdateInformation > .info-container > .th {
@@ -117,4 +122,54 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.Avatara {
+  display: flex;
+}
+.updatetitle {
+  color: #000;
+  font-family: "Inter";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.updateaction {
+  color: #2581ec;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.Avatara > p {
+  width: 50%;
+}
+
+.Infora{
+  padding-top: 30px;
+  display:flex
+}
+.Infora p{
+  width: 60%;
+}
+
+.Infora > table{
+  margin-left: 40px;
+  width: 70%;
+  text-align: left;
+}
+.Infora >table >th{
+  width: 90%;
+}
+.Infora > table {
+  border-spacing: 20px;
+}
+
+.avatar-likee{
+  width: 200px;
+  height: auto;
+  border-radius: 200px;
 }

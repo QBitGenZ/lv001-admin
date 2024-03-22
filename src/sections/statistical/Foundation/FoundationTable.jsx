@@ -1,6 +1,7 @@
 import React, { useEffect, useState, } from 'react';
 import '../Seller/Table/SellerTable.css';
 import BuyerTableRow from '../Buyer/BuyerTableRow';
+import HeaderBar from '../components/HeaderBar';
 export default function FoundationTable() {
   const [charities, setCharity,] = useState([]);
   useEffect(() => {
@@ -18,24 +19,27 @@ export default function FoundationTable() {
       .catch((error) => console.log(error));
   }, []);
   return (
-    <div className={'Seller-Table'}>
-      <table id='SellerTable'>
-        <tr className='propdtabletr'>
-          <th className='prodtabletdth prodtableth'>UID</th>
-          <th className='prodtabletdth prodtableth prod'>Đơn vị từ thiện</th>
-          <th className='prodtabletdth prodtableth'>SDT</th>
-          <th className='prodtabletdth prodtableth prod'>Địa chỉ</th>
-        </tr>
-        {charities.map((charity) => (
-          <BuyerTableRow
-            key={charity.id}
-            NameOrg={charity.full_name}
-            ID={charity.id}
-            SDT={charity.phone}
-            Address={charity.email}
-          />
-        ))}
-      </table>
-    </div>
+    <>
+      <HeaderBar title={'Tổng số người bán: '} number={charities?.length} />
+      <div className={'Seller-Table'}>
+        <table id='SellerTable'>
+          <tr className='propdtabletr'>
+            <th className='prodtabletdth prodtableth'>UID</th>
+            <th className='prodtabletdth prodtableth prod'>Đơn vị từ thiện</th>
+            <th className='prodtabletdth prodtableth'>SDT</th>
+            <th className='prodtabletdth prodtableth prod'>Địa chỉ</th>
+          </tr>
+          {charities.map((charity) => (
+            <BuyerTableRow
+              key={charity.id}
+              NameOrg={charity.full_name}
+              ID={charity.id}
+              SDT={charity.phone}
+              Address={charity.email}
+            />
+          ))}
+        </table>
+      </div>
+    </>
   );
 }

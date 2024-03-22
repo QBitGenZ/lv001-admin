@@ -8,7 +8,7 @@ const data = [
     subs: [
       {
         id: 1,
-        label: 'Kiểm duyệt bài viết',
+        label: 'Kiểm duyệt sản phẩm',
       },
       {
         id: 2,

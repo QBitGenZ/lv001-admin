@@ -1,11 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SellerTable from './Table/SellerTable';
-import HeaderBar from '../components/HeaderBar';
-export default function SellerStatisSection() {
+
+export default function SellerStatisSection( { tongso, }) {
   return (
     <>
-      <HeaderBar title={'Tổng số người bán: '} number={1275}/>
-      <SellerTable/>
+      <SellerTable number={tongso}/>
     </>
   );
 }
+
+SellerStatisSection.propTypes = {
+  tongso: PropTypes.number,
+};
