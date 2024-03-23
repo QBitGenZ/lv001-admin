@@ -18,9 +18,9 @@ export default function Login({ setLogin, }) {
     })
       .then((res) => res.json())
       .then((data) => {
+        localStorage.setItem('access', data?.access);
         setLogin(true);
         console.log(data);
-        localStorage.setItem('access', data?.access);
       })
       .catch((error) => console.log(error));
   }

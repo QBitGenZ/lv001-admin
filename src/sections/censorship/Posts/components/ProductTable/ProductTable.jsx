@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './ProductTable.css';
 import TableRow from './TableRow.jsx';
-import { products, } from './fakedata.js';
-export default function ProductTable() {
+export default function ProductTable({ products, }) {
+  console.log(products);
   return (
     <div className={'Product-Table'}>
       <table id='ProductTable'>
@@ -12,16 +13,17 @@ export default function ProductTable() {
           <th className='prodtabletdth prodtableth'>Thời gian đăng tải</th>
           <th className='prodtabletdth prodtableth'>Trạng thái</th>
         </tr>
-        {products.map((product) => (
+        {products?.map((product) => (
           <TableRow
-            key={product.ID}
-            user={product.user}
-            product_name={product.product_name}
-            created_at={product.created_at}
-            status={product.status}
+            key={product?.id}
+            product={product}
           />
         ))}
       </table>
     </div>
   );
 }
+
+ProductTable.propTypes = {
+  products: PropTypes.array,
+};

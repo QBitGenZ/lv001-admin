@@ -103,9 +103,9 @@
 }
 
 #HomePageSection .chart-container {
-  width: 800px;
+  width: 90%;
   height: auto;
-  margin: 0 auto;
+  margin: auto;
 }
 
 /* #HomePageSection .chart {
@@ -113,9 +113,11 @@
   height: auto;
   margin: 0 auto;
 } */
+#HomePageSection .HPchart{
+
+}
 
 h2 {
   text-align: center;
   margin-bottom: 20px;
 }
-

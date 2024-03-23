@@ -1,4 +1,4 @@
-import React, { useState, } from 'react';
+import React, { useEffect, useState, } from 'react';
 import './Sidebar.css';
 import sidebar from '../../../constants/sidebar';
 import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
@@ -6,17 +6,32 @@ import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import { faAngleRight, faAngleUp, } from '@fortawesome/free-solid-svg-icons';
 function SidebarSection ({ setTitle, }) {
-
+  const [admin, setAdmin,] = useState([]);
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/v1/info', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('access')}`,
+        Accept: 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setAdmin(data.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+  console.log(admin);
   return (
     <div id={'Sidebar'}>
-      <div className={'user-info-container'}>
-        <img
+      <div className={'user-info-container'} onClick={()=>setTitle('Thông tin cá nhân')}>
+        {/* <img
           src={process.env.PUBLIC_URL + 'assets/images/sidebar/logo.png'}
           alt={'logo'}
-        />
+        /> */}
         <div className={'user-info'}>
           <img
-            src={process.env.PUBLIC_URL + 'assets/images/sidebar/avatar.png'}
+            src={`http://localhost:8000${admin?.avatar}`}
             alt={'avatar'}
             className={'avatar'}
           />

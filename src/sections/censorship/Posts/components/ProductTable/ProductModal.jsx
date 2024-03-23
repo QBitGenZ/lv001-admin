@@ -3,15 +3,16 @@ import React, { useState, } from 'react';
 import '../ProductTable/ProductModal.css';
 import Modal from '../../../../../components/Modal';
 import AcptModal from '../Modal/AcptModal';
-export default function ProductModal() {
+import moment from 'moment';
+export default function ProductModal({ product, }) {
   const [rejmodal, setRejModal,] = useState(false);
   const [acptmodal, setAcptModal,] = useState(false);
 
-  const setAcceptModal=()=>{
+  const setAcceptModal = () => {
     setAcptModal(true);
   };
 
-  const setRejectModal=()=>{
+  const setRejectModal = () => {
     setRejModal(true);
   };
 
@@ -19,29 +20,27 @@ export default function ProductModal() {
     <>
       <div id='myModal' className={'productmodal'}>
         <div className={'modalcontent'}>
-          <p className='proname'>Hoa tay ZARA</p>
+          <p className='proname'>{product?.name}</p>
           <div className={'infoseller'}>
-            <p className={'infouser'}>NTH Thanh </p>
-            <p className={'infotime'}>20/10/2023 22:22pm</p>
+            <p className={'infouser'}>{product?.user}</p>
+            <p className={'infotime'}>
+              {moment(product?.create_at).format('HH:mm DD/MM/YYYY')}
+            </p>
           </div>
           <div className='infoimage'>
-            <img src='https://static.zara.net/assets/public/2017/005f/19e347078944/f2246337528a/01011002303-e1/01011002303-e1.jpg?ts=1708599894972&w=824'></img>
-            <img src='https://static.zara.net/assets/public/2017/005f/19e347078944/f2246337528a/01011002303-e1/01011002303-e1.jpg?ts=1708599894972&w=824'></img>
-            <img src='https://static.zara.net/assets/public/2017/005f/19e347078944/f2246337528a/01011002303-e1/01011002303-e1.jpg?ts=1708599894972&w=824'></img>
+            {product.product_image.map((image) => {
+              return <img key={image.src} src={`http://localhost:8000${image.src}`} alt={image.alt}/>;
+            })}
           </div>
           <div>
             <table className='protable'>
               <tr className='inforow'>
-                <th className='inforth'>Giới tính:</th>
-                <td className='infocol'>Dành cho nữ</td>
-              </tr>
-              <tr className='inforow'>
                 <th className='inforth'>Kích cỡ:</th>
-                <td>Phù hợp mọi kích cỡ</td>
+                <td>{product?.size}</td>
               </tr>
               <tr className='inforow'>
                 <th className='inforth'>Giá:</th>
-                <td>1.500.000 VND</td>
+                <td>{product?.price}</td>
               </tr>
               <tr className='inforow'>
                 <th className='inforth'>Mô tả sản phẩm: </th>
@@ -70,14 +69,24 @@ export default function ProductModal() {
       {acptmodal && (
         <Modal
           title={'Kiểm duyệt sản phẩm'}
-          body={<AcptModal setAcptModal={setAcptModal} modalmessage={'Đã duyệt sản phẩm thành công'} />}
+          body={
+            <AcptModal
+              setAcptModal={setAcptModal}
+              modalmessage={'Đã duyệt sản phẩm thành công'}
+            />
+          }
           setShow={setAcptModal}
         />
       )}
       {rejmodal && (
         <Modal
           title={'Kiểm duyệt sản phẩm'}
-          body={<AcptModal setAcptModal={setRejModal} modalmessage={'Đã từ chối sản phẩm'} />}
+          body={
+            <AcptModal
+              setAcptModal={setRejModal}
+              modalmessage={'Đã từ chối sản phẩm'}
+            />
+          }
           setShow={setRejModal}
         />
       )}
@@ -87,4 +96,5 @@ export default function ProductModal() {
 
 ProductModal.propTypes = {
   setModal: PropTypes.func,
+  product: PropTypes.object,
 };

@@ -4,10 +4,8 @@
     width: 21.4%;
     height: 100vh;
     background: #F8F8FA;
-
     text-align: left;
     padding: 30px 16px;
-
     box-sizing: border-box;
 }
 
@@ -75,6 +73,10 @@
 #Sidebar .user-info-container .user-info{
     margin-top: 10px;
     padding-left: 6px;
+}
+#Sidebar > .user-info-container > .user-info >  .avatar{
+    width: 10%;
+    border-radius: 50px;
 }
 
 #Sidebar .user-info-container .user-info>*{
