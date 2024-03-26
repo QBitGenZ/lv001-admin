@@ -21,7 +21,6 @@ function SidebarSection ({ setTitle, }) {
       })
       .catch((error) => console.log(error));
   }, []);
-  console.log(admin);
   return (
     <div id={'Sidebar'}>
       <div className={'user-info-container'} onClick={()=>setTitle('Thông tin cá nhân')}>
@@ -36,7 +35,7 @@ function SidebarSection ({ setTitle, }) {
             className={'avatar'}
           />
           <div>
-            <div className={'user-name'}>Christant</div>
+            <div className={'user-name'}>{admin?.full_name}</div>
             <div className={'user-role'}>Admin</div>
           </div>
           <FontAwesomeIcon icon={faAngleRight} style={{

@@ -9,6 +9,8 @@ export default function Login({ setLogin, }) {
     const form = new FormData();
     form.append('username', username);
     form.append('password', password);
+    console.log(username);
+    console.log(password);
     fetch('http://127.0.0.1:8000/v1/login', {
       method: 'POST',
       headers: {
@@ -16,13 +18,17 @@ export default function Login({ setLogin, }) {
       },
       body: form,
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 200) return res.json();
+        else return Promise.reject('Không đúng thông tin đăng nhập') ;
+      })
       .then((data) => {
+        console.log(data);
         localStorage.setItem('access', data?.access);
         setLogin(true);
         console.log(data);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => alert(error));
   }
   return (
     <>
