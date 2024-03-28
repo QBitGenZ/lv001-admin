@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState, } from 'react';
+import './InformationUpdate.css';
 export default function ImageUpdateModal({ admin, }) {
   const [avatar, setAvatar,] = useState(null);
   function changeImage(e) {
@@ -39,18 +40,18 @@ export default function ImageUpdateModal({ admin, }) {
       <div>
         <form>
           <label htmlFor='email'>Image: </label>
-          <input
+          <input className='imageload'
             type='file'
             id='avatar'
             name='avatar'
             placeholder='Choose your picture'
             onChange={(e) => setAvatar(e.target.files[0])}
           />
-
-          <button type='submit' onClick={changeImage}>
+          <button className='submitbtn' type='submit' onClick={changeImage}>
             Submit
           </button>
         </form>
+        <br/>
       </div>
     </>
   );

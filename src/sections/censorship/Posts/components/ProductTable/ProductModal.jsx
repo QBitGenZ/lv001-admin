@@ -7,14 +7,36 @@ import moment from 'moment';
 export default function ProductModal({ product, }) {
   const [rejmodal, setRejModal,] = useState(false);
   const [acptmodal, setAcptModal,] = useState(false);
-
+  const [status, setStatus,] = useState('HHGG');
   const setAcceptModal = () => {
     setAcptModal(true);
+    setStatus('Từ chối');
+    console.log(status);
+    changeStatus;
   };
 
   const setRejectModal = () => {
     setRejModal(true);
+    setStatus('Từ chối');
+    console.log(status);
+    changeStatus;
   };
+  function changeStatus(e) {
+    e.preventDefault();
+    const form = new FormData();
+    console.log(status);
+    form.append('status', status);
+    fetch('http://127.0.0.1:8000/v1/products/', {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('access')}`,
+        Accept: 'application/json',
+      },
+      body: form,
+    })
+      .then((res) => res.json())
+      .catch((error) => console.log(error));
+  }
 
   return (
     <>
@@ -29,7 +51,13 @@ export default function ProductModal({ product, }) {
           </div>
           <div className='infoimage'>
             {product.product_image.map((image) => {
-              return <img key={image.src} src={`http://localhost:8000${image.src}`} alt={image.alt}/>;
+              return (
+                <img
+                  key={image.src}
+                  src={`http://localhost:8000${image.src}`}
+                  alt={image.alt}
+                />
+              );
             })}
           </div>
           <div>
@@ -45,20 +73,18 @@ export default function ProductModal({ product, }) {
               <tr className='inforow'>
                 <th className='inforth'>Mô tả sản phẩm: </th>
                 <td>
-                  <p className='spcontent'>
-                    Hoa tay ZARA phiên bản mạ vàng sản xuất 2022. Sản phẩm chỉ
-                    mới sử dụng 2 lần nên còn rất mới, độ mới khoảng 95%. Sản
-                    phẩm chỉ mới sử dụng 2 lần nên còn rất mới, độ mới khoảng
-                    95%. Nếu có thắc mắc hãy liên hệ trực tiếp tôi. Tôi còn rất
-                    nhiều sản phẩm tốt, hãy xem gian hàng của tôi.
-                  </p>
+                  <p className='spcontent'>{product?.description}</p>
                 </td>
               </tr>
             </table>
           </div>
         </div>
         <div className={'modal-actions'}>
-          <button onClick={setAcceptModal} className={'close acpt'}>
+          <button
+            name='Đã duyệt'
+            onClick={setAcceptModal}
+            className={'close acpt'}
+          >
             Duyệt
           </button>
           <button onClick={setRejectModal} className={'close rej'}>

@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { useState, } from 'react';
+import './InformationUpdate.css';
+// import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
+// import { faAngleUp, } from '@fortawesome/free-solid-svg-icons';
 export default function InformationUpdate({ admin, }) {
   const [avatar, setInfor,] = useState([]);
   function changeInfor(e) {
@@ -36,35 +39,80 @@ export default function InformationUpdate({ admin, }) {
 
   return (
     <>
-      <div>
+      <div id={'UpdateForm'}>
         <form action='#'>
           {' '}
-          <h2>Contact Form</h2>
-          <label htmlFor='name'>Name:</label>
-          <input
-            type='text'
-            id='name'
-            name='name'
-            placeholder='Enter your name'
-            onChange={(e) => setInfor(e.target.value)}
-          />
-          <label htmlFor='phone'>Phone Number:</label>
-          <input
-            type='tel'
-            id='phone'
-            name='phone'
-            placeholder='Enter your phone number'
-            onChange={(e) => setInfor(e.target.value)}
-          />
-          <label htmlFor='email'>Email:</label>
-          <input
-            type='email'
-            id='email'
-            name='email'
-            placeholder='Enter your email address'
-            onChange={(e) => setInfor(e.target.value)}
-          />
-          <button type='submit' onClick={changeInfor}>Submit</button>
+          <div className={'updatefieldblock'}>
+            <label className={'updatefield_title'} htmlFor='name'>
+              Họ tên
+            </label>
+            <br />
+            <input
+              type='text'
+              id='name'
+              name='name'
+              className={'updatefield'}
+              placeholder='Enter your name'
+              onChange={(e) => setInfor(e.target.value)}
+            />
+          </div>
+          <div className={'birthgen'}>
+            <div className={'updatefieldblock birth'}>
+              <label className={'updatefield_title'} htmlFor='phone'>
+                Ngày sinh
+              </label>
+              <input
+                type='date'
+                id='phone'
+                name='phone'
+                className='updatefield'
+                placeholder='Enter your phone number'
+                onChange={(e) => setInfor(e.target.value)}
+              />
+            </div>
+            <div className={'updatefieldblock gen'}></div>
+            <div className={'updatefieldblock gen'}>
+              <label className={'updatefield_title'} htmlFor='phone'>
+                Giới tính
+              </label>
+              <select name='gender' className='updatefield'>
+                <option value='Nam'>Nam</option>
+                <option value='Nữ'>Nữ</option>
+              </select>
+            </div>
+          </div>
+          <div className={'updatefieldblock'}>
+            <label className={'updatefield_title'} htmlFor='phone'>
+              Số điện thoại
+            </label>
+            <input
+              type='tel'
+              id='phone'
+              name='phone'
+              className='updatefield'
+              placeholder='Enter your phone number'
+              onChange={(e) => setInfor(e.target.value)}
+            />
+          </div>
+          <div className={'updatefieldblock'}>
+            <label className={'updatefield_title'} htmlFor='email'>
+              Email:
+            </label>
+            <input
+              type='email'
+              id='email'
+              name='email'
+              className={'updatefield'}
+              placeholder='Enter your email address'
+              onChange={(e) => setInfor(e.target.value)}
+            />
+          </div>
+          <br />
+          <div className={'updatefieldblockbtn'}>
+            <button type='submit' onClick={changeInfor} className={'submitbtn'}>
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     </>
