@@ -10,22 +10,17 @@ export default function InfoUserModal({ charity, }) {
 
   const setAcceptModal = () => {
     setAcptModal(true);
-    setStatus('Đã duyệt');
-    changeStatus;
+    updateStatus('Đã duyệt');
   };
 
   const setRejectModal = () => {
     setRejModal(true);
-    setStatus('Từ chối');
-    changeStatus;
+    updateStatus('Từ chối');
   };
-  const [status, setStatus,] = useState([]);
-  function changeStatus(e) {
-    e.preventDefault();
+  const updateStatus = (status) => {
     const form = new FormData();
-    console.log(status);
-    form.append('status', status);
-    fetch('http://127.0.0.1:8000/v1/user', {
+    form.append('status',status);
+    fetch(`${process.env.REACT_APP_HOST_IP}/status/${charity?.username}`, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
@@ -35,7 +30,7 @@ export default function InfoUserModal({ charity, }) {
     })
       .then((res) => res.json())
       .catch((error) => console.log(error));
-  }
+  };
 
   return (
     <>

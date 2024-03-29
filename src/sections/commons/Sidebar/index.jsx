@@ -8,7 +8,7 @@ import { faAngleRight, faAngleUp, } from '@fortawesome/free-solid-svg-icons';
 function SidebarSection ({ setTitle, }) {
   const [admin, setAdmin,] = useState([]);
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/v1/info', {
+    fetch(`${process.env.REACT_APP_HOST_IP}/info`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
@@ -30,7 +30,7 @@ function SidebarSection ({ setTitle, }) {
         /> */}
         <div className={'user-info'}>
           <img
-            src={`http://localhost:8000${admin?.avatar}`}
+            src={`${process.env.REACT_APP_IMAGE_HOST_IP}${admin?.avatar}`}
             alt={'avatar'}
             className={'avatar'}
           />

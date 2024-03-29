@@ -4,28 +4,21 @@ import './InformationUpdate.css';
 // import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
 // import { faAngleUp, } from '@fortawesome/free-solid-svg-icons';
 export default function InformationUpdate({ admin, }) {
-  const [avatar, setInfor,] = useState([]);
+  const [full_name, setFullname,] = useState([]);
+  const [birthday, setBirthday,] = useState([]);
+  const [gender, setGender,] = useState([]);
+  const [phone, setPhone,] = useState([]);
+  const [email, setEmail,] = useState([]);
   function changeInfor(e) {
     e.preventDefault();
     const form = new FormData();
     console.log(admin);
-    console.log(avatar);
-    form.append('id', admin.id);
-    form.append('username', admin.username);
-    form.append('email', admin.email);
-    form.append('full_name', admin.full_name);
-    form.append('is_philanthropist', admin.is_philanthropist);
-    form.append('is_seller', admin.is_seller);
-    form.append('phone', admin.phone);
-    form.append('is_female', admin.is_female);
-    form.append('birthday', admin.birthday);
-    form.append('avatar', avatar);
-    form.append('addresses', admin.addresses);
-    form.append('status', admin.status);
-    form.append('created_at', admin.created_at);
-    form.append('description', admin.description);
-    form.append('password', admin.password);
-    fetch('http://127.0.0.1:8000/v1/user', {
+    form.append('email', email);
+    form.append('full_name', full_name);
+    form.append('phone', phone);
+    form.append('is_female', gender);
+    form.append('birthday', birthday);
+    fetch(`${process.env.REACT_APP_HOST_IP}/user`, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
@@ -49,11 +42,11 @@ export default function InformationUpdate({ admin, }) {
             <br />
             <input
               type='text'
-              id='name'
-              name='name'
+              id='full_name'
+              name='full_name'
               className={'updatefield'}
               placeholder='Enter your name'
-              onChange={(e) => setInfor(e.target.value)}
+              onChange={(e) => setFullname(e.target.value)}
             />
           </div>
           <div className={'birthgen'}>
@@ -63,11 +56,11 @@ export default function InformationUpdate({ admin, }) {
               </label>
               <input
                 type='date'
-                id='phone'
-                name='phone'
+                id='birthday'
+                name='birthday'
                 className='updatefield'
                 placeholder='Enter your phone number'
-                onChange={(e) => setInfor(e.target.value)}
+                onChange={(e) => setBirthday(e.target.value)}
               />
             </div>
             <div className={'updatefieldblock gen'}></div>
@@ -75,9 +68,13 @@ export default function InformationUpdate({ admin, }) {
               <label className={'updatefield_title'} htmlFor='phone'>
                 Giới tính
               </label>
-              <select name='gender' className='updatefield'>
-                <option value='Nam'>Nam</option>
-                <option value='Nữ'>Nữ</option>
+              <select
+                name='gender'
+                className='updatefield'
+                onChange={(e) => setGender(e.target.value)}
+              >
+                <option value='true'>Nam</option>
+                <option value='false'>Nữ</option>
               </select>
             </div>
           </div>
@@ -91,7 +88,7 @@ export default function InformationUpdate({ admin, }) {
               name='phone'
               className='updatefield'
               placeholder='Enter your phone number'
-              onChange={(e) => setInfor(e.target.value)}
+              onChange={(e) => setPhone(e.target.value)}
             />
           </div>
           <div className={'updatefieldblock'}>
@@ -104,7 +101,7 @@ export default function InformationUpdate({ admin, }) {
               name='email'
               className={'updatefield'}
               placeholder='Enter your email address'
-              onChange={(e) => setInfor(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <br />

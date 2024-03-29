@@ -7,26 +7,10 @@ import moment from 'moment';
 export default function ProductModal({ product, }) {
   const [rejmodal, setRejModal,] = useState(false);
   const [acptmodal, setAcptModal,] = useState(false);
-  const [status, setStatus,] = useState('HHGG');
-  const setAcceptModal = () => {
-    setAcptModal(true);
-    setStatus('Từ chối');
-    console.log(status);
-    changeStatus;
-  };
-
-  const setRejectModal = () => {
-    setRejModal(true);
-    setStatus('Từ chối');
-    console.log(status);
-    changeStatus;
-  };
-  function changeStatus(e) {
-    e.preventDefault();
+  const updateStatus = (status) => {
     const form = new FormData();
-    console.log(status);
-    form.append('status', status);
-    fetch('http://127.0.0.1:8000/v1/products/', {
+    form.append('status',status);
+    fetch(`${process.env.REACT_APP_HOST_IP}/products/${product?.id}/`, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
@@ -36,7 +20,16 @@ export default function ProductModal({ product, }) {
     })
       .then((res) => res.json())
       .catch((error) => console.log(error));
-  }
+  };
+  const setAcceptModal = () => {
+    setAcptModal(true);
+    updateStatus('Đã duyệt');
+  };
+
+  const setRejectModal = () => {
+    setRejModal(true);
+    updateStatus('Từ chối');
+  };
 
   return (
     <>
@@ -54,7 +47,7 @@ export default function ProductModal({ product, }) {
               return (
                 <img
                   key={image.src}
-                  src={`http://localhost:8000${image.src}`}
+                  src={`${process.env.REACT_APP_IMAGE_HOST_IP}${image.src}`}
                   alt={image.alt}
                 />
               );
@@ -80,11 +73,7 @@ export default function ProductModal({ product, }) {
           </div>
         </div>
         <div className={'modal-actions'}>
-          <button
-            name='Đã duyệt'
-            onClick={setAcceptModal}
-            className={'close acpt'}
-          >
+          <button onClick={setAcceptModal} className={'close acpt'}>
             Duyệt
           </button>
           <button onClick={setRejectModal} className={'close rej'}>

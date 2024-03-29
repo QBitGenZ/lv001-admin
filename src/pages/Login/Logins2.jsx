@@ -20,7 +20,7 @@ export default function Logins2({ setLogin, }) {
     form.append('password', password);
     console.log(username);
     console.log(password);
-    fetch('http://127.0.0.1:8000/v1/login', {
+    fetch(`${process.env.REACT_APP_HOST_IP}/login`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',

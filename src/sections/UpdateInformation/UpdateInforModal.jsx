@@ -17,7 +17,7 @@ export default function UpdateInforModal({ admin, }) {
       <div className={'Avatara'}>
         <p className={'updatetitle'}>Ảnh đại diện</p>
         <img
-          src={`http://localhost:8000${admin.avatar}`}
+          src={`${process.env.REACT_APP_IMAGE_HOST_IP}${admin.avatar}`}
           alt={'avatar'}
           className={'avatar-likee'}
         />

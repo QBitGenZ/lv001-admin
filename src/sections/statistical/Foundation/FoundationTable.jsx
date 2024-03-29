@@ -5,7 +5,7 @@ import HeaderBar from '../components/HeaderBar';
 export default function FoundationTable() {
   const [charities, setCharity,] = useState([]);
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/v1/user?is_philanthropist=true', {
+    fetch(`${process.env.REACT_APP_HOST_IP}/user?is_philanthropist=true`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
