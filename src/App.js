@@ -34,7 +34,7 @@ function App() {
     if (title === 'Thống kê người mua') return <BuyerStatisSection />;
     if (title === 'Thống kê đơn vị từ thiện')
       return <FoundationStatisSection />;
-    if (title === 'Thông tin cá nhân') return <UpdateInformation />;
+    if (title === 'Thông tin cá nhân') return <UpdateInformation setLogin={setLogin} />;
   };
 
   return (

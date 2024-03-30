@@ -10,10 +10,26 @@ export default function InfoUserModal({ charity, }) {
 
   const setAcceptModal = () => {
     setAcptModal(true);
+    updateStatus('Đã duyệt');
   };
 
   const setRejectModal = () => {
     setRejModal(true);
+    updateStatus('Từ chối');
+  };
+  const updateStatus = (status) => {
+    const form = new FormData();
+    form.append('status',status);
+    fetch(`${process.env.REACT_APP_HOST_IP}/status/${charity?.username}`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('access')}`,
+        Accept: 'application/json',
+      },
+      body: form,
+    })
+      .then((res) => res.json())
+      .catch((error) => console.log(error));
   };
 
   return (

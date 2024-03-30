@@ -1,20 +1,22 @@
 import React, { useEffect, useState, } from 'react';
 import './UpdateInformation.css';
+import PropTypes from 'prop-types';
 import Modal from '../../components/Modal';
 import UpdateInforModal from './UpdateInforModal';
-export default function UpdateInformation() {
+export default function UpdateInformation({ setLogin, }) {
   const [infor, setInfor,] = useState(false);
   const setInforModal = () => {
     setInfor(true);
   };
   function logout(e) {
     e.preventDefault();
+    setLogin(false);
     localStorage.clear('access');
     // window.location.href = '';
   }
   const [admin, setAdmin,] = useState([]);
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/v1/info', {
+    fetch(`${process.env.REACT_APP_HOST_IP}/info`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
@@ -32,7 +34,7 @@ export default function UpdateInformation() {
       <div id={'UpdateInformation'}>
         <div className={'container'}>
           <img
-            src={`http://localhost:8000${admin.avatar}`}
+            src={`${process.env.REACT_APP_IMAGE_HOST_IP}${admin.avatar}`}
             alt={'avatar'}
             className={'avatar-like'}
           />
@@ -50,8 +52,8 @@ export default function UpdateInformation() {
           </div>
         </div>
         <div className={'info-container'}>
-          <table>
-            <tr className={'row'}>
+          <table className={'infortable'}>
+            <tr>
               <td className={'th'}>Tên</td>
               <td>:</td>
               <td>{admin?.full_name}</td>
@@ -94,3 +96,8 @@ export default function UpdateInformation() {
     </>
   );
 }
+
+UpdateInformation.propTypes = {
+  setLogin: PropTypes.func,
+};
+

@@ -5,7 +5,7 @@ import HeaderBar from '../components/HeaderBar.jsx';
 export default function BuyerTable() {
   const [buyers, setBuyer,] = useState([]);
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/v1/user', {
+    fetch(`${process.env.REACT_APP_HOST_IP}/user`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,

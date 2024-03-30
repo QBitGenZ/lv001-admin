@@ -5,7 +5,7 @@ import HeaderBar from './components/HeaderBar/HeaderBar';
 export default function PostCencorSection() {
   const [products, setProduct,] = useState([]);
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/v1/products/', {
+    fetch(`${process.env.REACT_APP_HOST_IP}/products/`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,

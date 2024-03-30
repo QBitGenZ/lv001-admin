@@ -1,0 +1,78 @@
+#Updateform > form {
+  display: flex;
+  flex-direction: column;
+  /* width: 400px; Adjust width as needed */
+  margin: auto;
+  padding-bottom: 50px;
+}
+.imageload {
+  margin: auto;
+  background: #fff;
+  padding-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.submitbtn {
+  width: fit-content;
+  margin: 0px;
+  background: #2581ec;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submitbtn:hover {
+  background-color: #7cade5;
+}
+
+.updatefield {
+  width: 100%;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 7px;
+  border: 1px solid #000;
+  background: #fff;
+}
+
+.updatefield_title {
+  text-align: left;
+  color: #000000;
+  font-family: "Inter";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.updatefieldblock {
+  width: 60%;
+  text-align: left;
+  margin: auto;
+  padding-bottom: 20px;
+}
+.updatefieldblockbtn {
+  width: 60%;
+  text-align: right;
+  margin: auto;
+  padding-bottom: 20px;
+}
+
+.birthgen {
+  margin: auto;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.birthgen > .birth {
+  width: 60%;
+}
+
+.birthgen > .gen {
+  width: 40%;
+}

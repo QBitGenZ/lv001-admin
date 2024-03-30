@@ -7,13 +7,28 @@ import moment from 'moment';
 export default function ProductModal({ product, }) {
   const [rejmodal, setRejModal,] = useState(false);
   const [acptmodal, setAcptModal,] = useState(false);
-
+  const updateStatus = (status) => {
+    const form = new FormData();
+    form.append('status',status);
+    fetch(`${process.env.REACT_APP_HOST_IP}/products/${product?.id}/`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('access')}`,
+        Accept: 'application/json',
+      },
+      body: form,
+    })
+      .then((res) => res.json())
+      .catch((error) => console.log(error));
+  };
   const setAcceptModal = () => {
     setAcptModal(true);
+    updateStatus('Đã duyệt');
   };
 
   const setRejectModal = () => {
     setRejModal(true);
+    updateStatus('Từ chối');
   };
 
   return (
@@ -29,7 +44,13 @@ export default function ProductModal({ product, }) {
           </div>
           <div className='infoimage'>
             {product.product_image.map((image) => {
-              return <img key={image.src} src={`http://localhost:8000${image.src}`} alt={image.alt}/>;
+              return (
+                <img
+                  key={image.src}
+                  src={`${process.env.REACT_APP_IMAGE_HOST_IP}${image.src}`}
+                  alt={image.alt}
+                />
+              );
             })}
           </div>
           <div>
@@ -45,13 +66,7 @@ export default function ProductModal({ product, }) {
               <tr className='inforow'>
                 <th className='inforth'>Mô tả sản phẩm: </th>
                 <td>
-                  <p className='spcontent'>
-                    Hoa tay ZARA phiên bản mạ vàng sản xuất 2022. Sản phẩm chỉ
-                    mới sử dụng 2 lần nên còn rất mới, độ mới khoảng 95%. Sản
-                    phẩm chỉ mới sử dụng 2 lần nên còn rất mới, độ mới khoảng
-                    95%. Nếu có thắc mắc hãy liên hệ trực tiếp tôi. Tôi còn rất
-                    nhiều sản phẩm tốt, hãy xem gian hàng của tôi.
-                  </p>
+                  <p className='spcontent'>{product?.description}</p>
                 </td>
               </tr>
             </table>

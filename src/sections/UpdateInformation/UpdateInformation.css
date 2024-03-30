@@ -101,13 +101,9 @@
   display: inline-flex;
 }
 
-#UpdateInformation > .info-container > .row {
-  padding: 100px;
-  margin: 100px;
-}
-
 #UpdateInformation > .info-container > .th {
   color: #000;
+  background-color: red;
   font-family: "Source Sans Pro";
   font-size: 16px;
   font-style: normal;
@@ -148,27 +144,27 @@
   width: 50%;
 }
 
-.Infora{
+.Infora {
   padding-top: 30px;
-  display:flex
+  display: flex;
 }
-.Infora p{
+.Infora p {
   width: 60%;
 }
 
-.Infora > table{
+.Infora > table {
   margin-left: 40px;
   width: 70%;
   text-align: left;
 }
-.Infora >table >th{
+.Infora > table > th {
   width: 90%;
 }
 .Infora > table {
   border-spacing: 20px;
 }
 
-.avatar-likee{
+.avatar-likee {
   width: 200px;
   height: auto;
   border-radius: 200px;
