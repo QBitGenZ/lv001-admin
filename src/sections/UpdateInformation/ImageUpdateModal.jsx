@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState, } from 'react';
 import './InformationUpdate.css';
-export default function ImageUpdateModal({ admin, }) {
+export default function ImageUpdateModal({ admin, getInfo, }) {
   const [avatar, setAvatar,] = useState(null);
   function changeImage(e) {
     e.preventDefault();
@@ -19,6 +19,8 @@ export default function ImageUpdateModal({ admin, }) {
     })
       .then((res) => res.json())
       .catch((error) => console.log(error));
+
+    getInfo();
   }
 
   return (
@@ -45,4 +47,5 @@ export default function ImageUpdateModal({ admin, }) {
 
 ImageUpdateModal.propTypes = {
   admin: PropTypes.object,
+  getInfo: PropTypes.func,
 };

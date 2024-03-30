@@ -3,7 +3,7 @@ import React, { useState, } from 'react';
 import ProductModal from './ProductModal';
 import Modal from '../../../../../components/Modal';
 import moment from 'moment';
-export default function TableRow({ product, }) {
+export default function TableRow({ product, getProducts, }) {
   const [modal, setModal,] = useState(false);
 
   const toggleModal = () => {
@@ -34,7 +34,7 @@ export default function TableRow({ product, }) {
       {modal && (
         <Modal
           title={'Kiểm duyệt sản phẩm'}
-          body={<ProductModal setModal={setModal} product={product}/>}
+          body={<ProductModal setModal={setModal} product={product} getProducts={getProducts}/>}
           setShow={setModal}
         />
       )}
@@ -44,4 +44,5 @@ export default function TableRow({ product, }) {
 
 TableRow.propTypes = {
   product:PropTypes.object,
+  getProducts: PropTypes.func,
 };

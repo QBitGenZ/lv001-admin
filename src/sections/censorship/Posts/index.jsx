@@ -5,6 +5,10 @@ import HeaderBar from './components/HeaderBar/HeaderBar';
 export default function PostCencorSection() {
   const [products, setProduct,] = useState([]);
   useEffect(() => {
+    getProducts();
+  }, []);
+
+  const getProducts = () => {
     fetch(`${process.env.REACT_APP_HOST_IP}/products/`, {
       method: 'GET',
       headers: {
@@ -17,12 +21,13 @@ export default function PostCencorSection() {
         setProduct(data.data);
       })
       .catch((error) => console.log(error));
-  }, []);
+  };
+
   return (
     <div id={'ProductSection'}>
       <div>
         <HeaderBar products={products} />
-        <ProductTable products={products} />
+        <ProductTable products={products} getProducts={getProducts} />
       </div>
     </div>
   );

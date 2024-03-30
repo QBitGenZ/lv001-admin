@@ -4,18 +4,20 @@ import '../../../../Posts/components/ProductTable/ProductModal.css';
 import Modal from '../../../../../../components/Modal';
 import AcptModal from '../../../../Posts/components/Modal/AcptModal';
 import moment from 'moment';
-export default function InfoUserModal({ charity, }) {
+export default function InfoUserModal({ charity, getUsers, setModal, }) {
   const [rejmodal, setRejModal,] = useState(false);
   const [acptmodal, setAcptModal,] = useState(false);
 
   const setAcceptModal = () => {
     setAcptModal(true);
     updateStatus('Đã duyệt');
+    setModal(false);
   };
 
   const setRejectModal = () => {
     setRejModal(true);
     updateStatus('Từ chối');
+    setModal(false);
   };
   const updateStatus = (status) => {
     const form = new FormData();
@@ -30,6 +32,8 @@ export default function InfoUserModal({ charity, }) {
     })
       .then((res) => res.json())
       .catch((error) => console.log(error));
+
+    getUsers();
   };
 
   return (
@@ -87,4 +91,5 @@ export default function InfoUserModal({ charity, }) {
 InfoUserModal.propTypes = {
   setModal: PropTypes.func,
   charity: PropTypes.object,
+  getUsers: PropTypes.func,
 };

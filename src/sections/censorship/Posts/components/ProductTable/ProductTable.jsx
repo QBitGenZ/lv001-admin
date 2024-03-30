@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './ProductTable.css';
 import TableRow from './TableRow.jsx';
-export default function ProductTable({ products, }) {
+export default function ProductTable({ products, getProducts, }) {
   console.log(products);
   return (
     <div className={'Product-Table'}>
@@ -17,6 +17,7 @@ export default function ProductTable({ products, }) {
           <TableRow
             key={product?.id}
             product={product}
+            getProducts={getProducts}
           />
         ))}
       </table>
@@ -26,4 +27,5 @@ export default function ProductTable({ products, }) {
 
 ProductTable.propTypes = {
   products: PropTypes.array,
+  getProducts: PropTypes.func,
 };

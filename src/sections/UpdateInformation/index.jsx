@@ -16,6 +16,10 @@ export default function UpdateInformation({ setLogin, }) {
   }
   const [admin, setAdmin,] = useState([]);
   useEffect(() => {
+    getInfo();
+  }, []);
+
+  const getInfo = () => {
     fetch(`${process.env.REACT_APP_HOST_IP}/info`, {
       method: 'GET',
       headers: {
@@ -28,7 +32,8 @@ export default function UpdateInformation({ setLogin, }) {
         setAdmin(data.data);
       })
       .catch((error) => console.log(error));
-  }, []);
+  };
+
   return (
     <>
       <div id={'UpdateInformation'}>
@@ -89,7 +94,7 @@ export default function UpdateInformation({ setLogin, }) {
       {infor && (
         <Modal
           title={'Chỉnh sửa thông tin'}
-          body={<UpdateInforModal setAcptModal={setInfor} admin={admin} />}
+          body={<UpdateInforModal getInfo={getInfo} setAcptModal={setInfor} admin={admin} />}
           setShow={setInfor}
         />
       )}

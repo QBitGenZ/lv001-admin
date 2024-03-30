@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Modal from '../../components/Modal';
 import ImageUpdateModal from './ImageUpdateModal';
 import InformationUpdate from './InformationUpdate';
-export default function UpdateInforModal({ admin, }) {
+export default function UpdateInforModal({ admin, getInfo, }) {
   const [image, setImage,] = useState(false);
   const [info, setInfo,] = useState(false);
   function si() {
@@ -64,14 +64,14 @@ export default function UpdateInforModal({ admin, }) {
       {image && (
         <Modal
           title={'Chỉnh sửa ảnh đại diện'}
-          body={<ImageUpdateModal admin={admin}/>}
+          body={<ImageUpdateModal admin={admin} getInfo={getInfo}/>}
           setShow={setImage}
         />
       )}
       {info && (
         <Modal
           title={'Chỉnh sửa thông tin'}
-          body={<InformationUpdate admin={admin}/>}
+          body={<InformationUpdate admin={admin} getInfo={getInfo}/>}
           setShow={setInfo}
         />
       )}
@@ -81,4 +81,5 @@ export default function UpdateInforModal({ admin, }) {
 
 UpdateInforModal.propTypes = {
   admin: PropTypes.object,
+  getInfo: PropTypes.func,
 };

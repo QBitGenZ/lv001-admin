@@ -5,6 +5,10 @@ import UserTable from './components/HeaderBar/Table/UserTable';
 export default function UserCencorSection() {
   const [charities, setCharity,] = useState([]);
   useEffect(() => {
+    getUser();
+  }, []);
+
+  const getUser = () => {
     fetch(`${process.env.REACT_APP_HOST_IP}/user?is_philanthropist=true`, {
       method: 'GET',
       headers: {
@@ -17,12 +21,12 @@ export default function UserCencorSection() {
         setCharity(data);
       })
       .catch((error) => console.log(error));
-  }, []);
+  };
   return (
     <div id={'UserSection'}>
       <div>
         <HeaderBar charities={charities} />
-        <UserTable charities={charities}/>
+        <UserTable charities={charities} getUsers={getUser}/>
       </div>
     </div>
   );

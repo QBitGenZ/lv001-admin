@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../../../../Posts/components/ProductTable/ProductTable.css';
 import UserTableRow from './UserTableRow';
-export default function UserTable( { charities, } ) {
+export default function UserTable( { charities, getUsers, } ) {
   console.log(charities);
   return (
     <div className={'User-Table'}>
@@ -16,6 +16,7 @@ export default function UserTable( { charities, } ) {
           <UserTableRow
             key={charity?.id}
             charity={charity}
+            getUsers={getUsers}
           />
         ))}
       </table>
@@ -24,4 +25,5 @@ export default function UserTable( { charities, } ) {
 }
 UserTable.propTypes = {
   charities: PropTypes.array,
+  getUsers: PropTypes.func,
 };

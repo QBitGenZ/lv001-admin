@@ -4,7 +4,7 @@ import '../ProductTable/ProductModal.css';
 import Modal from '../../../../../components/Modal';
 import AcptModal from '../Modal/AcptModal';
 import moment from 'moment';
-export default function ProductModal({ product, }) {
+export default function ProductModal({ product, getProducts, setModal, }) {
   const [rejmodal, setRejModal,] = useState(false);
   const [acptmodal, setAcptModal,] = useState(false);
   const updateStatus = (status) => {
@@ -19,16 +19,19 @@ export default function ProductModal({ product, }) {
       body: form,
     })
       .then((res) => res.json())
+      .then(() => getProducts())
       .catch((error) => console.log(error));
   };
   const setAcceptModal = () => {
     setAcptModal(true);
     updateStatus('Đã duyệt');
+    setModal(false);
   };
 
   const setRejectModal = () => {
     setRejModal(true);
     updateStatus('Từ chối');
+    setModal(false);
   };
 
   return (
@@ -111,5 +114,6 @@ export default function ProductModal({ product, }) {
 
 ProductModal.propTypes = {
   setModal: PropTypes.func,
+  getProducts: PropTypes.func,
   product: PropTypes.object,
 };
