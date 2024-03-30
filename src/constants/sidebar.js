@@ -1,8 +1,17 @@
-import { faCircleCheck, faSquarePollVertical, faPenToSquare, faGear, } from '@fortawesome/free-solid-svg-icons';
+import { faCircleCheck,
+  faSquarePollVertical,
+  faPenToSquare,
+  faGear,
+  faHouse, } from '@fortawesome/free-solid-svg-icons';
 
 const data = [
   {
     id: 1,
+    label: 'Trang chủ',
+    logo: faHouse,
+  },
+  {
+    id: 2,
     label: 'Kiểm duyệt',
     logo: faCircleCheck,
     subs: [
@@ -17,7 +26,7 @@ const data = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     label: 'Thống kê',
     logo: faSquarePollVertical,
     subs: [
@@ -36,7 +45,7 @@ const data = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     label: 'Đăng tải',
     logo: faPenToSquare,
     subs: [
@@ -51,7 +60,7 @@ const data = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     label: 'Cài đặt',
     logo: faGear,
   },
