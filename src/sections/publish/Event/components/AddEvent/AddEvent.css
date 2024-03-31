@@ -32,7 +32,7 @@
   border-radius: 7px;
   border: 1px solid #000;
   background: #FFF;
-
+  padding: 0px 10px;
   width: 100%;
   line-height: 49px;
   font-size: 18px;
@@ -49,6 +49,7 @@
 }
 
 #Add-Event table textarea {
+  padding: 0px 10px;
   border-radius: 7px;
   border: 1px solid #000;
   background: #FFF;

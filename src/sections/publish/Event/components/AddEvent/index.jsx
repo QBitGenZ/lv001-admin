@@ -1,8 +1,8 @@
 import React, { useState, } from 'react';
 import './AddEvent.css';
 import moment from 'moment';
-
-export default function AddEvent() {
+import PropTypes from 'prop-types';
+export default function AddEvent({ setShowAdd, loadEvent, }) {
   const [title, setTitle,] = useState();
   const [beginDate, setBeginDate,] = useState();
   const [endDate, setEndDate,] = useState();
@@ -23,10 +23,12 @@ export default function AddEvent() {
       body: form,
     })
       .then((res) => res.json())
+      .then(() => setShowAdd(false))
+      .then(()=>loadEvent())
       .catch((error) => alert(error));
   }
 
-  function changeTime(time){
+  function changeTime(time) {
     const parsedDatetime = moment(time, 'YYYY-MM-T HH:mm:ss'); // Parse with iOS format
     const postgresDatetime = parsedDatetime.format('YYYY-MM-DD HH:mm:ss'); // Format for PostgreSQL
     return postgresDatetime;
@@ -77,3 +79,8 @@ export default function AddEvent() {
     </div>
   );
 }
+
+AddEvent.propTypes = {
+  setShowAdd: PropTypes.func,
+  loadEvent: PropTypes.func,
+};
