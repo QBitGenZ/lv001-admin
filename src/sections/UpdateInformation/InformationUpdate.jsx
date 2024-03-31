@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types';
 import React, { useState, } from 'react';
 import './InformationUpdate.css';
+import { getByAltText, } from '@testing-library/react';
 // import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
 // import { faAngleUp, } from '@fortawesome/free-solid-svg-icons';
-export default function InformationUpdate({ admin, }) {
-  const [full_name, setFullname,] = useState([]);
-  const [birthday, setBirthday,] = useState([]);
-  const [gender, setGender,] = useState([]);
-  const [phone, setPhone,] = useState([]);
-  const [email, setEmail,] = useState([]);
+export default function InformationUpdate({ admin, getInfo, }) {
+  const [full_name, setFullname,] = useState(admin?.full_name);
+  const [birthday, setBirthday,] = useState(admin?.birthday);
+  const [gender, setGender,] = useState(admin.is_female);
+  const [phone, setPhone,] = useState(admin?.phone);
+  const [email, setEmail,] = useState(admin?.email);
   function changeInfor(e) {
     e.preventDefault();
     const form = new FormData();
@@ -27,7 +28,8 @@ export default function InformationUpdate({ admin, }) {
       body: form,
     })
       .then((res) => res.json())
-      .catch((error) => console.log(error));
+      .then(() => getInfo())
+      .catch((error) => alert(error));
   }
 
   return (
@@ -45,7 +47,7 @@ export default function InformationUpdate({ admin, }) {
               id='full_name'
               name='full_name'
               className={'updatefield'}
-              placeholder='Enter your name'
+              value={full_name}
               onChange={(e) => setFullname(e.target.value)}
             />
           </div>
@@ -59,22 +61,27 @@ export default function InformationUpdate({ admin, }) {
                 id='birthday'
                 name='birthday'
                 className='updatefield'
-                placeholder='Enter your phone number'
+                value={birthday}
                 onChange={(e) => setBirthday(e.target.value)}
               />
             </div>
             <div className={'updatefieldblock gen'}></div>
             <div className={'updatefieldblock gen'}>
-              <label className={'updatefield_title'} htmlFor='phone'>
+              <label
+                className={'updatefield_title'}
+                value={getByAltText}
+                htmlFor='phone'
+              >
                 Giới tính
               </label>
               <select
                 name='gender'
+                value={gender}
                 className='updatefield'
                 onChange={(e) => setGender(e.target.value)}
               >
-                <option value='true'>Nam</option>
-                <option value='false'>Nữ</option>
+                <option value='false'>Nam</option>
+                <option value='true'>Nữ</option>
               </select>
             </div>
           </div>
@@ -87,7 +94,7 @@ export default function InformationUpdate({ admin, }) {
               id='phone'
               name='phone'
               className='updatefield'
-              placeholder='Enter your phone number'
+              value={phone}
               onChange={(e) => setPhone(e.target.value)}
             />
           </div>
@@ -99,7 +106,8 @@ export default function InformationUpdate({ admin, }) {
               type='email'
               id='email'
               name='email'
-              className={'updatefield'}
+              className='updatefield'
+              value={email}
               placeholder='Enter your email address'
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -118,4 +126,5 @@ export default function InformationUpdate({ admin, }) {
 
 InformationUpdate.propTypes = {
   admin: PropTypes.object,
+  getInfo: PropTypes.func,
 };

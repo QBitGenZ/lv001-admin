@@ -12,6 +12,13 @@ export default function UpdateInforModal({ admin, getInfo, }) {
   function sil(){
     setInfo(true);
   }
+
+  const getInfoAgain = ()=> {
+    getInfo();
+    setImage(false);
+    setInfo(false);
+  };
+
   return (
     <>
       <div className={'Avatara'}>
@@ -36,7 +43,7 @@ export default function UpdateInforModal({ admin, getInfo, }) {
           <tr>
             <td className={'th'}>Ngày sinh</td>
             <td>:</td>
-            <td>{admin?.brithday}</td>
+            <td>{admin?.birthday}</td>
           </tr>
           <tr>
             <td className={'th'}>Giới tính</td>
@@ -64,14 +71,14 @@ export default function UpdateInforModal({ admin, getInfo, }) {
       {image && (
         <Modal
           title={'Chỉnh sửa ảnh đại diện'}
-          body={<ImageUpdateModal admin={admin} getInfo={getInfo}/>}
+          body={<ImageUpdateModal admin={admin} getInfo={getInfoAgain}/>}
           setShow={setImage}
         />
       )}
       {info && (
         <Modal
           title={'Chỉnh sửa thông tin'}
-          body={<InformationUpdate admin={admin} getInfo={getInfo}/>}
+          body={<InformationUpdate admin={admin} getInfo={getInfoAgain}/>}
           setShow={setInfo}
         />
       )}

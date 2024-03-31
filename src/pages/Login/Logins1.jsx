@@ -7,29 +7,24 @@ export default function Logins1({ activeComponent, setActiveComponent, }) {
     );
   };
   return (
-    <div className='container loginini'>
-      <div className='row spacelogin'></div>
-      <div className='row'>
-        <div className='col-2'></div>
-        <div className='col-4'>
+    <div className={'login-container'}>
+      <div className={'login-smallcontainer1'}>
+        <img
+          className={'sunflower'}
+          src={process.env.PUBLIC_URL + 'assets/images/login/sunflower.jpg'}
+        ></img>
+      </div>
+      <div className={'login-smallcontainer2'}>
+        <div className={'smallercontainer'}>
           <img
-            className='sunflower'
-            src={process.env.PUBLIC_URL + 'assets/images/login/sunflower.jpg'}
-          ></img>
+            className='logologin'
+            src={process.env.PUBLIC_URL + 'assets/images/login/logo.png'}
+            alt={'logo'}
+          />
         </div>
-        <div className='col-4 align-self-center'>
-          <div>
-            <img
-              className='logologin'
-              src={process.env.PUBLIC_URL + 'assets/images/sidebar/logo.png'}
-              alt={'logo'}
-            />
-          </div>
-          <p className='dangnhap' onClick={handleComponentChange}>
-            ĐĂNG NHẬP
-          </p>
-        </div>
-        <div className='col-2'></div>
+        <p className='dangnhap' onClick={handleComponentChange}>
+          ĐĂNG NHẬP
+        </p>
       </div>
     </div>
   );

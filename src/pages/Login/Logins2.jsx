@@ -41,52 +41,47 @@ export default function Logins2({ setLogin, }) {
   }
   return (
     <>
-      <div className='container loginini'>
-        <div className='row spacelogin'></div>
-        <div className='row'>
-          <div className='col-2'></div>
-          <div className='col-4 align-self-center'>
-            <div>
-              <img
-                className='logologin'
-                src={process.env.PUBLIC_URL + 'assets/images/sidebar/logo.png'}
-                alt={'logo'}
-              />
-            </div>
-            <div>
-              <p className='truycap'>TRUY CẬP VÀO TÀI KHOẢN CỦA BẠN</p>
-            </div>
-            <div>
-              <input
-                className='loginfeild loginusername'
-                type='text'
-                id='username'
-                name='username'
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder='TÊN TÀI KHOẢN'
-              />
-            </div>
-            <div>
-              <input
-                className='loginfeild'
-                type='password'
-                id='password'
-                name='password'
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder='MẬT KHẨU'
-              />
-            </div>
-            <div className='loginbtn' onClick={logine}>
-              <p className='loginene'>ĐĂNG NHẬP</p>
-            </div>
-          </div>
-          <div className='col-4'>
+      <div className={'login-container'}>
+        <div className={'login-smallcontainer3'}>
+          <div>
             <img
-              className='sunflower'
-              src={process.env.PUBLIC_URL + 'assets/images/login/sunflower.jpg'}
-            ></img>
+              className='logologin'
+              src={process.env.PUBLIC_URL + 'assets/images/login/logo.png'}
+              alt={'logo'}
+            />
           </div>
-          <div className='col-2'></div>
+          <div>
+            <p className='truycap'>TRUY CẬP VÀO TÀI KHOẢN CỦA BẠN</p>
+          </div>
+          <div>
+            <input
+              className='loginfeild loginusername'
+              type='text'
+              id='username'
+              name='username'
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder='TÊN TÀI KHOẢN'
+            />
+          </div>
+          <div>
+            <input
+              className='loginfeild'
+              type='password'
+              id='password'
+              name='password'
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder='MẬT KHẨU'
+            />
+          </div>
+          <div className='loginbtn' onClick={logine}>
+            <p className='loginene'>ĐĂNG NHẬP</p>
+          </div>
+        </div>
+        <div className={'login-smallcontainer2'}>
+          <img
+            className='sunflower'
+            src={process.env.PUBLIC_URL + 'assets/images/login/sunflower.jpg'}
+          ></img>
         </div>
       </div>
     </>

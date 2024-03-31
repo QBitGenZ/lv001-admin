@@ -3,6 +3,8 @@ import './UpdateInformation.css';
 import PropTypes from 'prop-types';
 import Modal from '../../components/Modal';
 import UpdateInforModal from './UpdateInforModal';
+import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
+import { faArrowRightFromBracket, } from '@fortawesome/free-solid-svg-icons';
 export default function UpdateInformation({ setLogin, }) {
   const [infor, setInfor,] = useState(false);
   const setInforModal = () => {
@@ -49,6 +51,13 @@ export default function UpdateInformation({ setLogin, }) {
           </div>
           <div className={'button-container'}>
             <p className={'logout'} onClick={logout}>
+              <FontAwesomeIcon
+                icon={faArrowRightFromBracket}
+                style={{
+                  margin: '0 10px 0 0',
+                //   float: 'right',
+                }}
+              />
               Đăng xuất
             </p>
             <p className={'update'} onClick={setInforModal}>
@@ -94,7 +103,13 @@ export default function UpdateInformation({ setLogin, }) {
       {infor && (
         <Modal
           title={'Chỉnh sửa thông tin'}
-          body={<UpdateInforModal getInfo={getInfo} setAcptModal={setInfor} admin={admin} />}
+          body={
+            <UpdateInforModal
+              getInfo={getInfo}
+              setAcptModal={setInfor}
+              admin={admin}
+            />
+          }
           setShow={setInfor}
         />
       )}
@@ -105,4 +120,3 @@ export default function UpdateInformation({ setLogin, }) {
 UpdateInformation.propTypes = {
   setLogin: PropTypes.func,
 };
-

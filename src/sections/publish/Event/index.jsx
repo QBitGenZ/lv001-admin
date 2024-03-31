@@ -1,15 +1,29 @@
-import React, { useState, } from 'react';
+import React, { useState, useEffect, } from 'react';
 import './Event.css';
 import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
 import { faPen, faPlus, } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
-
-import { notifications, } from '../../../fakes/Notifications';
+// import { notifications, } from '../../../fakes/Notifications';
 import { Modal, } from '../../../components';
 import { AddEvent, } from './components';
 
 export default function EventSection() {
   const [showAdd, setShowAdd, ] = useState(false);
+  const [events, setEvent,] = useState([]);
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_HOST_IP}/events/`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('access')}`,
+        Accept: 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setEvent(data.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <div id={'Event-Section'}>
@@ -24,7 +38,7 @@ export default function EventSection() {
         </div>
       </div>
       <div className={'body'}>
-        {notifications.map((value) => <EventItem key={value.id} event={value}/>)}
+        {events.map((event) => <EventItem key={event?.id} event={event}/>)}
       </div>
       {showAdd && <Modal setShow={setShowAdd} title={'Thêm sự kiện'} body={<AddEvent/>}/> }
     </div>
@@ -44,8 +58,8 @@ function EventItem({ event, }) {
             width: '5%',
           }}
         />
-        <div className={'title'}>{event.title}</div>
-        <div className={'create_at'}>{event.created_at}</div>
+        <div className={'title'}>{event?.name}</div>
+        <div className={'create_at'}>{event?.created_at}</div>
       </div>
       <div className={'edit-container'}>
         <span>Chỉnh sửa</span>

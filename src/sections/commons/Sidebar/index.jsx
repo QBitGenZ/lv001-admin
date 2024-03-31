@@ -1,8 +1,8 @@
 import React, { useEffect, useState, } from 'react';
 import './Sidebar.css';
+import PropTypes from 'prop-types';
 import sidebar from '../../../constants/sidebar';
 import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
-import PropTypes from 'prop-types';
 import { faAngleRight, faAngleUp, } from '@fortawesome/free-solid-svg-icons';
 function SidebarSection({ setTitle, }) {
   const [admin, setAdmin,] = useState([]);
@@ -36,14 +36,15 @@ function SidebarSection({ setTitle, }) {
             alt={'avatar'}
             className={'avatar'}
           />
-          <div>
+          <div className={'user-namerole'}>
             <div className={'user-name'}>{admin?.full_name}</div>
             <div className={'user-role'}>Admin</div>
           </div>
           <FontAwesomeIcon
             icon={faAngleRight}
             style={{
-              marginTop: '10px',
+              width:'10px',
+              marginTop: '12px',
               float: 'right',
             }}
           />

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState, } from 'react';
 import './InformationUpdate.css';
 export default function ImageUpdateModal({ admin, getInfo, }) {
-  const [avatar, setAvatar,] = useState(null);
+  const [avatar, setAvatar,] = useState();
   function changeImage(e) {
     e.preventDefault();
     const form = new FormData();
@@ -23,23 +23,40 @@ export default function ImageUpdateModal({ admin, getInfo, }) {
     getInfo();
   }
 
+  const previewAvatar = (e) => {
+    const file = e.target.files[0];
+    file.preview = URL.createObjectURL(file);
+    setAvatar(file);
+  };
+
   return (
     <>
       <div>
+        {avatar && (
+          <img
+            src={avatar?.preview}
+            width={'150px'}
+            style={{
+              borderRadius: '50%',
+            }}
+          ></img>
+        )}
+        <br />
         <form>
           <label htmlFor='email'>Image: </label>
-          <input className='imageload'
+          <input
+            className='imageload'
             type='file'
             id='avatar'
             name='avatar'
             placeholder='Choose your picture'
-            onChange={(e) => setAvatar(e.target.files[0])}
+            onChange={previewAvatar}
           />
           <button className='submitbtn' type='submit' onClick={changeImage}>
             Submit
           </button>
         </form>
-        <br/>
+        <br />
       </div>
     </>
   );
