@@ -53,22 +53,19 @@ export default function HomePageSection() {
     <div id={'HomePageSection'}>
       <div className={'container'}>
         <SmallContainerHP
-          title={'Người bán'}
+          title={'Tổng số người bán'}
           newnumber={sellers.length}
           unit={'Người'}
-          oldnumber={11775}
         />
         <SmallContainerHP
-          title={'Người mua'}
+          title={'Tổng số người mua'}
           newnumber={buyers.length}
           unit={'Người'}
-          oldnumber={11775}
         />
         <SmallContainerHP
-          title={'Đơn vị từ thiện'}
+          title={'Tổng số đơn vị từ thiện'}
           newnumber={charities.length}
           unit={'Đơn vị'}
-          oldnumber={11775}
         />
       </div>
       <div className={'chart-container'}>

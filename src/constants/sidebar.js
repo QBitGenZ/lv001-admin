@@ -23,6 +23,10 @@ const data = [
         id: 2,
         label: 'Kiểm duyệt thông tin',
       },
+      {
+        id: 3,
+        label: 'Kiểm duyệt sự kiện',
+      },
     ],
   },
   {

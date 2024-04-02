@@ -1,0 +1,54 @@
+#Notification-Detail .header {
+    padding-top: 0 !important;
+    display: block;
+    text-align: left;
+    width: 90%;
+    margin: 5;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ADADAD;
+}
+
+#Notification-Detail .header>.title{
+    display: block;
+    color: #000;
+    font-family: "Source Sans Pro", serif;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+#Notification-Detail .header>.create-at{
+    color: #000;
+    float: right;
+    font-family: 'Inter', serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#Notification-Detail>.body {
+    width: 90%;
+    margin: 0 5% 33px 5%;
+    display: block;
+    text-align: justify;
+}
+
+#Notification-Detail button {
+    border-radius: 20px;
+    background: #0687FF;
+    width: 112px;
+    height: 40px;
+    flex-shrink: 0;
+    border: none;
+    color: #FFF;
+    font-family: "Source Sans Pro", serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    margin-bottom: 20px;
+    margin-right: 20px;
+}

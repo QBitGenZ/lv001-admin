@@ -3,7 +3,7 @@ import './Event.css';
 import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
 import { faPen, faPlus, } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
-// import { notifications, } from '../../../fakes/Notifications';
+import EventDetail from './components/EventDetail/index.jsx';
 import { Modal, } from '../../../components';
 import moment from 'moment';
 import { AddEvent, EditEvent, } from './components';
@@ -41,10 +41,13 @@ export default function EventSection() {
           <FontAwesomeIcon icon={faPlus} />
           <span className={'title'}>Thêm sự kiện mới</span>
         </div>
+        <input className={'block search-input'} type={'text'} style={{
+          backgroundImage: `url(${process.env.PUBLIC_URL}assets/images/publish/search-icon.png)`,
+        }} placeholder={'Tìm kiếm...'}/>
       </div>
       <div className={'body'}>
         {events.map((event) => (
-          <EventItem key={event?.id} event={event} loadEvent={loadEvent}/>
+          <EventItem key={event?.id} event={event} loadEvent={loadEvent} />
         ))}
       </div>
       {showAdd && (
@@ -59,6 +62,7 @@ export default function EventSection() {
 }
 
 function EventItem({ event, loadEvent, }) {
+  const [showDetail, setShowDetail,] = useState(false);
   function changeDateLocal(time) {
     const parsedDatetime = moment(time, 'YYYY-MM-DD HH:mm:ss'); // Parse with PostgreSQL format
     const datetimeLocal = parsedDatetime.format('YYYY-MM-DD HH:mm:ss'); // Format for datetime-local input
@@ -66,9 +70,22 @@ function EventItem({ event, loadEvent, }) {
   }
   const [showEdit, setShowEdit,] = useState(false);
   return (
-    <div className={'Event-Item'}>
-      <div className={'title-container'}>
-        <img
+    <>
+      {showDetail && (
+        <Modal
+          setShow={setShowDetail}
+          title={'Chi tiết thông báo'}
+          body={
+            <EventDetail
+              event={event}
+              setShow={setShowDetail}
+            />
+          }
+        />
+      )}
+      <div className={'Event-Item'} onClick={() => setShowDetail(true)}>
+        <div className={'title-container'}>
+          {/* <img
           src={process.env.PUBLIC_URL + 'assets/images/publish/event-con.png'}
           alt={'Event icon'}
           style={{
@@ -76,22 +93,31 @@ function EventItem({ event, loadEvent, }) {
             float: 'left',
             width: '5%',
           }}
-        />
-        <div className={'title'}>{event?.name}</div>
-        <div className={'create_at'}>{changeDateLocal(event?.created_at)}</div>
+        /> */}
+          <div className={'title'}>{event?.name}</div>
+          <div className={'create_at'}>
+            {changeDateLocal(event?.created_at)}
+          </div>
+        </div>
+        <div className={'edit-container'} onClick={() => setShowEdit(true)}>
+          <span>Chỉnh sửa</span>
+          <FontAwesomeIcon icon={faPen} />
+        </div>
+        {showEdit && (
+          <Modal
+            setShow={setShowEdit}
+            title={'Chỉnh sửa sự kiện'}
+            body={
+              <EditEvent
+                event={event}
+                setShowEdit={setShowEdit}
+                loadEvent={loadEvent}
+              />
+            }
+          />
+        )}
       </div>
-      <div className={'edit-container'} onClick={() => setShowEdit(true)}>
-        <span>Chỉnh sửa</span>
-        <FontAwesomeIcon icon={faPen} />
-      </div>
-      {showEdit && (
-        <Modal
-          setShow={setShowEdit}
-          title={'Chỉnh sửa sự kiện'}
-          body={<EditEvent event={event} setShowEdit={setShowEdit} loadEvent={loadEvent} />}
-        />
-      )}
-    </div>
+    </>
   );
 }
 
