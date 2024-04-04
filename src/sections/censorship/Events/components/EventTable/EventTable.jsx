@@ -18,7 +18,7 @@ export default function EventTable({ events, getEvents, }) {
           <TableRow
             key={event?.id}
             event={event}
-            getevents={getEvents}
+            getEvents={getEvents}
           />
         ))}
       </table>

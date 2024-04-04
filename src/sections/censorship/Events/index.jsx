@@ -26,7 +26,7 @@ export default function EventCenSorSection() {
     <div id={'ProductSection'}>
       <div>
         <HeaderBar events={events} />
-        <EventTable events={events} getProducts={getEvents} />
+        <EventTable events={events} getEvents={getEvents} />
       </div>
     </div>
   );

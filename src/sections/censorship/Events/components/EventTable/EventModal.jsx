@@ -3,7 +3,7 @@ import React, { useState, } from 'react';
 import Modal from '../../../../../components/Modal';
 import AcptModal from '../../../Posts/components/Modal/AcptModal';
 import moment from 'moment';
-export default function EventModal({ event, getevents, setModal, }) {
+export default function EventModal({ event, getEvents, setModal, }) {
   const [rejmodal, setRejModal,] = useState(false);
   const [acptmodal, setAcptModal,] = useState(false);
   const updateStatus = (status) => {
@@ -18,7 +18,7 @@ export default function EventModal({ event, getevents, setModal, }) {
       body: form,
     })
       .then((res) => res.json())
-      .then(() => getevents())
+      .then(() => getEvents())
       .catch((error) => console.log(error));
   };
   const setAcceptModal = () => {
@@ -113,6 +113,6 @@ export default function EventModal({ event, getevents, setModal, }) {
 
 EventModal.propTypes = {
   setModal: PropTypes.func,
-  getevents: PropTypes.func,
+  getEvents: PropTypes.func,
   event: PropTypes.object,
 };

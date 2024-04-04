@@ -35,7 +35,7 @@ export default function TableRow({ event, getEvents, }) {
       {modal && (
         <Modal
           title={'Kiểm duyệt sự kiện'}
-          body={<EventModal setModal={setModal} event={event} getevents={getEvents}/>}
+          body={<EventModal setModal={setModal} event={event} getEvents={getEvents}/>}
           setShow={setModal}
         />
       )}
