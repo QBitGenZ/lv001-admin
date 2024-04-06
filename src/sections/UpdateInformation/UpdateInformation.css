@@ -8,8 +8,8 @@
 
 #UpdateInformation > .container > .avatar-like {
   float: left;
-  width: 100px;
-  border-radius: 50px;
+  width: 150px;
+  border-radius: 50%;
 }
 
 #UpdateInformation > .container > .small-container {
@@ -165,7 +165,7 @@
 }
 
 .avatar-likee {
-  width: 200px;
+  width: 150px;
   height: auto;
-  border-radius: 200px;
+  border-radius: 50%;
 }

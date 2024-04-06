@@ -1,4 +1,6 @@
 import PostCencorSection from './Posts';
 import UserCencorSection from './User';
-
-export { PostCencorSection, UserCencorSection, };
+import EventCenSorSection from './Events';
+export {
+  PostCencorSection, UserCencorSection, EventCenSorSection, 
+};

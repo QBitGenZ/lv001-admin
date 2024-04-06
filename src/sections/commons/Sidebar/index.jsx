@@ -1,11 +1,10 @@
 import React, { useEffect, useState, } from 'react';
 import './Sidebar.css';
+import PropTypes from 'prop-types';
 import sidebar from '../../../constants/sidebar';
 import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
-
-import PropTypes from 'prop-types';
 import { faAngleRight, faAngleUp, } from '@fortawesome/free-solid-svg-icons';
-function SidebarSection ({ setTitle, }) {
+function SidebarSection({ setTitle, }) {
   const [admin, setAdmin,] = useState([]);
   useEffect(() => {
     fetch(`${process.env.REACT_APP_HOST_IP}/info`, {
@@ -23,30 +22,37 @@ function SidebarSection ({ setTitle, }) {
   }, []);
   return (
     <div id={'Sidebar'}>
-      <div className={'user-info-container'} onClick={()=>setTitle('Thông tin cá nhân')}>
-        {/* <img
+      <div
+        className={'user-info-container'}
+        onClick={() => setTitle('Thông tin cá nhân')}
+      >
+        <img
           src={process.env.PUBLIC_URL + 'assets/images/sidebar/logo.png'}
           alt={'logo'}
-        /> */}
+        />
         <div className={'user-info'}>
           <img
             src={`${process.env.REACT_APP_IMAGE_HOST_IP}${admin?.avatar}`}
             alt={'avatar'}
             className={'avatar'}
           />
-          <div>
+          <div className={'user-namerole'}>
             <div className={'user-name'}>{admin?.full_name}</div>
             <div className={'user-role'}>Admin</div>
           </div>
-          <FontAwesomeIcon icon={faAngleRight} style={{
-            marginTop: '10px',
-            float: 'right',
-          }}/>
+          <FontAwesomeIcon
+            icon={faAngleRight}
+            style={{
+              width:'10px',
+              marginTop: '12px',
+              float: 'right',
+            }}
+          />
         </div>
       </div>
       <div className={'menu-container'}>
         {sidebar.map((value) => (
-          <MenuItem key={value.id} menuItem={value} setTitle={setTitle}/>
+          <MenuItem key={value.id} menuItem={value} setTitle={setTitle} />
         ))}
       </div>
     </div>
@@ -54,20 +60,32 @@ function SidebarSection ({ setTitle, }) {
 }
 
 function MenuItem({ menuItem, setTitle, }) {
-  const [showSubs, setShowSubs, ] = useState(false);
-
+  const [showSubs, setShowSubs,] = useState(false);
+  const handleonshowsubs = () => {
+    if (menuItem.label === 'Trang chủ') {
+      setTitle('Trang chủ');
+    } else {
+      setShowSubs(!showSubs);
+    }
+  };
   return (
-    <div className={showSubs ? 'Menu-Item show-subs' : 'Menu-Item'} >
-      <div className={'menu-main'} onClick={() => setShowSubs(!showSubs)}>
+    <div className={showSubs ? 'Menu-Item show-subs' : 'Menu-Item'}>
+      <div className={'menu-main'} onClick={handleonshowsubs}>
         <FontAwesomeIcon className={'menu-item-logo'} icon={menuItem.logo} />
         <span className={'menu-label'}>{menuItem.label}</span>
-        <FontAwesomeIcon className={'arrow-icon'} style={{
-          float: 'right',
-          margin: '5px',
-        }} icon={faAngleUp} />
+        <FontAwesomeIcon
+          className={'arrow-icon'}
+          style={{
+            float: 'right',
+            margin: '5px',
+          }}
+          icon={faAngleUp}
+        />
       </div>
       <div className={'sub-menu-container'}>
-        {menuItem?.subs?.map((item) => <SubMenuItem key={item.id} subItem={item} setTitle={setTitle}/>)}
+        {menuItem?.subs?.map((item) => (
+          <SubMenuItem key={item.id} subItem={item} setTitle={setTitle} />
+        ))}
       </div>
     </div>
   );

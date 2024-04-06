@@ -2,7 +2,7 @@ import './App.css';
 import React, { useLayoutEffect, useState, } from 'react';
 import { HeaderSection, Sidebar, } from './sections/commons';
 import { EventSection, NotificationSection, } from './sections/publish';
-import { PostCencorSection, UserCencorSection, } from './sections/censorship';
+import { EventCenSorSection, PostCencorSection, UserCencorSection, } from './sections/censorship';
 import { SellerStatisSection,
   BuyerStatisSection,
   FoundationStatisSection, } from './sections/statistical';
@@ -30,6 +30,7 @@ function App() {
     if (title === 'Đăng sự kiện') return <EventSection />;
     if (title === 'Kiểm duyệt sản phẩm') return <PostCencorSection />;
     if (title === 'Kiểm duyệt thông tin') return <UserCencorSection />;
+    if (title === 'Kiểm duyệt sự kiện') return <EventCenSorSection />;
     if (title === 'Thống kê người bán') return <SellerStatisSection />;
     if (title === 'Thống kê người mua') return <BuyerStatisSection />;
     if (title === 'Thống kê đơn vị từ thiện')

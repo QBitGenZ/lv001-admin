@@ -1,10 +1,8 @@
-import React, { useState, } from 'react';
+import React, { useEffect, useState, } from 'react';
 import './Notification.css';
 import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
 import { faPen, faPlus, } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
-
-import { notifications, } from '../../../fakes/Notifications';
 import { Modal, } from '../../../components';
 import { AddNotification, } from './components';
 import NotificationDetail from './components/NotificationDetail';
@@ -12,15 +10,30 @@ import EditNotification from './components/EditNotification';
 
 export default function NotificationSection() {
   const [showAdd, setShowAdd,] = useState(false);
-
   const handleClickAdd = () => setShowAdd(true);
+  const [notifs, setNotif, ] = useState([]);
+  useEffect(()=>{
+    loadNotif();
+  },[]);
+  const loadNotif = ()=>{
+    fetch(`${process.env.REACT_APP_HOST_IP}/notifications/`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('access')}`,
+        Accept: 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data)=>setNotif(data.data))
+      .catch((error) => alert(error));
+  };
 
   return (
     <div id={'Notification-Section'}>
       <div className={'header'}>
         <div className={'quantity-block block'}>
           <span>Tổng số thông báo</span>
-          <span className={'number'}>10</span>
+          <span className={'number'}>{notifs.length}</span>
         </div>
         <div className={'add-block block'} onClick={handleClickAdd}>
           <FontAwesomeIcon icon={faPlus}/>
@@ -31,14 +44,14 @@ export default function NotificationSection() {
         }} placeholder={'Tìm kiếm...'}/>
       </div>
       <div className={'body'}>
-        {notifications.map((value) => <NotificationItem key={value.id} notification={value}/>)}
+        {notifs.map((notif) => <NotificationItem key={notif?.id} notification={notif} loadNotif={loadNotif}/>)}
       </div>
-      {showAdd && <Modal setShow={setShowAdd} title={'Thêm thông báo'} body={<AddNotification/>}/>}
+      {showAdd && <Modal setShow={setShowAdd} title={'Thêm thông báo'} body={<AddNotification setShowAdd={setShowAdd} loadNotif={loadNotif}/>}/>}
     </div>
   );
 }
 
-function NotificationItem({ notification, }) {
+function NotificationItem({ notification, loadNotif, }) {
   const [showDetail, setShowDetail,] = useState(false);
   const [showEdit, setShowEdit,] = useState(false);
 
@@ -51,7 +64,7 @@ function NotificationItem({ notification, }) {
           setShow={setShowDetail}/>}/>}
 
       {showEdit && <Modal setShow={setShowEdit} title={'Chi tiết thông báo'}
-        body={<EditNotification oldText={notification.text} oldTitle={notification.title}/>}/>}
+        body={<EditNotification notif={notification} setShowEdit={setShowEdit} loadNotif={loadNotif}/>}/>}
 
       <div className={'Notification-Item'} onClick={() => setShowDetail(true)}>
         <div className={'title-container'}>
@@ -69,4 +82,5 @@ function NotificationItem({ notification, }) {
 
 NotificationItem.propTypes = {
   notification: PropTypes.object.isRequired,
+  loadNotif: PropTypes.func,
 };

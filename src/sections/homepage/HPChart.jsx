@@ -6,9 +6,24 @@ import { Chart as ChartJS,
   Title,
   Tooltip,
   Legend, } from 'chart.js';
-import React from 'react';
+import React, { useState, useEffect, } from 'react';
 import { Line, } from 'react-chartjs-2';
 export default function HPChart() {
+  const [chartdata, setChartData,] = useState([]);
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_HOST_IP}/statistics/orders/`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('access')}`,
+        Accept: 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setChartData(data.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -19,25 +34,15 @@ export default function HPChart() {
     Legend
   );
   const data = {
-    labels: ['Jan', 'Mar', 'May', 'July', 'Oct',],
+    labels: Object.keys(chartdata),
     datasets: [
       {
-        label: 'Iphone sales',
-        data: [400, 1000, 4000, 800, 1500,],
+        label: 'Doanh thu',
+        data: Object.values(chartdata),
         fill: true,
         backgroundColor: '#006AFF',
         pointBorderColor: 'black',
         color: 'pink',
-        pointBorderWidth: 5,
-        pointRadius: 8,
-        tension: 0.4,
-      },
-      {
-        label: 'Iphone sales',
-        data: [500, 1000, 5000, 800, 2500,],
-        fill: true,
-        backgroundColor: '#006AFF',
-        pointBorderColor: 'black',
         pointBorderWidth: 5,
         pointRadius: 8,
         tension: 0.4,

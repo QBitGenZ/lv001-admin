@@ -31,9 +31,8 @@ export default function InfoUserModal({ charity, getUsers, setModal, }) {
       body: form,
     })
       .then((res) => res.json())
+      .them(()=>getUsers())
       .catch((error) => console.log(error));
-
-    getUsers();
   };
 
   return (
