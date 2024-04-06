@@ -7,7 +7,7 @@
 
 #HomePageSection .small-container {
   display: flex;
-  width: 25%;
+  width: 30%;
   margin: 0px 20px;
   padding: 24px 24px 20px 24px;
   flex-direction: column;
@@ -104,19 +104,73 @@
 
 #HomePageSection .chart-container {
   width: 90%;
+  padding-top:20px;
   height: auto;
   margin: auto;
 }
 
-/* #HomePageSection .chart {
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
-} */
-#HomePageSection .HPchart {
-}
-
 h2 {
   text-align: center;
-  margin-bottom: 20px;
+}
+
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.datefrom{
+    background-color: #0080ff;
+    padding: 5px;
+    margin: 5px;
+    width: 2.3%;
+    float:right;
+    height: fit-content;
+    position: absolute;
+    transform: translate(-150%,20%);
+    top:50%;
+    font-family: "Roboto Mono",monospace;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+.dateto{
+  background-color: #0080ff;
+  padding: 5px;
+  margin: 5px;
+  width: 2.3%;
+  float:right;
+  height: fit-content;
+  position: absolute;
+  transform: translate(50%,20%);
+  top:50%;
+  font-family: "Roboto Mono",monospace;
+  color: #ffffff;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+.datetodate{
+  padding: 5px;
+  margin: 5px;
+  width: 2.3%;
+  float:right;
+  height: fit-content;
+  position: absolute;
+  transform: translate(-50%,35%);
+  top:50%;
+  font-family: "Roboto Mono",monospace;
+  font-size: 18px;
+  border: none;
+  outline: none;
+}
+::-webkit-calendar-picker-indicator{
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
 }
