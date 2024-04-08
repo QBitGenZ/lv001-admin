@@ -9,6 +9,7 @@ import { SellerStatisSection,
 import HomePageSection from './sections/homepage';
 import { Login, } from './pages';
 import UpdateInformation from './sections/UpdateInformation';
+import TypeOfProductSection from './sections/typeofproduct';
 // import { LoginContainer, } from './pages';
 
 function App() {
@@ -23,7 +24,6 @@ function App() {
       setLogin(true);
     }
   }, []);
-
   const renderSection = () => {
     if (title === 'Trang chủ') return <HomePageSection />;
     if (title === 'Đăng thông báo') return <NotificationSection />;
@@ -36,8 +36,9 @@ function App() {
     if (title === 'Thống kê đơn vị từ thiện')
       return <FoundationStatisSection />;
     if (title === 'Thông tin cá nhân') return <UpdateInformation setLogin={setLogin} />;
+    if (title === 'Quản lý loại sản phẩm') return <TypeOfProductSection/> ;
   };
-
+  console.log(title);
   return (
     <div className='App'>
       {login ? (

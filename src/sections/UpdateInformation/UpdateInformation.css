@@ -141,7 +141,7 @@
 }
 
 .Avatara > p {
-  width: 50%;
+  width: 40%;
 }
 
 .Infora {
@@ -164,8 +164,14 @@
   border-spacing: 20px;
 }
 
-.avatar-likee {
-  width: 150px;
-  height: auto;
+.circle-image {
+  width: 150px; /* Adjust width/height as needed */
+  height: 150px; /* Ensure a square shape */
+  overflow: hidden; /* Hide overflowing parts of the image */
   border-radius: 50%;
+}
+.circle-image img {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
 }

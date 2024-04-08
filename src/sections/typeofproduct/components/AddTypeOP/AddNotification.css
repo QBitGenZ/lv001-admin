@@ -1,0 +1,37 @@
+#Add-Notification {
+    text-align: left;
+    width: 90%;
+    margin-left: 5%;
+    padding-bottom: 20px;
+}
+
+#Add-Notification label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#Add-Notification textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid #000;
+    background: #FFF;
+}
+
+#Add-Notification button {
+    border-radius: 20px;
+    background: #0687FF;
+    color: #FFF;
+    font-family: "Source Sans Pro", serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    width: 112px;
+    height: 40px;
+
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+}

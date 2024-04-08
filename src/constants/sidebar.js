@@ -2,7 +2,9 @@ import { faCircleCheck,
   faSquarePollVertical,
   faPenToSquare,
   faGear,
-  faHouse, } from '@fortawesome/free-solid-svg-icons';
+  faHouse,
+  faUser,
+  faShirt, } from '@fortawesome/free-solid-svg-icons';
 
 const data = [
   {
@@ -65,6 +67,16 @@ const data = [
   },
   {
     id: 5,
+    label: 'Quản lý loại sản phẩm',
+    logo: faShirt,
+  },
+  {
+    id: 6,
+    label: 'Quản lý tài khoản',
+    logo: faUser,
+  },
+  {
+    id: 7,
     label: 'Cài đặt',
     logo: faGear,
   },

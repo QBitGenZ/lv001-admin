@@ -27,6 +27,10 @@ export default function InformationUpdate({ admin, getInfo, }) {
       },
       body: form,
     })
+      .then((res) => {
+        if (res.status === 200) return res.json();
+        else return Promise.reject('Thông tin không hợp lệ');
+      })
       .then((res) => res.json())
       .then(() => getInfo())
       .catch((error) => alert(error));

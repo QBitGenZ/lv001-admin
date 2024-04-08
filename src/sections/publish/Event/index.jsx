@@ -37,13 +37,13 @@ export default function EventSection() {
           <span>Tổng số sự kiện</span>
           <span className={'number'}>{events.length}</span>
         </div>
+        <input className={'block search-input'} type={'text'} style={{
+          backgroundImage: `url(${process.env.PUBLIC_URL}assets/images/publish/search-icon.png)`,
+        }} placeholder={'Tìm kiếm...'}/>
         <div className={'add-block block'} onClick={() => setShowAdd(true)}>
           <FontAwesomeIcon icon={faPlus} />
           <span className={'title'}>Thêm sự kiện mới</span>
         </div>
-        <input className={'block search-input'} type={'text'} style={{
-          backgroundImage: `url(${process.env.PUBLIC_URL}assets/images/publish/search-icon.png)`,
-        }} placeholder={'Tìm kiếm...'}/>
       </div>
       <div className={'body'}>
         {events.map((event) => (

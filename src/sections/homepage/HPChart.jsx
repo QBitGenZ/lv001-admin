@@ -97,9 +97,9 @@ export default function HPChart() {
     <>
       <div className={'container'}>
         <Line className={'chart-container'} data={data} options={options} />
-        <div>
+        <div className='formtodate-container'>
           <input
-            className='datefrom'
+            className='dateto'
             name='fromdate'
             type='date'
             onChange={(e) => {
@@ -107,7 +107,7 @@ export default function HPChart() {
               loadStatis();
             }}
           />
-          <p className='datetodate'>TO</p>
+          <p className='fromtodate'>TO</p>
           <input
             className='dateto'
             name='todate'
