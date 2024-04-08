@@ -2,15 +2,15 @@ import React, { useState, } from 'react';
 import './AddNotification.css';
 import PropTypes from 'prop-types';
 
-export default function EditTypeOP({ notif, setShowEdit, loadNotif, }) {
-  const [title, setTitle, ] = useState(notif?.title);
-  const [text, setText, ] = useState(notif?.text);
+export default function EditTypeOP({ typeP, setModal, loadTypeP, }) {
+  const [title, setTitle, ] = useState(typeP?.name);
+  const [text, setText, ] = useState(typeP?.description);
   function editNotif(e) {
     e.preventDefault();
     const form = new FormData();
-    form.append('title', title);
-    form.append('text', text);
-    fetch(`${process.env.REACT_APP_HOST_IP}/notifications/${notif?.id}/`, {
+    form.append('name', title);
+    form.append('description', text);
+    fetch(`${process.env.REACT_APP_HOST_IP}/products/types/${typeP?.id}/`, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
@@ -19,16 +19,16 @@ export default function EditTypeOP({ notif, setShowEdit, loadNotif, }) {
       body: form,
     })
       .then((res) => res.json())
-      .then(()=>alert('Cập nhật thông báo thành công'))
-      .then(()=>setShowEdit(false))
-      .then(() => loadNotif())
+      .then(()=>alert('Cập nhật loại sản phẩm thành công'))
+      .then(() => loadTypeP())
+      .then(()=>setModal(false))
       .catch((error) => alert(error));
   }
   return (
     <div id={'Add-Notification'}>
-      <label>Tiêu đề</label>
+      <label>Tên loại sản phẩm</label>
       <textarea rows={4} value={title} onChange={(e)=>setTitle(e.target.value)}/>
-      <label>Nội dung</label>
+      <label>Mô tả: </label>
       <textarea rows={10} value={text} onChange={(e)=>setText(e.target.value)}/>
       <div style={{
         float: 'right',
@@ -40,7 +40,7 @@ export default function EditTypeOP({ notif, setShowEdit, loadNotif, }) {
 }
 
 EditTypeOP.propTypes = {
-  notif: PropTypes.object,
-  setShowEdit: PropTypes.func,
-  loadNotif: PropTypes.func,
+  typeP: PropTypes.object,
+  setModal: PropTypes.func,
+  loadTypeP: PropTypes.func,
 };

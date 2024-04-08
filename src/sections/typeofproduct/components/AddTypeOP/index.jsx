@@ -2,15 +2,15 @@ import React, { useState, } from 'react';
 import './AddNotification.css';
 import PropTypes from 'prop-types';
 
-export default function AddTypeOP({ setShowAdd, loadNotif, }) {
+export default function AddTypeOP({ setShowAdd, loadTypeP, }) {
   const [title, setTitle,] = useState();
   const [content, setContent,] = useState();
   function addNotification(e) {
     e.preventDefault();
     const form = new FormData();
-    form.append('title', title);
-    form.append('text', content);
-    fetch(`${process.env.REACT_APP_HOST_IP}/notifications/`, {
+    form.append('name', title);
+    form.append('description', content);
+    fetch(`${process.env.REACT_APP_HOST_IP}/products/types/`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
@@ -20,15 +20,15 @@ export default function AddTypeOP({ setShowAdd, loadNotif, }) {
       .then((res) => res.json())
       .then(()=>alert('Thêm thông báo thành công'))
       .then(()=>setShowAdd(false))
-      .then(()=>loadNotif())
+      .then(()=>loadTypeP())
       .catch((error) => alert(error));
   }
 
   return (
     <div id={'Add-Notification'}>
-      <label>Tiêu đề</label>
+      <label>Tên loại sản phẩm</label>
       <textarea rows={4} onChange={(e)=>setTitle(e.target.value)} value={title}/>
-      <label>Nội dung</label>
+      <label>Mô tả:</label>
       <textarea rows={10} onChange={(e)=>setContent(e.target.value)} value={content}/>
       <div style={{
         float: 'right',
@@ -41,5 +41,5 @@ export default function AddTypeOP({ setShowAdd, loadNotif, }) {
 
 AddTypeOP.propTypes = {
   setShowAdd: PropTypes.func,
-  loadNotif: PropTypes.func,
+  loadTypeP: PropTypes.func,
 };
