@@ -25,7 +25,7 @@ export default function AccountTableRow({ account, loadAccount, }) {
             <InforAccount
               setModal={setModal}
               account={account}
-              loadTypeP={loadAccount}
+              loadAccount={loadAccount}
             />
           }
           setShow={setModal}

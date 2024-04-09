@@ -6,7 +6,7 @@ export default function InforAccount({ account, setModal, loadAccount, }) {
   function deleteAccount(e) {
     e.preventDefault();
     const form = new FormData();
-    fetch(`${process.env.REACT_APP_HOST_IP}/user/${account?.id}/`, {
+    fetch(`${process.env.REACT_APP_HOST_IP}/admin-user?username=${account?.username}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
