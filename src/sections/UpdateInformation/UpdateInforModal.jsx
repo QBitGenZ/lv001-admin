@@ -9,11 +9,11 @@ export default function UpdateInforModal({ admin, getInfo, }) {
   function si() {
     setImage(true);
   }
-  function sil(){
+  function sil() {
     setInfo(true);
   }
 
-  const getInfoAgain = ()=> {
+  const getInfoAgain = () => {
     getInfo();
     setImage(false);
     setInfo(false);
@@ -23,11 +23,13 @@ export default function UpdateInforModal({ admin, getInfo, }) {
     <>
       <div className={'Avatara'}>
         <p className={'updatetitle'}>Ảnh đại diện</p>
-        <img
-          src={`${process.env.REACT_APP_IMAGE_HOST_IP}${admin.avatar}`}
-          alt={'avatar'}
-          className={'avatar-likee'}
-        />
+        <div className={'circle-image'}>
+          <img
+            src={`${process.env.REACT_APP_IMAGE_HOST_IP}${admin.avatar}`}
+            alt={'avatar'}
+          />
+        </div>
+
         <p className={'updateaction'} onClick={si}>
           chỉnh sửa
         </p>
@@ -66,19 +68,21 @@ export default function UpdateInforModal({ admin, getInfo, }) {
             <td>Admin</td>
           </tr>
         </table>
-        <p className={'updateaction'} onClick={sil}>chỉnh sửa</p>
+        <p className={'updateaction'} onClick={sil}>
+          chỉnh sửa
+        </p>
       </div>
       {image && (
         <Modal
           title={'Chỉnh sửa ảnh đại diện'}
-          body={<ImageUpdateModal admin={admin} getInfo={getInfoAgain}/>}
+          body={<ImageUpdateModal admin={admin} getInfo={getInfoAgain} />}
           setShow={setImage}
         />
       )}
       {info && (
         <Modal
           title={'Chỉnh sửa thông tin'}
-          body={<InformationUpdate admin={admin} getInfo={getInfoAgain}/>}
+          body={<InformationUpdate admin={admin} getInfo={getInfoAgain} />}
           setShow={setInfo}
         />
       )}

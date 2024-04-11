@@ -27,15 +27,18 @@ function SidebarSection({ setTitle, }) {
         onClick={() => setTitle('Thông tin cá nhân')}
       >
         <img
+          className={'logosidebar'}
           src={process.env.PUBLIC_URL + 'assets/images/sidebar/logo.png'}
           alt={'logo'}
         />
         <div className={'user-info'}>
-          <img
-            src={`${process.env.REACT_APP_IMAGE_HOST_IP}${admin?.avatar}`}
-            alt={'avatar'}
-            className={'avatar'}
-          />
+          <div className={'circle-image1'}>
+            <img
+              src={`${process.env.REACT_APP_IMAGE_HOST_IP}${admin?.avatar}`}
+              alt={'avatar'}
+              className={'avatar'}
+            />
+          </div>
           <div className={'user-namerole'}>
             <div className={'user-name'}>{admin?.full_name}</div>
             <div className={'user-role'}>Admin</div>
@@ -43,8 +46,8 @@ function SidebarSection({ setTitle, }) {
           <FontAwesomeIcon
             icon={faAngleRight}
             style={{
-              width:'10px',
-              marginTop: '12px',
+              width: '10px',
+              marginTop: '15px',
               float: 'right',
             }}
           />
@@ -64,6 +67,10 @@ function MenuItem({ menuItem, setTitle, }) {
   const handleonshowsubs = () => {
     if (menuItem.label === 'Trang chủ') {
       setTitle('Trang chủ');
+    } else if (menuItem.label === 'Quản lý loại sản phẩm') {
+      setTitle('Quản lý loại sản phẩm');
+    } else if (menuItem.label === 'Quản lý tài khoản') {
+      setTitle('Quản lý tài khoản');
     } else {
       setShowSubs(!showSubs);
     }

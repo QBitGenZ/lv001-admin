@@ -1,0 +1,92 @@
+#account-container {
+  justify-items: center;
+  justify-content: center;
+  width: 50%;
+  margin: auto;
+}
+
+#account-container .th {
+  text-align: left;
+  padding-left: 5%;
+}
+
+#account-container .infortable {
+  border-spacing: 15px;
+  background-color: #eeeeee;
+}
+
+#account-container .table-name {
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+}
+
+#account-container td {
+  color: #000;
+  font-family: "Source Sans Pro";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+#account-container .delete-button {
+    margin: 5% 0px;
+  border-radius: 5px;
+  background: #ec2525;
+  color: #fff;
+  text-align: center;
+  font-family: 'Inter';
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#Add-Account {
+  text-align: left;
+  width: 90%;
+  margin-left: 5%;
+  padding-bottom: 20px;
+}
+
+#Add-Account label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#Add-Account textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 7px;
+  border: 1px solid #000;
+  background: #FFF;
+}
+
+#Add-Account button {
+  border-radius: 20px;
+  background: #0687FF;
+  color: #FFF;
+  font-family: "Source Sans Pro", serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  width: 112px;
+  height: 40px;
+
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+}
+
+#Add-Account .input-password{
+  border-radius: 7px;
+  height: 45px;
+  width: 102%;
+}

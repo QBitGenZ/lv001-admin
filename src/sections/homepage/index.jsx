@@ -69,7 +69,13 @@ export default function HomePageSection() {
         />
       </div>
       <div className={'chart-container'}>
-        <h2>Doanh Thu Theo Tháng</h2>
+        <h2
+          style={{
+            margin: 0,
+          }}
+        >
+          Doanh Thu Theo Tháng
+        </h2>
         <HPChart className={'chart'} />
       </div>
     </div>

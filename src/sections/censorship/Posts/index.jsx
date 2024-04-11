@@ -1,9 +1,10 @@
-import React, { useState,useEffect, } from 'react';
+import React, { useState, useEffect, } from 'react';
 import './ProductSection.css';
 import ProductTable from './components/ProductTable/ProductTable';
 import HeaderBar from './components/HeaderBar/HeaderBar';
 export default function PostCencorSection() {
   const [products, setProduct,] = useState([]);
+  const [meta, setMeta,] = useState([]);
   useEffect(() => {
     getProducts();
   }, []);
@@ -20,6 +21,9 @@ export default function PostCencorSection() {
       .then((data) => {
         setProduct(data.data);
       })
+      .then((data) => {
+        setMeta(data.meta);
+      })
       .catch((error) => console.log(error));
   };
 
@@ -27,7 +31,7 @@ export default function PostCencorSection() {
     <div id={'ProductSection'}>
       <div>
         <HeaderBar products={products} />
-        <ProductTable products={products} getProducts={getProducts} />
+        <ProductTable products={products} getProducts={getProducts} meta={meta} />
       </div>
     </div>
   );

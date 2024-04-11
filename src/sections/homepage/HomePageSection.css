@@ -1,20 +1,20 @@
 #HomePageSection .container {
   display: flex;
   width: 70%;
-  margin: auto;
+  margin: 0px auto auto auto;
   padding-top: 30px;
 }
 
 #HomePageSection .small-container {
   display: flex;
-  width: 25%;
+  width: 30%;
   margin: 0px 20px;
   padding: 24px 24px 20px 24px;
   flex-direction: column;
   gap: 6px;
   border-radius: 8px;
   background: #fdfdfd;
-  box-shadow: 50px 50px 40px 0px rgba(90, 90, 231, 0.1);
+  box-shadow: 10px 10px 5px 0px rgba(90, 90, 231, 0.1);
 }
 
 #HomePageSection .title {
@@ -104,19 +104,45 @@
 
 #HomePageSection .chart-container {
   width: 90%;
+  padding-top:20px;
   height: auto;
   margin: auto;
 }
 
-/* #HomePageSection .chart {
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
-} */
-#HomePageSection .HPchart {
-}
-
 h2 {
   text-align: center;
-  margin-bottom: 20px;
+}
+
+#HomePageSection,
+#HomePageSection:before,
+#HomePageSection:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.formtodate-container{
+  margin-top: 25px;
+}
+.dateto{
+  background-color: #527fad;
+  padding: 5px;
+  margin: 5px;
+  float:right;
+  width: fit-content;
+  height: fit-content;
+  font-family: "Roboto Mono",monospace;
+  color: #ffffff;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+.fromtodate{
+  margin: 0px;
+}
+::-webkit-calendar-picker-indicator{
+    background-color: #ffffff;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
 }

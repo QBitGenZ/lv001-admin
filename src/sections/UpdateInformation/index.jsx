@@ -40,11 +40,13 @@ export default function UpdateInformation({ setLogin, }) {
     <>
       <div id={'UpdateInformation'}>
         <div className={'container'}>
-          <img
-            src={`${process.env.REACT_APP_IMAGE_HOST_IP}${admin.avatar}`}
-            alt={'avatar'}
-            className={'avatar-like'}
-          />
+          <div className='circle-image'>
+            <img
+              src={`${process.env.REACT_APP_IMAGE_HOST_IP}${admin.avatar}`}
+              alt={'avatar'}
+            />
+          </div>
+
           <div className={'small-container'}>
             <p className={'name'}>{admin?.full_name}</p>
             <p className={'position'}>Admin</p>
@@ -55,7 +57,7 @@ export default function UpdateInformation({ setLogin, }) {
                 icon={faArrowRightFromBracket}
                 style={{
                   margin: '0 10px 0 0',
-                //   float: 'right',
+                  //   float: 'right',
                 }}
               />
               Đăng xuất
@@ -83,7 +85,7 @@ export default function UpdateInformation({ setLogin, }) {
               <td>{admin?.is_female ? 'Nữ' : 'Nam'}</td>
             </tr>
             <tr>
-              <td className={'th'}>Số điện tdoại</td>
+              <td className={'th'}>Số điện thoại</td>
               <td>:</td>
               <td>{admin?.phone}</td>
             </tr>

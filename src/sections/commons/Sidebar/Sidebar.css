@@ -81,7 +81,7 @@
 
 #Sidebar > .user-info-container > .user-info >  .user-namerole{
     position: absolute;
-    transform: translate(0%, 20%);
+    transform: translate(0%, 40%);
 }
 
 #Sidebar .user-info-container .user-info>*{
@@ -108,4 +108,21 @@
     font-weight: 400;
     line-height: normal;
 
+}
+
+.circle-image1 {
+    width: 50px; /* Adjust width/height as needed */
+    height: 50px; /* Ensure a square shape */
+    overflow: hidden; /* Hide overflowing parts of the image */
+    border-radius: 50%;
+}
+.circle-image1 img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+
+.logosidebar{
+    width: 50%;
+    align-items: center;
 }
