@@ -8,7 +8,7 @@ export default function UserCencorSection() {
     getUser();
   }, []);
 
-  const getUser = () => {
+  const getUser = async () => {
     fetch(`${process.env.REACT_APP_HOST_IP}/user?is_philanthropist=true`, {
       method: 'GET',
       headers: {

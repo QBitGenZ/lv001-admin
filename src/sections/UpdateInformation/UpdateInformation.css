@@ -13,17 +13,18 @@
 }
 
 #UpdateInformation > .container > .small-container {
-  padding-left: 30px;
+  padding-left: 20px;
   align-items: center;
   padding: auto;
   display: inline-block;
   text-align: center;
   padding-top: 60px;
+  width: 15%;
 }
 
 #UpdateInformation > .container > .small-container > p {
   align-items: center;
-  text-align: center;
+  text-align: left;
   width: fit-content;
   margin: 0px;
 }
@@ -34,6 +35,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  width: 100%;
 }
 #UpdateInformation > .container > .small-container > .position {
   color: #8b8b8b;
