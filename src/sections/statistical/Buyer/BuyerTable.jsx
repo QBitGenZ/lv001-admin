@@ -2,10 +2,13 @@ import React, { useEffect, useState, } from 'react';
 import '../Seller/Table/SellerTable.css';
 import BuyerTableRow from './BuyerTableRow.jsx';
 import HeaderBar from '../components/HeaderBar.jsx';
+import { Pagination, } from '../../../components/index.js';
 export default function BuyerTable() {
   const [buyers, setBuyer,] = useState([]);
+  const [currentPage, setCurrentPage,] = useState(1);
+  const [totalPage, setTotalPage,] = useState(0);
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_HOST_IP}/user`, {
+    fetch(`${process.env.REACT_APP_HOST_IP}/user?page=${currentPage}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
@@ -15,12 +18,13 @@ export default function BuyerTable() {
       .then((res) => res.json())
       .then((data) => {
         setBuyer(data);
+        setTotalPage(data?.meta?.total_pages);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [currentPage,]);
   return (
     <div>
-      <HeaderBar title={'Tổng số người bán: '} number={buyers?.length} />
+      <HeaderBar title={'Tổng số người mua: '} number={buyers?.length} />
       <div className={'Seller-Table'}>
         <table id='SellerTable'>
           <tr className='propdtabletr'>
@@ -39,6 +43,11 @@ export default function BuyerTable() {
             />
           ))}
         </table>
+        <Pagination
+          totalPage={totalPage}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+        />
       </div>
     </div>
   );

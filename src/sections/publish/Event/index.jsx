@@ -7,16 +7,19 @@ import EventDetail from './components/EventDetail/index.jsx';
 import { Modal, } from '../../../components';
 import moment from 'moment';
 import { AddEvent, EditEvent, } from './components';
+import { Pagination, } from '../../../components';
 
 export default function EventSection() {
   const [showAdd, setShowAdd,] = useState(false);
   const [events, setEvent,] = useState([]);
+  const [currentPage, setCurrentPage,] = useState(1);
+  const [totalPage, setTotalPage,] = useState(0);
   useEffect(() => {
     loadEvent();
-  }, []);
+  }, [currentPage,]);
 
   const loadEvent = () => {
-    fetch(`${process.env.REACT_APP_HOST_IP}/events/`, {
+    fetch(`${process.env.REACT_APP_HOST_IP}/events/?page=${currentPage}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
@@ -26,6 +29,7 @@ export default function EventSection() {
       .then((res) => res.json())
       .then((data) => {
         setEvent(data.data);
+        setTotalPage(data?.meta?.total_pages);
       })
       .catch((error) => console.log(error));
   };
@@ -37,9 +41,14 @@ export default function EventSection() {
           <span>Tổng số sự kiện</span>
           <span className={'number'}>{events.length}</span>
         </div>
-        <input className={'block search-input'} type={'text'} style={{
-          backgroundImage: `url(${process.env.PUBLIC_URL}assets/images/publish/search-icon.png)`,
-        }} placeholder={'Tìm kiếm...'}/>
+        <input
+          className={'block search-input'}
+          type={'text'}
+          style={{
+            backgroundImage: `url(${process.env.PUBLIC_URL}assets/images/publish/search-icon.png)`,
+          }}
+          placeholder={'Tìm kiếm...'}
+        />
         <div className={'add-block block'} onClick={() => setShowAdd(true)}>
           <FontAwesomeIcon icon={faPlus} />
           <span className={'title'}>Thêm sự kiện mới</span>
@@ -50,6 +59,11 @@ export default function EventSection() {
           <EventItem key={event?.id} event={event} loadEvent={loadEvent} />
         ))}
       </div>
+      <Pagination
+        totalPage={totalPage}
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+      />
       {showAdd && (
         <Modal
           setShow={setShowAdd}
@@ -75,12 +89,7 @@ function EventItem({ event, loadEvent, }) {
         <Modal
           setShow={setShowDetail}
           title={'Chi tiết thông báo'}
-          body={
-            <EventDetail
-              event={event}
-              setShow={setShowDetail}
-            />
-          }
+          body={<EventDetail event={event} setShow={setShowDetail} />}
         />
       )}
       <div className={'Event-Item'} onClick={() => setShowDetail(true)}>

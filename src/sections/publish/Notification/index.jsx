@@ -7,16 +7,19 @@ import { Modal, } from '../../../components';
 import { AddNotification, } from './components';
 import NotificationDetail from './components/NotificationDetail';
 import EditNotification from './components/EditNotification';
+import { Pagination, } from '../../../components';
 
 export default function NotificationSection() {
   const [showAdd, setShowAdd,] = useState(false);
   const handleClickAdd = () => setShowAdd(true);
   const [notifs, setNotif, ] = useState([]);
+  const [currentPage, setCurrentPage,] = useState(1);
+  const [totalPage, setTotalPage,] = useState(0);
   useEffect(()=>{
     loadNotif();
-  },[]);
+  },[currentPage,]);
   const loadNotif = ()=>{
-    fetch(`${process.env.REACT_APP_HOST_IP}/notifications/`, {
+    fetch(`${process.env.REACT_APP_HOST_IP}/notifications/?page=${currentPage}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
@@ -24,7 +27,10 @@ export default function NotificationSection() {
       },
     })
       .then((res) => res.json())
-      .then((data)=>setNotif(data.data))
+      .then((data)=>{
+        setNotif(data.data);
+        setTotalPage(data?.meta?.total_pages);
+      })
       .catch((error) => alert(error));
   };
 
@@ -46,6 +52,11 @@ export default function NotificationSection() {
       <div className={'body'}>
         {notifs.map((notif) => <NotificationItem key={notif?.id} notification={notif} loadNotif={loadNotif}/>)}
       </div>
+      <Pagination
+        totalPage={totalPage}
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+      />
       {showAdd && <Modal setShow={setShowAdd} title={'Thêm thông báo'} body={<AddNotification setShowAdd={setShowAdd} loadNotif={loadNotif}/>}/>}
     </div>
   );

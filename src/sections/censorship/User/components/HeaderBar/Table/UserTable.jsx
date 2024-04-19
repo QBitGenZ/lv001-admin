@@ -2,7 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../../../../Posts/components/ProductTable/ProductTable.css';
 import UserTableRow from './UserTableRow';
-export default function UserTable( { charities, getUsers, } ) {
+import { Pagination, } from '../../../../../../components';
+export default function UserTable({
+  charities,
+  getUsers,
+  totalPage,
+  currentPage,
+  onPageChange,
+}) {
   console.log(charities);
   return (
     <div className={'User-Table'}>
@@ -20,10 +27,18 @@ export default function UserTable( { charities, getUsers, } ) {
           />
         ))}
       </table>
+      <Pagination
+        totalPage={totalPage}
+        currentPage={currentPage}
+        onPageChange={onPageChange}
+      />
     </div>
   );
 }
 UserTable.propTypes = {
   charities: PropTypes.array,
   getUsers: PropTypes.func,
+  totalPage: PropTypes.number,
+  currentPage: PropTypes.number,
+  onPageChange: PropTypes.func,
 };

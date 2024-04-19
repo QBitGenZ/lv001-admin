@@ -2,10 +2,13 @@ import React, { useEffect, useState, } from 'react';
 import '../Seller/Table/SellerTable.css';
 import BuyerTableRow from '../Buyer/BuyerTableRow';
 import HeaderBar from '../components/HeaderBar';
+import { Pagination, } from '../../../components/index.js';
 export default function FoundationTable() {
   const [charities, setCharity,] = useState([]);
+  const [currentPage, setCurrentPage,] = useState(1);
+  const [totalPage, setTotalPage,] = useState(0);
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_HOST_IP}/user?is_philanthropist=true`, {
+    fetch(`${process.env.REACT_APP_HOST_IP}/user?is_philanthropist=true&&page=${currentPage}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
@@ -15,12 +18,13 @@ export default function FoundationTable() {
       .then((res) => res.json())
       .then((data) => {
         setCharity(data);
+        setTotalPage(data?.meta?.total_pages);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [ currentPage,]);
   return (
     <>
-      <HeaderBar title={'Tổng số người bán: '} number={charities?.length} />
+      <HeaderBar title={'Tổng số đơn vị: '} number={charities?.length} />
       <div className={'Seller-Table'}>
         <table id='SellerTable'>
           <tr className='propdtabletr'>
@@ -39,6 +43,11 @@ export default function FoundationTable() {
             />
           ))}
         </table>
+        <Pagination
+          totalPage={totalPage}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+        />
       </div>
     </>
   );
