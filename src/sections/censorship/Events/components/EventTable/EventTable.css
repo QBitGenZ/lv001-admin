@@ -2,6 +2,7 @@
   padding-top: 30px;
   height: auto;
   margin: auto;
+  width: 100%;
 }
 .User-Table {
   padding-top: 30px;
@@ -11,7 +12,7 @@
 table {
   margin: auto;
   height: auto;
-  width: 70%;
+  width: 100%;
 }
 
 .prodtabletdth {

@@ -2,10 +2,13 @@ import React, { useEffect, useState, } from 'react';
 import './SellerTable.css';
 import SellerTableRow from './SellerTableRow.jsx';
 import HeaderBar from '../../components/HeaderBar.jsx';
+import { Pagination, } from '../../../../components/index.js';
 export default function SellerTable() {
   const [sellers, setSeller,] = useState([]);
+  const [currentPage, setCurrentPage,] = useState(1);
+  const [totalPage, setTotalPage,] = useState(0);
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_HOST_IP}/user?is_seller=true`, {
+    fetch(`${process.env.REACT_APP_HOST_IP}/user?is_seller=true&&page=${currentPage}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
@@ -15,9 +18,10 @@ export default function SellerTable() {
       .then((res) => res.json())
       .then((data) => {
         setSeller(data);
+        setTotalPage(data?.meta?.total_pages);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [currentPage,]);
   return (
     <>
       <HeaderBar title={'Tổng số người bán: '} number={sellers.length} />
@@ -40,6 +44,11 @@ export default function SellerTable() {
             />
           ))}
         </table>
+        <Pagination
+          totalPage={totalPage}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+        />
       </div>
     </>
   );

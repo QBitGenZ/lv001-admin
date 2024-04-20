@@ -4,12 +4,14 @@ import './UserSection.css';
 import UserTable from './components/HeaderBar/Table/UserTable';
 export default function UserCencorSection() {
   const [charities, setCharity,] = useState([]);
+  const [currentPage, setCurrentPage,] = useState(1);
+  const [totalPage, setTotalPage,] = useState(0);
   useEffect(() => {
     getUser();
-  }, []);
+  }, [ currentPage,]);
 
-  const getUser = () => {
-    fetch(`${process.env.REACT_APP_HOST_IP}/user?is_philanthropist=true`, {
+  const getUser = async () => {
+    fetch(`${process.env.REACT_APP_HOST_IP}/user?is_philanthropist=true&&page=${currentPage}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
@@ -19,6 +21,7 @@ export default function UserCencorSection() {
       .then((res) => res.json())
       .then((data) => {
         setCharity(data);
+        setTotalPage(data?.meta?.total_pages);
       })
       .catch((error) => console.log(error));
   };
@@ -26,7 +29,9 @@ export default function UserCencorSection() {
     <div id={'UserSection'}>
       <div>
         <HeaderBar charities={charities} />
-        <UserTable charities={charities} getUsers={getUser}/>
+        <UserTable charities={charities} getUsers={getUser} totalPage={totalPage}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}/>
       </div>
     </div>
   );

@@ -2,7 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './EventTable.css';
 import TableRow from './TableRow.jsx';
-export default function EventTable({ events, getEvents, }) {
+import { Pagination, } from '../../../../../components/index.js';
+export default function EventTable({
+  events,
+  getEvents,
+  totalPage,
+  currentPage,
+  onPageChange,
+}) {
   console.log(events);
   return (
     <div className={'event-Table'}>
@@ -15,13 +22,14 @@ export default function EventTable({ events, getEvents, }) {
           <th className='prodtabletdth prodtableth'>Trạng thái</th>
         </tr>
         {events?.map((event) => (
-          <TableRow
-            key={event?.id}
-            event={event}
-            getEvents={getEvents}
-          />
+          <TableRow key={event?.id} event={event} getEvents={getEvents} />
         ))}
       </table>
+      <Pagination
+        totalPage={totalPage}
+        currentPage={currentPage}
+        onPageChange={onPageChange}
+      />
     </div>
   );
 }
@@ -29,4 +37,7 @@ export default function EventTable({ events, getEvents, }) {
 EventTable.propTypes = {
   events: PropTypes.array,
   getEvents: PropTypes.func,
+  totalPage: PropTypes.number,
+  currentPage: PropTypes.number,
+  onPageChange: PropTypes.func,
 };

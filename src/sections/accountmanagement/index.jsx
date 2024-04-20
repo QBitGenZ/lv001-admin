@@ -4,15 +4,18 @@ import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
 import AccountTable from './AccountTable';
 import Modal from '../../components/Modal';
 import AddAccount from './components/AddAccount';
+import { Pagination, } from '../../components';
 export default function AccountManagementSection() {
   const [showAdd, setShowAdd,] = useState(false);
   const handleClickAdd = () => setShowAdd(true);
   const [accounts, setAccounts,] = useState([]);
+  const [currentPage, setCurrentPage,] = useState(1);
+  const [totalPage, setTotalPage,] = useState(0);
   useEffect(() => {
     loadAccount();
-  }, []);
+  }, [currentPage,]);
   const loadAccount= () => {
-    fetch(`${process.env.REACT_APP_HOST_IP}/user`, {
+    fetch(`${process.env.REACT_APP_HOST_IP}/user?page=${currentPage}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
@@ -20,7 +23,10 @@ export default function AccountManagementSection() {
       },
     })
       .then((res) => res.json())
-      .then((data) => setAccounts(data))
+      .then((data) => {
+        setAccounts(data);
+        setTotalPage(data?.meta?.total_pages);
+      })
       .catch((error) => alert(error));
   };
 
@@ -39,6 +45,11 @@ export default function AccountManagementSection() {
       <div className={'body'}>
         <AccountTable accounts={accounts} loadAccount={loadAccount} />
       </div>
+      <Pagination
+        totalPage={totalPage}
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+      />
       {showAdd && (
         <Modal
           setShow={setShowAdd}
