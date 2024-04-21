@@ -1,7 +1,7 @@
 import React, { useEffect, useState, } from 'react';
 import './Notification.css';
 import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
-import { faPen, faPlus, } from '@fortawesome/free-solid-svg-icons';
+import { faPen, } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import { Modal, } from '../../../components';
 import { AddNotification, } from './components';
@@ -11,7 +11,7 @@ import { Pagination, } from '../../../components';
 
 export default function NotificationSection() {
   const [showAdd, setShowAdd,] = useState(false);
-  const handleClickAdd = () => setShowAdd(true);
+  // const handleClickAdd = () => setShowAdd(true);
   const [notifs, setNotif, ] = useState([]);
   const [currentPage, setCurrentPage,] = useState(1);
   const [totalPage, setTotalPage,] = useState(0);
@@ -41,13 +41,14 @@ export default function NotificationSection() {
           <span>Tổng số thông báo</span>
           <span className={'number'}>{notifs.length}</span>
         </div>
-        <div className={'add-block block'} onClick={handleClickAdd}>
-          <FontAwesomeIcon icon={faPlus}/>
-          <span className={'title'}>Thêm thông báo mới</span>
-        </div>
         <input className={'block search-input'} type={'text'} style={{
           backgroundImage: `url(${process.env.PUBLIC_URL}assets/images/publish/search-icon.png)`,
         }} placeholder={'Tìm kiếm...'}/>
+        {/* <div className={'add-block block'} onClick={handleClickAdd}>
+          <FontAwesomeIcon icon={faPlus}/>
+          <span className={'title'}>Thêm thông báo mới</span>
+        </div> */}
+        
       </div>
       <div className={'body'}>
         {notifs.map((notif) => <NotificationItem key={notif?.id} notification={notif} loadNotif={loadNotif}/>)}
