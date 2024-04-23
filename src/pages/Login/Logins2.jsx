@@ -34,6 +34,9 @@ export default function Logins2({ setLogin, }) {
       .then((data) => {
         console.log(data);
         localStorage.setItem('access', data?.access);
+        if(data?.is_staff===false){
+          return Promise.reject('Không có quyền truy cập');
+        }
         setLogin(true);
         console.log(data);
       })

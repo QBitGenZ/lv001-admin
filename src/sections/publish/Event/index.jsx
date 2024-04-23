@@ -1,7 +1,7 @@
 import React, { useState, useEffect, } from 'react';
 import './Event.css';
 import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
-import { faPen, faPlus, } from '@fortawesome/free-solid-svg-icons';
+import { faPen, } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import EventDetail from './components/EventDetail/index.jsx';
 import { Modal, } from '../../../components';
@@ -14,9 +14,14 @@ export default function EventSection() {
   const [events, setEvent,] = useState([]);
   const [currentPage, setCurrentPage,] = useState(1);
   const [totalPage, setTotalPage,] = useState(0);
+  const [search, setSearch,] = useState('');
   useEffect(() => {
-    loadEvent();
-  }, [currentPage,]);
+    if (search.length != 0) {
+      searchEvent();
+    } else {
+      loadEvent();
+    }
+  }, [currentPage,search,]);
 
   const loadEvent = () => {
     fetch(`${process.env.REACT_APP_HOST_IP}/events/?page=${currentPage}`, {
@@ -26,6 +31,24 @@ export default function EventSection() {
         Accept: 'application/json',
       },
     })
+      .then((res) => res.json())
+      .then((data) => {
+        setEvent(data.data);
+        setTotalPage(data?.meta?.total_pages);
+      })
+      .catch((error) => console.log(error));
+  };
+  const searchEvent = () => {
+    fetch(
+      `${process.env.REACT_APP_HOST_IP}/events/search/?page=${currentPage}&keyword=${search}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access')}`,
+          Accept: 'application/json',
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setEvent(data.data);
@@ -48,11 +71,12 @@ export default function EventSection() {
             backgroundImage: `url(${process.env.PUBLIC_URL}assets/images/publish/search-icon.png)`,
           }}
           placeholder={'Tìm kiếm...'}
+          onChange={(e) => setSearch(e.target.value)}
         />
-        <div className={'add-block block'} onClick={() => setShowAdd(true)}>
+        {/* <div className={'add-block block'} onClick={() => setShowAdd(true)}>
           <FontAwesomeIcon icon={faPlus} />
           <span className={'title'}>Thêm sự kiện mới</span>
-        </div>
+        </div> */}
       </div>
       <div className={'body'}>
         {events.map((event) => (
