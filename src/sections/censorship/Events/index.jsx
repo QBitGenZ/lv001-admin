@@ -2,16 +2,19 @@ import React, { useState, useEffect, } from 'react';
 import './EventsSection.css';
 import HeaderBar from './components/HeaderBar/HeaderBar';
 import EventTable from './components/EventTable/EventTable';
+import Filter from './components/Filter';
 export default function EventCenSorSection() {
   const [events, setEvent,] = useState([]);
   const [currentPage, setCurrentPage,] = useState(1);
   const [totalPage, setTotalPage,] = useState(0);
+  const [status, setStatus,] = useState('all');
+  const [approval, setApproval,] = useState('all');
   useEffect(() => {
     getEvents();
-  }, [currentPage,]);
+  }, [currentPage, status, approval, ]);
 
   const getEvents = () => {
-    fetch(`${process.env.REACT_APP_HOST_IP}/events/?page=${currentPage}`, {
+    fetch(`${process.env.REACT_APP_HOST_IP}/events/?page=${currentPage}&status=${status}&approval=${approval}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
@@ -29,6 +32,7 @@ export default function EventCenSorSection() {
     <div id={'ProductSection'}>
       <div>
         <HeaderBar events={events} />
+        <Filter setApproval={setApproval} setStatus={setStatus} status={status} approval={approval}/>
         <EventTable
           events={events}
           getEvents={getEvents}
