@@ -9,14 +9,6 @@ export default function HeaderBar({ title, number, }) {
           <span>{title}</span>
           <span className={'number'}>{number}</span>
         </div>
-        <input
-          className={'block search-input'}
-          type={'text'}
-          style={{
-            backgroundImage: `url(${process.env.PUBLIC_URL}assets/images/publish/search-icon.png)`,
-          }}
-          placeholder={'Tìm kiếm...'}
-        />
       </div>
     </div>
   );

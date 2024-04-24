@@ -41,9 +41,9 @@ export default function NotificationSection() {
           <span>Tổng số thông báo</span>
           <span className={'number'}>{notifs.length}</span>
         </div>
-        <input className={'block search-input'} type={'text'} style={{
+        {/* <input className={'block search-input'} type={'text'} style={{
           backgroundImage: `url(${process.env.PUBLIC_URL}assets/images/publish/search-icon.png)`,
-        }} placeholder={'Tìm kiếm...'}/>
+        }} placeholder={'Tìm kiếm...'}/> */}
         {/* <div className={'add-block block'} onClick={handleClickAdd}>
           <FontAwesomeIcon icon={faPlus}/>
           <span className={'title'}>Thêm thông báo mới</span>

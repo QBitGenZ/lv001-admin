@@ -1,0 +1,32 @@
+#event-filter {
+    display: flex;
+    padding-left: 50px;
+  }
+  #event-filter div {
+    padding-left: 15px;
+  }
+  
+  #event-filter .reset-button {
+    border-radius: 10px;
+    border: none;
+    background: #fcfcfc;
+    box-shadow: 0px 0px 10px 0px rgba(145, 139, 139, 0.5);
+    width: 125px;
+    height: 52px;
+    flex-shrink: 0;
+    color: #000000;
+    text-align: center;
+    font-family: 'Inter';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin: 10px 0px 0px 25px;
+  }
+  
+  #event-filter .reset-button:hover{
+      color: white;
+      background-color: #0687FF;
+      cursor: pointer;
+  }
+  

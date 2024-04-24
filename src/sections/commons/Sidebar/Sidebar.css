@@ -2,7 +2,7 @@
     display: block;
     float: left;
     width: 21.4%;
-    height: 100vh;
+    min-height: 100vh;
     background: #F8F8FA;
     text-align: left;
     padding: 30px 16px;
