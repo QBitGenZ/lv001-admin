@@ -13,8 +13,17 @@ export default function TableRow({ product, getProducts, }) {
     <>
       <tr onClick={toggleModal} className='ModalBtn propdtabletr'>
         <td className='prodtabletd prodtabletdth'>{product?.user}</td>
-        <td className='prodtabletd prodtabletdth'>{product?.name}</td>
-        <td className='prodtabletd prodtabletdth'>{moment(product?.create_at).format('HH:mm DD/MM/YYYY')}</td>
+        <td
+          className='prodtabletd prodtabletdth'
+          style={{
+            textAlign: 'left ', 
+          }}
+        >
+          {product?.name}
+        </td>
+        <td className='prodtabletd prodtabletdth'>
+          {moment(product?.create_at).format('HH:mm DD/MM/YYYY')}
+        </td>
         <td className='prodtabletd prodtabletdth'>
           <p
             className={
@@ -34,7 +43,13 @@ export default function TableRow({ product, getProducts, }) {
       {modal && (
         <Modal
           title={'Kiểm duyệt sản phẩm'}
-          body={<ProductModal setModal={setModal} product={product} getProducts={getProducts}/>}
+          body={
+            <ProductModal
+              setModal={setModal}
+              product={product}
+              getProducts={getProducts}
+            />
+          }
           setShow={setModal}
         />
       )}
@@ -43,6 +58,6 @@ export default function TableRow({ product, getProducts, }) {
 }
 
 TableRow.propTypes = {
-  product:PropTypes.object,
+  product: PropTypes.object,
   getProducts: PropTypes.func,
 };

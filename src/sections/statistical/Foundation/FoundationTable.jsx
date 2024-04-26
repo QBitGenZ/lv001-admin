@@ -17,7 +17,7 @@ export default function FoundationTable() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setCharity(data);
+        setCharity(data?.data);
         setTotalPage(data?.meta?.total_pages);
       })
       .catch((error) => console.log(error));

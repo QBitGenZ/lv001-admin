@@ -17,8 +17,14 @@ export default function EventModal({ event, getEvents, setModal, }) {
       },
       body: form,
     })
-      .then((res) => res.json())
-      .then(() => getEvents())
+      .then((res) => {
+        if (res.status === 200) {
+          alert('Kiểm duyệt sự kiện thành công');
+          getEvents();
+        } else {
+          Promise.reject('Kiểm duyệt sự kiện không thành công');
+        }
+      })
       .catch((error) => console.log(error));
   };
   const setAcceptModal = () => {
@@ -44,17 +50,17 @@ export default function EventModal({ event, getEvents, setModal, }) {
               {moment(event?.create_at).format('HH:mm DD/MM/YYYY')}
             </p>
           </div>
-          {/* <div className='infoimage'>
-            {event.event_image.map((image) => {
+          <div className='infoimage'>
+            {event?.event_image?.map((image) => {
               return (
                 <img
-                  key={image.src}
-                  src={`${process.env.REACT_APP_IMAGE_HOST_IP}${image.src}`}
-                  alt={image.alt}
+                  key={image?.src}
+                  src={`${process.env.REACT_APP_IMAGE_HOST_IP}${image?.src}`}
+                  alt={image?.alt}
                 />
               );
             })}
-          </div> */}
+          </div>
           <div>
             <table className={'protable'}>
               <tr className='inforow'>
@@ -68,7 +74,13 @@ export default function EventModal({ event, getEvents, setModal, }) {
               <tr className='inforow'>
                 <th className='inforth'>Mô tả sản phẩm: </th>
                 <td>
-                  <p className='spcontent'>{event?.description}</p>
+                  <p
+                    className='spcontent'
+                    dangerouslySetInnerHTML={{
+                      __html: event?.description,
+                    }}
+                  >
+                  </p>
                 </td>
               </tr>
             </table>

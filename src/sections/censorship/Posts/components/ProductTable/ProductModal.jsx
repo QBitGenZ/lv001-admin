@@ -9,7 +9,7 @@ export default function ProductModal({ product, getProducts, setModal, }) {
   const [acptmodal, setAcptModal,] = useState(false);
   const updateStatus = (status) => {
     const form = new FormData();
-    form.append('status',status);
+    form.append('status', status);
     fetch(`${process.env.REACT_APP_HOST_IP}/products/${product?.id}/`, {
       method: 'PUT',
       headers: {
@@ -18,8 +18,14 @@ export default function ProductModal({ product, getProducts, setModal, }) {
       },
       body: form,
     })
-      .then((res) => res.json())
-      .then(() => getProducts())
+      .then((res) => {
+        if (res.status === 200) {
+          alert('Kiểm duyệt sản phẩm thành công');
+          getProducts();
+        } else {
+          Promise.reject('Kiểm duyệt sản phẩm không thành công');
+        }
+      })
       .catch((error) => console.log(error));
   };
   const setAcceptModal = () => {

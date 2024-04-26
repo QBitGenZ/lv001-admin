@@ -12,6 +12,7 @@ export default function TypeOfProductSection() {
   const [typePs, setTypePs,] = useState([]);
   const [currentPage, setCurrentPage,] = useState(1);
   const [totalPage, setTotalPage,] = useState(0);
+  const [total,setTotal,] = useState(0);
   useEffect(() => {
     loadTypeP();
   }, [currentPage,]);
@@ -27,6 +28,7 @@ export default function TypeOfProductSection() {
       .then((data) => {
         setTypePs(data.data);
         setTotalPage(data?.meta?.total_pages);
+        setTotal(data?.meta?.total);
       }
       )
       .catch((error) => alert(error));
@@ -37,7 +39,7 @@ export default function TypeOfProductSection() {
       <div className={'header'}>
         <div className={'quantity-block block1'}>
           <span>Tổng số loại sản phẩm</span>
-          <span className={'number'}>{typePs.length}</span>
+          <span className={'number'}>{total}</span>
         </div>
         <div className={'add-block block1'} onClick={handleClickAdd}>
           <FontAwesomeIcon icon={faPlus} />

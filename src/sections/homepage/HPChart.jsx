@@ -16,8 +16,6 @@ export default function HPChart() {
     loadStatis();
   }, []);
   const loadStatis = () => {
-    console.log(fromdate);
-    console.log(todate);
     fetch(
       `${process.env.REACT_APP_HOST_IP}/statistics/orders/?from_date=${fromdate}&to_date=${todate}`,
       {

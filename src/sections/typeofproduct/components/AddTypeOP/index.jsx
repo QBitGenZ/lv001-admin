@@ -15,24 +15,40 @@ export default function AddTypeOP({ setShowAdd, loadTypeP, }) {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
         Accept: 'application/json',
-      },body:form,
+      },
+      body: form,
     })
-      .then((res) => res.json())
-      .then(()=>alert('Thêm thông báo thành công'))
-      .then(()=>setShowAdd(false))
-      .then(()=>loadTypeP())
+      .then((res) => {
+        if (res.status === 201) {
+          alert('Thêm loại sản phẩm thành công');
+          setShowAdd(false);
+          loadTypeP();
+        } else {
+          Promise.reject('Thêm loại sản phẩm không thành công');
+        }
+      })
       .catch((error) => alert(error));
   }
 
   return (
     <div id={'Add-Notification'}>
       <label>Tên loại sản phẩm</label>
-      <textarea rows={4} onChange={(e)=>setTitle(e.target.value)} value={title}/>
+      <textarea
+        rows={4}
+        onChange={(e) => setTitle(e.target.value)}
+        value={title}
+      />
       <label>Mô tả:</label>
-      <textarea rows={10} onChange={(e)=>setContent(e.target.value)} value={content}/>
-      <div style={{
-        float: 'right',
-      }}>
+      <textarea
+        rows={10}
+        onChange={(e) => setContent(e.target.value)}
+        value={content}
+      />
+      <div
+        style={{
+          float: 'right',
+        }}
+      >
         <button onClick={addNotification}>Lưu</button>
       </div>
     </div>

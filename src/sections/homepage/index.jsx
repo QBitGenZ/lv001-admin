@@ -1,5 +1,5 @@
 // import React from 'react';
-import React, { useEffect, useState, } from 'react';
+import React, { useState, useEffect, } from 'react';
 import SmallContainerHP from './SmallContainerHP';
 import HPChart from './HPChart';
 export default function HomePageSection() {
@@ -15,13 +15,13 @@ export default function HomePageSection() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setBuyer(data);
+        setBuyer(data?.meta?.total);
       })
       .catch((error) => console.log(error));
   }, []);
-  const [sellers, setSeller,] = useState([]);
+  const [fund, setFund,] = useState([]);
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_HOST_IP}/user?is_seller=true`, {
+    fetch(`${process.env.REACT_APP_HOST_IP}/statistics/total-fund/`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
@@ -30,7 +30,7 @@ export default function HomePageSection() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setSeller(data);
+        setFund(data?.data);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -45,7 +45,7 @@ export default function HomePageSection() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setCharity(data);
+        setCharity(data?.data);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -53,19 +53,19 @@ export default function HomePageSection() {
     <div id={'HomePageSection'}>
       <div className={'container'}>
         <SmallContainerHP
-          title={'Tổng số người bán'}
-          newnumber={sellers.length}
-          unit={'Người'}
-        />
-        <SmallContainerHP
-          title={'Tổng số người mua'}
-          newnumber={buyers.length}
+          title={'Tổng số người dùng'}
+          newnumber={buyers}
           unit={'Người'}
         />
         <SmallContainerHP
           title={'Tổng số đơn vị từ thiện'}
-          newnumber={charities.length}
+          newnumber={charities?.length}
           unit={'Đơn vị'}
+        />
+        <SmallContainerHP
+          title={'Quỹ từ thiện'}
+          newnumber={fund}
+          unit={'VNĐ'}
         />
       </div>
       <div className={'chart-container'}>

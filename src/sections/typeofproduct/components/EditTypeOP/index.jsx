@@ -3,8 +3,8 @@ import './AddNotification.css';
 import PropTypes from 'prop-types';
 
 export default function EditTypeOP({ typeP, setModal, loadTypeP, }) {
-  const [title, setTitle, ] = useState(typeP?.name);
-  const [text, setText, ] = useState(typeP?.description);
+  const [title, setTitle,] = useState(typeP?.name);
+  const [text, setText,] = useState(typeP?.description);
   function editNotif(e) {
     e.preventDefault();
     const form = new FormData();
@@ -18,21 +18,36 @@ export default function EditTypeOP({ typeP, setModal, loadTypeP, }) {
       },
       body: form,
     })
-      .then((res) => res.json())
-      .then(()=>alert('Cập nhật loại sản phẩm thành công'))
-      .then(() => loadTypeP())
-      .then(()=>setModal(false))
+      .then((res) => {
+        if (res.status === 201) {
+          alert('Cập nhật loại sản phẩm thành công');
+          setModal(false);
+          loadTypeP();
+        } else {
+          Promise.reject('Cập nhật loại không sản phẩm thành công');
+        }
+      })
       .catch((error) => alert(error));
   }
   return (
     <div id={'Add-Notification'}>
       <label>Tên loại sản phẩm</label>
-      <textarea rows={4} value={title} onChange={(e)=>setTitle(e.target.value)}/>
+      <textarea
+        rows={4}
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
       <label>Mô tả: </label>
-      <textarea rows={10} value={text} onChange={(e)=>setText(e.target.value)}/>
-      <div style={{
-        float: 'right',
-      }}>
+      <textarea
+        rows={10}
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      />
+      <div
+        style={{
+          float: 'right',
+        }}
+      >
         <button onClick={editNotif}>Lưu</button>
       </div>
     </div>

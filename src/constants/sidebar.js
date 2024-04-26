@@ -1,6 +1,5 @@
 import { faCircleCheck,
   faSquarePollVertical,
-  faPenToSquare,
   faGear,
   faHouse,
   faUser,
@@ -37,34 +36,34 @@ const data = [
     logo: faSquarePollVertical,
     subs: [
       {
-        id: 2,
-        label: 'Thống kê người bán',
-      },
-      {
         id: 3,
-        label: 'Thống kê người mua',
+        label: 'Thống kê người dùng',
       },
       {
         id: 4,
         label: 'Thống kê đơn vị từ thiện',
       },
-    ],
-  },
-  {
-    id: 4,
-    label: 'Đăng tải',
-    logo: faPenToSquare,
-    subs: [
       {
-        id: 1,
-        label: 'Đăng thông báo',
-      },
-      {
-        id: 2,
-        label: 'Đăng sự kiện',
+        id: 5,
+        label: 'Thống kê sự kiện',
       },
     ],
   },
+  // {
+  //   id: 4,
+  //   label: 'Đăng tải',
+  //   logo: faPenToSquare,
+  //   subs: [
+  //     {
+  //       id: 1,
+  //       label: 'Đăng thông báo',
+  //     },
+  //     {
+  //       id: 2,
+  //       label: 'Đăng sự kiện',
+  //     },
+  //   ],
+  // },
   {
     id: 5,
     label: 'Quản lý loại sản phẩm',

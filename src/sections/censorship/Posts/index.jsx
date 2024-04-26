@@ -10,13 +10,14 @@ export default function PostCencorSection() {
   const [degree, setDegree,] = useState('all');
   const [size, setSize,] = useState('all');
   const [gender, setGender,] = useState('all');
+  const [total, setTotal, ] = useState(0);
   useEffect(() => {
     getProducts();
-  }, [currentPage,size,gender,degree,]);
+  }, [currentPage, size, gender, degree,]);
 
   const getProducts = () => {
     fetch(
-      `${process.env.REACT_APP_HOST_IP}/products/?page=${currentPage}&degree=${degree}&gender=${gender}&size=${size}`,
+      `${process.env.REACT_APP_HOST_IP}/products/?page=${currentPage}&degree=${degree}&gender=${gender}&size=${size}&limit=12`,
       {
         method: 'GET',
         headers: {
@@ -29,6 +30,7 @@ export default function PostCencorSection() {
       .then((data) => {
         setProduct(data?.data);
         setTotalPage(data?.meta?.total_pages);
+        setTotal(data?.meta?.total);
       })
       .catch((error) => console.log(error));
   };
@@ -36,7 +38,7 @@ export default function PostCencorSection() {
   return (
     <div id={'ProductSection'}>
       <div>
-        <HeaderBar products={products} />
+        <HeaderBar total={total} />
         <Filter
           gender={gender}
           setGender={setGender}

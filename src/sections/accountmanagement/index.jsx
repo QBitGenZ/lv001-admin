@@ -11,6 +11,7 @@ export default function AccountManagementSection() {
   const [accounts, setAccounts,] = useState([]);
   const [currentPage, setCurrentPage,] = useState(1);
   const [totalPage, setTotalPage,] = useState(0);
+  const [total, setTotal, ] = useState(0);
   useEffect(() => {
     loadAccount();
   }, [currentPage,]);
@@ -24,8 +25,9 @@ export default function AccountManagementSection() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setAccounts(data);
+        setAccounts(data?.data);
         setTotalPage(data?.meta?.total_pages);
+        setTotal(data?.meta?.total);
       })
       .catch((error) => alert(error));
   };
@@ -35,7 +37,7 @@ export default function AccountManagementSection() {
       <div className={'header'}>
         <div className={'quantity-block block1'}>
           <span>Tổng số tài khoản</span>
-          <span className={'number'}>{accounts?.length}</span>
+          <span className={'number'}>{total}</span>
         </div>
         <div className={'add-block block1'} onClick={handleClickAdd}>
           <FontAwesomeIcon icon={faPlus} />
