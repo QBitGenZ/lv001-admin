@@ -2,9 +2,10 @@ import './App.css';
 import React, { useLayoutEffect, useState, } from 'react';
 import { HeaderSection, Sidebar, } from './sections/commons';
 import { EventSection, NotificationSection, } from './sections/publish';
-import { EventCenSorSection, PostCencorSection, UserCencorSection, } from './sections/censorship';
-import { SellerStatisSection,
-  BuyerStatisSection,
+import { EventCenSorSection,
+  PostCencorSection,
+  UserCencorSection, } from './sections/censorship';
+import { BuyerStatisSection,
   FoundationStatisSection, } from './sections/statistical';
 import HomePageSection from './sections/homepage';
 import { Login, } from './pages';
@@ -28,17 +29,17 @@ function App() {
   const renderSection = () => {
     if (title === 'Trang chủ') return <HomePageSection />;
     if (title === 'Đăng thông báo') return <NotificationSection />;
-    if (title === 'Đăng sự kiện') return <EventSection />;
+    if (title === 'Thống kê sự kiện') return <EventSection />;
     if (title === 'Kiểm duyệt sản phẩm') return <PostCencorSection />;
     if (title === 'Kiểm duyệt thông tin') return <UserCencorSection />;
     if (title === 'Kiểm duyệt sự kiện') return <EventCenSorSection />;
-    if (title === 'Thống kê người bán') return <SellerStatisSection />;
-    if (title === 'Thống kê người mua') return <BuyerStatisSection />;
+    if (title === 'Thống kê người dùng') return <BuyerStatisSection />;
     if (title === 'Thống kê đơn vị từ thiện')
       return <FoundationStatisSection />;
-    if (title === 'Thông tin cá nhân') return <UpdateInformation setLogin={setLogin} />;
-    if (title === 'Quản lý loại sản phẩm') return <TypeOfProductSection/> ;
-    if (title === 'Quản lý tài khoản') return <AccountManagementSection/> ;
+    if (title === 'Thông tin cá nhân')
+      return <UpdateInformation setLogin={setLogin} />;
+    if (title === 'Quản lý loại sản phẩm') return <TypeOfProductSection />;
+    if (title === 'Quản lý tài khoản') return <AccountManagementSection />;
   };
   console.log(title);
   return (

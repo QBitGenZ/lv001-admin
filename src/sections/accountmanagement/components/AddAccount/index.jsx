@@ -20,30 +20,60 @@ export default function AddAccount({ setShowAdd, loadAccount, }) {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('access')}`,
         Accept: 'application/json',
-      },body:form,
+      },
+      body: form,
     })
-      .then((res) => res.json())
-      .then(()=>alert('Thêm tài khoản thành công'))
-      .then(()=>setShowAdd(false))
-      .then(()=>loadAccount())
+      .then((res) => {
+        if (res.status === 201) {
+          alert('Thêm tài khoản thành công');
+          loadAccount();
+          setShowAdd(false);
+        } else {
+          Promise.reject('Thêm tài khoản không thành công');
+        }
+      })
       .catch((error) => alert(error));
   }
 
   return (
     <div id={'Add-Account'}>
       <label>Tên tài khoản</label>
-      <textarea rows={2} onChange={(e)=>setUsername(e.target.value)} value={username}/>
+      <textarea
+        rows={2}
+        onChange={(e) => setUsername(e.target.value)}
+        value={username}
+      />
       <label>Email</label>
-      <textarea rows={2} onChange={(e)=>setEmail(e.target.value)} value={email}/>
+      <textarea
+        rows={2}
+        onChange={(e) => setEmail(e.target.value)}
+        value={email}
+      />
       <label>Số điện thoại</label>
-      <textarea rows={2} onChange={(e)=>setPhone(e.target.value)} value={phone}/>
+      <textarea
+        rows={2}
+        onChange={(e) => setPhone(e.target.value)}
+        value={phone}
+      />
       <label>Họ và tên</label>
-      <textarea rows={2} onChange={(e)=>setFull_name(e.target.value)} value={full_name}/>
+      <textarea
+        rows={2}
+        onChange={(e) => setFull_name(e.target.value)}
+        value={full_name}
+      />
       <label>Mật khẩu</label>
-      <input className={'input-password'} type='password' rows={2} onChange={(e)=>setPassword(e.target.value)} value={password}/>
-      <div style={{
-        float: 'right',
-      }}>
+      <input
+        className={'input-password'}
+        type='password'
+        rows={2}
+        onChange={(e) => setPassword(e.target.value)}
+        value={password}
+      />
+      <div
+        style={{
+          float: 'right',
+        }}
+      >
         <button onClick={addNotification}>Lưu</button>
       </div>
     </div>

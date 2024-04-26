@@ -3,7 +3,7 @@ import React, { useState, } from 'react';
 import EventModal from './EventModal';
 import Modal from '../../../../../components/Modal';
 import moment from 'moment';
-export default function TableRow({ event, getEvents, }) {
+export default function TableRow({ event, getEvents, index, }) {
   const [modal, setModal,] = useState(false);
 
   const toggleModal = () => {
@@ -12,10 +12,22 @@ export default function TableRow({ event, getEvents, }) {
   return (
     <>
       <tr onClick={toggleModal} className='ModalBtn propdtabletr'>
+        <td className='prodtabletd prodtabletdth'>{index + 1}</td>
+        <td
+          className='prodtabletd prodtabletdth'
+          style={{
+            textAlign: 'left',
+          }}
+        >
+          {event?.name}
+        </td>
         <td className='prodtabletd prodtabletdth'>{event?.user}</td>
-        <td className='prodtabletd prodtabletdth'>{event?.name}</td>
-        <td className='prodtabletd prodtabletdth'>{moment(event?.beginAt).format('HH:mm DD/MM/YYYY')}</td>
-        <td className='prodtabletd prodtabletdth'>{moment(event?.endAt).format('HH:mm DD/MM/YYYY')}</td>
+        <td className='prodtabletd prodtabletdth'>
+          {moment(event?.beginAt).format('HH:mm DD/MM/YYYY')}
+        </td>
+        <td className='prodtabletd prodtabletdth'>
+          {moment(event?.endAt).format('HH:mm DD/MM/YYYY')}
+        </td>
         <td className='prodtabletd prodtabletdth'>
           <p
             className={
@@ -35,7 +47,13 @@ export default function TableRow({ event, getEvents, }) {
       {modal && (
         <Modal
           title={'Kiểm duyệt sự kiện'}
-          body={<EventModal setModal={setModal} event={event} getEvents={getEvents}/>}
+          body={
+            <EventModal
+              setModal={setModal}
+              event={event}
+              getEvents={getEvents}
+            />
+          }
           setShow={setModal}
         />
       )}
@@ -44,6 +62,7 @@ export default function TableRow({ event, getEvents, }) {
 }
 
 TableRow.propTypes = {
-  event:PropTypes.object,
+  event: PropTypes.object,
   getEvents: PropTypes.func,
+  index: PropTypes.number,
 };

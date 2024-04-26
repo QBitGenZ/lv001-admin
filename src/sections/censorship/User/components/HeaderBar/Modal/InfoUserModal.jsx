@@ -21,7 +21,7 @@ export default function InfoUserModal({ charity, getUsers, setModal, }) {
   };
   const updateStatus = (status) => {
     const form = new FormData();
-    form.append('status',status);
+    form.append('status', status);
     fetch(`${process.env.REACT_APP_HOST_IP}/status/${charity?.username}`, {
       method: 'PUT',
       headers: {
@@ -30,8 +30,14 @@ export default function InfoUserModal({ charity, getUsers, setModal, }) {
       },
       body: form,
     })
-      .then((res) => res.json())
-      .then(()=>getUsers())
+      .then((res) => {
+        if (res.status === 200) {
+          alert('Kiểm duyệt tổ chức từ thiên thành công');
+          getUsers();
+        } else {
+          Promise.reject('Kiểm duyệt tổ chức từ thiện không thành công');
+        }
+      })
       .catch((error) => console.log(error));
   };
 

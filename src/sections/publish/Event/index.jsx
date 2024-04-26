@@ -1,7 +1,7 @@
 import React, { useState, useEffect, } from 'react';
 import './Event.css';
-import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
-import { faPen, } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome';
+// import { faPen, } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
 import EventDetail from './components/EventDetail/index.jsx';
 import { Modal, } from '../../../components';
@@ -15,6 +15,7 @@ export default function EventSection() {
   const [currentPage, setCurrentPage,] = useState(1);
   const [totalPage, setTotalPage,] = useState(0);
   const [search, setSearch,] = useState('');
+  const [total, setTotal,] = useState(0);
   useEffect(() => {
     if (search.length != 0) {
       searchEvent();
@@ -35,6 +36,7 @@ export default function EventSection() {
       .then((data) => {
         setEvent(data.data);
         setTotalPage(data?.meta?.total_pages);
+        setTotal(data?.meta?.total);
       })
       .catch((error) => console.log(error));
   };
@@ -62,7 +64,7 @@ export default function EventSection() {
       <div className={'header'}>
         <div className={'quantity-block block'}>
           <span>Tổng số sự kiện</span>
-          <span className={'number'}>{events.length}</span>
+          <span className={'number'}>{total}</span>
         </div>
         <input
           className={'block search-input'}
@@ -132,10 +134,10 @@ function EventItem({ event, loadEvent, }) {
             {changeDateLocal(event?.created_at)}
           </div>
         </div>
-        <div className={'edit-container'} onClick={() => setShowEdit(true)}>
+        {/* <div className={'edit-container'} onClick={() => setShowEdit(true)}>
           <span>Chỉnh sửa</span>
           <FontAwesomeIcon icon={faPen} />
-        </div>
+        </div> */}
         {showEdit && (
           <Modal
             setShow={setShowEdit}

@@ -15,7 +15,7 @@ export default function HomePageSection() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setBuyer(data);
+        setBuyer(data?.data);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -30,7 +30,7 @@ export default function HomePageSection() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setSeller(data);
+        setSeller(data?.data);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -45,7 +45,7 @@ export default function HomePageSection() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setCharity(data);
+        setCharity(data?.data);
       })
       .catch((error) => console.log(error));
   }, []);

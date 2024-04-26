@@ -15,14 +15,15 @@ export default function EventTable({
     <div className={'event-Table'}>
       <table id='eventTable'>
         <tr className='propdtabletr'>
-          <th className='prodtabletdth prodtableth'>Người đăng</th>
+          <th className='prodtabletdth prodtableth'>STT</th>
           <th className='prodtabletdth prodtableth'>Sự kiện</th>
+          <th className='prodtabletdth prodtableth'>Người đăng</th>
           <th className='prodtabletdth prodtableth'>Thời gian bắt đầu</th>
           <th className='prodtabletdth prodtableth'>Thời gian kết thúc</th>
           <th className='prodtabletdth prodtableth'>Trạng thái</th>
         </tr>
-        {events?.map((event) => (
-          <TableRow key={event?.id} event={event} getEvents={getEvents} />
+        {events?.map((event,index) => (
+          <TableRow key={event?.id} index={index} event={event} getEvents={getEvents} />
         ))}
       </table>
       <Pagination

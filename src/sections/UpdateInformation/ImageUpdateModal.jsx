@@ -17,7 +17,13 @@ export default function ImageUpdateModal({ admin, getInfo, }) {
       },
       body: form,
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 200){
+          alert('Chỉnh sửa thông tin thành công');
+          getInfo();
+        }
+        else return Promise.reject('Thông tin không hợp lệ');
+      })
       .catch((error) => console.log(error));
 
     getInfo();

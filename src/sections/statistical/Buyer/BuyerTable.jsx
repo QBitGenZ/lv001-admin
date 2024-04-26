@@ -7,6 +7,7 @@ export default function BuyerTable() {
   const [buyers, setBuyer,] = useState([]);
   const [currentPage, setCurrentPage,] = useState(1);
   const [totalPage, setTotalPage,] = useState(0);
+  const [total, setTotal,] = useState(0);
   useEffect(() => {
     fetch(`${process.env.REACT_APP_HOST_IP}/user?page=${currentPage}`, {
       method: 'GET',
@@ -17,14 +18,15 @@ export default function BuyerTable() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setBuyer(data);
+        setBuyer(data?.data);
         setTotalPage(data?.meta?.total_pages);
+        setTotal(data?.meta?.total);
       })
       .catch((error) => console.log(error));
   }, [currentPage,]);
   return (
     <div>
-      <HeaderBar title={'Tổng số người mua: '} number={buyers?.length} />
+      <HeaderBar title={'Tổng số người mua: '} number={total} />
       <div className={'Seller-Table'}>
         <table id='SellerTable'>
           <tr className='propdtabletr'>

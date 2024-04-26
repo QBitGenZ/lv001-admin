@@ -11,11 +11,19 @@ export default function UserTableRow({ charity, getUsers, }) {
   };
   console.log(charity);
   return (
-    
     <>
       <tr onClick={toggleModal} className='ModalBtn propdtabletr'>
-        <td className='prodtabletd prodtabletdth'>{charity?.full_name}</td>
-        <td className='prodtabletd prodtabletdth'>{moment(charity?.create_at).format('HH:mm DD/MM/YYYY')}</td>
+        <td
+          className='prodtabletd prodtabletdth'
+          style={{
+            textAlign: 'left', 
+          }}
+        >
+          {charity?.full_name}
+        </td>
+        <td className='prodtabletd prodtabletdth'>
+          {moment(charity?.create_at).format('HH:mm DD/MM/YYYY')}
+        </td>
         <td className='prodtabletd prodtabletdth'>
           <p
             className={
@@ -35,7 +43,13 @@ export default function UserTableRow({ charity, getUsers, }) {
       {modal && (
         <Modal
           title={'Kiểm duyệt thông tin tổ chức từ thiện'}
-          body={<InfoUserModal setModal={setModal} charity={charity} getUsers={getUsers} />}
+          body={
+            <InfoUserModal
+              setModal={setModal}
+              charity={charity}
+              getUsers={getUsers}
+            />
+          }
           setShow={setModal}
         />
       )}

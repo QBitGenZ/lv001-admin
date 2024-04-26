@@ -17,7 +17,7 @@ export default function SellerTable() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setSeller(data);
+        setSeller(data?.data);
         setTotalPage(data?.meta?.total_pages);
       })
       .catch((error) => console.log(error));
