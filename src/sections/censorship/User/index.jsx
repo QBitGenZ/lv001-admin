@@ -30,12 +30,6 @@ export default function UserCencorSection() {
       .catch((error) => console.log(error));
   };
   const [chuaduyet, setchuaduyet,] = useState(0);
-  useEffect(() => {
-    getchuaduyet();
-    getdaduyet();
-    getbaocao();
-    gettuchoi();
-  }, []);
   const getchuaduyet = async () => {
     fetch(
       `${process.env.REACT_APP_HOST_IP}/statistics/count-event-by-status/?status=Chưa xác minh`,
