@@ -5,31 +5,33 @@ import PropTypes from 'prop-types';
 export default function AddTypeOP({ setShowAdd, loadTypeP, }) {
   const [title, setTitle,] = useState();
   const [content, setContent,] = useState();
-  function addNotification(e) {
-    e.preventDefault();
-    const form = new FormData();
-    form.append('name', title);
-    form.append('description', content);
-    fetch(`${process.env.REACT_APP_HOST_IP}/products/types/`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('access')}`,
-        Accept: 'application/json',
-      },
-      body: form,
-    })
-      .then((res) => {
-        if (res.status === 201) {
-          alert('Thêm loại sản phẩm thành công');
-          setShowAdd(false);
-          loadTypeP();
-        } else {
-          Promise.reject('Thêm loại sản phẩm không thành công');
-        }
+  const addType = () => {
+    if (title === undefined || title === '' || title === ' ') {
+      alert('Vui lòng nhập tên loại sẩn phẩm');
+    } else {
+      const form = new FormData();
+      form.append('name', title);
+      form.append('description', content);
+      fetch(`${process.env.REACT_APP_HOST_IP}/products/types/`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access')}`,
+          Accept: 'application/json',
+        },
+        body: form,
       })
-      .catch((error) => alert(error));
-  }
-
+        .then((res) => {
+          if (res.status === 201) {
+            alert('Thêm loại sản phẩm thành công');
+            setShowAdd(false);
+            loadTypeP();
+          } else {
+            Promise.reject('Thêm loại sản phẩm không thành công');
+          }
+        })
+        .catch((error) => alert(error));
+    }
+  };
   return (
     <div id={'Add-Notification'}>
       <label>Tên loại sản phẩm</label>
@@ -49,7 +51,7 @@ export default function AddTypeOP({ setShowAdd, loadTypeP, }) {
           float: 'right',
         }}
       >
-        <button onClick={addNotification}>Lưu</button>
+        <button onClick={addType}>Lưu</button>
       </div>
     </div>
   );

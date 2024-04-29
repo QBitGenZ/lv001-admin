@@ -5,8 +5,7 @@ import PropTypes from 'prop-types';
 export default function EditTypeOP({ typeP, setModal, loadTypeP, }) {
   const [title, setTitle,] = useState(typeP?.name);
   const [text, setText,] = useState(typeP?.description);
-  function editNotif(e) {
-    e.preventDefault();
+  const editType = () => {
     const form = new FormData();
     form.append('name', title);
     form.append('description', text);
@@ -28,7 +27,26 @@ export default function EditTypeOP({ typeP, setModal, loadTypeP, }) {
         }
       })
       .catch((error) => alert(error));
-  }
+  };
+  const deleteType = () => {
+    fetch(`${process.env.REACT_APP_HOST_IP}/products/types/${typeP?.id}/`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('access')}`,
+        Accept: 'application/json',
+      },
+    })
+      .then((res) => {
+        if (res.status === 204) {
+          alert('Xóa loại sản phẩm thành công');
+          setModal(false);
+          loadTypeP();
+        } else {
+          Promise.reject('Xóa loại sản phẩm không thành công');
+        }
+      })
+      .catch((error) => alert(error));
+  };
   return (
     <div id={'Add-Notification'}>
       <label>Tên loại sản phẩm</label>
@@ -48,7 +66,12 @@ export default function EditTypeOP({ typeP, setModal, loadTypeP, }) {
           float: 'right',
         }}
       >
-        <button onClick={editNotif}>Lưu</button>
+        <button onClick={deleteType} style={{
+          backgroundColor: 'red', 
+        }}>
+          Xóa
+        </button>
+        <button onClick={editType}>Lưu</button>
       </div>
     </div>
   );
