@@ -3,7 +3,7 @@
     display: block;
     text-align: left;
     width: 90%;
-    margin: 5;
+    margin: 1% 5%;
     padding-bottom: 20px;
     border-bottom: 1px solid #ADADAD;
 }
@@ -30,7 +30,7 @@
 
 #Notification-Detail>.body {
     width: 90%;
-    margin: 0 5% 33px 5%;
+    margin: 1% 5%;
     display: block;
     text-align: justify;
 }

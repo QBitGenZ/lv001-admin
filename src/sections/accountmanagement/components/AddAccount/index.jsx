@@ -29,7 +29,7 @@ export default function AddAccount({ setShowAdd, loadAccount, }) {
           loadAccount();
           setShowAdd(false);
         } else {
-          Promise.reject('Thêm tài khoản không thành công');
+          return Promise.reject('Thêm tài khoản không thành công');
         }
       })
       .catch((error) => alert(error));

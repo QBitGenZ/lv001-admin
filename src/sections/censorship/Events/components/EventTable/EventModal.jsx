@@ -3,7 +3,7 @@ import React, { useState, } from 'react';
 import Modal from '../../../../../components/Modal';
 import AcptModal from '../../../Posts/components/Modal/AcptModal';
 import moment from 'moment';
-export default function EventModal({ event, getEvents, setModal, }) {
+export default function EventModal({ event, getEvents, setModal, reload, }) {
   const [rejmodal, setRejModal,] = useState(false);
   const [acptmodal, setAcptModal,] = useState(false);
   const updateStatus = (status) => {
@@ -20,6 +20,7 @@ export default function EventModal({ event, getEvents, setModal, }) {
       .then((res) => {
         if (res.status === 200) {
           alert('Kiểm duyệt sự kiện thành công');
+          reload();
           getEvents();
         } else {
           Promise.reject('Kiểm duyệt sự kiện không thành công');
@@ -29,12 +30,14 @@ export default function EventModal({ event, getEvents, setModal, }) {
   };
   const setAcceptModal = () => {
     setAcptModal(true);
+    reload();
     updateStatus('Đã duyệt');
     setModal(false);
   };
 
   const setRejectModal = () => {
     setRejModal(true);
+    reload();
     updateStatus('Từ chối');
     setModal(false);
   };
@@ -126,5 +129,6 @@ export default function EventModal({ event, getEvents, setModal, }) {
 EventModal.propTypes = {
   setModal: PropTypes.func,
   getEvents: PropTypes.func,
+  reload: PropTypes.func,
   event: PropTypes.object,
 };

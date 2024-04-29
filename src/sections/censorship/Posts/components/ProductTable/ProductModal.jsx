@@ -4,7 +4,7 @@ import '../ProductTable/ProductModal.css';
 import Modal from '../../../../../components/Modal';
 import AcptModal from '../Modal/AcptModal';
 import moment from 'moment';
-export default function ProductModal({ product, getProducts, setModal, }) {
+export default function ProductModal({ product, getProducts, setModal, reload, }) {
   const [rejmodal, setRejModal,] = useState(false);
   const [acptmodal, setAcptModal,] = useState(false);
   const updateStatus = (status) => {
@@ -21,6 +21,7 @@ export default function ProductModal({ product, getProducts, setModal, }) {
       .then((res) => {
         if (res.status === 200) {
           alert('Kiểm duyệt sản phẩm thành công');
+          reload();
           getProducts();
         } else {
           Promise.reject('Kiểm duyệt sản phẩm không thành công');
@@ -122,4 +123,5 @@ ProductModal.propTypes = {
   setModal: PropTypes.func,
   getProducts: PropTypes.func,
   product: PropTypes.object,
+  reload: PropTypes.func,
 };

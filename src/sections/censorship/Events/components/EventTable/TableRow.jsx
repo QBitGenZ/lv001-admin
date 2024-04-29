@@ -3,7 +3,7 @@ import React, { useState, } from 'react';
 import EventModal from './EventModal';
 import Modal from '../../../../../components/Modal';
 import moment from 'moment';
-export default function TableRow({ event, getEvents, index, }) {
+export default function TableRow({ event, getEvents, index, reload, }) {
   const [modal, setModal,] = useState(false);
 
   const toggleModal = () => {
@@ -49,6 +49,7 @@ export default function TableRow({ event, getEvents, index, }) {
           title={'Kiểm duyệt sự kiện'}
           body={
             <EventModal
+              reload={reload}
               setModal={setModal}
               event={event}
               getEvents={getEvents}
@@ -64,5 +65,6 @@ export default function TableRow({ event, getEvents, index, }) {
 TableRow.propTypes = {
   event: PropTypes.object,
   getEvents: PropTypes.func,
+  reload: PropTypes.func,
   index: PropTypes.number,
 };

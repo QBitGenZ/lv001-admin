@@ -30,10 +30,94 @@ export default function EventCenSorSection() {
       })
       .catch((error) => console.log(error));
   };
+  const [chuaduyet, setchuaduyet,] = useState(0);
+  useEffect(() => {
+    getchuaduyet();
+    getdaduyet();
+    getbaocao();
+    gettuchoi();
+  }, []);
+  const getchuaduyet = async () => {
+    fetch(
+      `${process.env.REACT_APP_HOST_IP}/statistics/count-event-by-status/?status=Chưa duyệt`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access')}`,
+          Accept: 'application/json',
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setchuaduyet(data?.data);
+      })
+      .catch((error) => console.log(error));
+  };
+  const [daduyet, setdaduyet,] = useState(0);
+  const getdaduyet = async () => {
+    fetch(
+      `${process.env.REACT_APP_HOST_IP}/statistics/count-event-by-status/?status=Đã duyệt`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access')}`,
+          Accept: 'application/json',
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setdaduyet(data?.data);
+      })
+      .catch((error) => console.log(error));
+  };
+  const [baocao, setbaocao,] = useState(0);
+  const getbaocao = async () => {
+    fetch(
+      `${process.env.REACT_APP_HOST_IP}/statistics/count-event-by-status/?status=Báo cáo`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access')}`,
+          Accept: 'application/json',
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setbaocao(data?.data);
+      })
+      .catch((error) => console.log(error));
+  };
+  const [tuchoi, settuchoi,] = useState(0);
+  const gettuchoi = async () => {
+    fetch(
+      `${process.env.REACT_APP_HOST_IP}/statistics/count-event-by-status/?status=Từ chối`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access')}`,
+          Accept: 'application/json',
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        settuchoi(data?.data);
+      })
+      .catch((error) => console.log(error));
+  };
+  const reload = () => {
+    getbaocao();
+    getchuaduyet();
+    getdaduyet();
+    gettuchoi();
+  };
   return (
     <div id={'ProductSection'}>
       <div>
-        <HeaderBar total={total} />
+        <HeaderBar total={total} chuaduyet={chuaduyet} daduyet={daduyet} tuchoi={tuchoi} baocao={baocao} />
         <Filter setApproval={setApproval} setStatus={setStatus} status={status} approval={approval}/>
         <EventTable
           events={events}
@@ -41,6 +125,7 @@ export default function EventCenSorSection() {
           totalPage={totalPage}
           currentPage={currentPage}
           onPageChange={setCurrentPage}
+          reload={reload}
         />
       </div>
     </div>

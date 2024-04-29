@@ -9,6 +9,7 @@ export default function EventTable({
   totalPage,
   currentPage,
   onPageChange,
+  reload,
 }) {
   console.log(events);
   return (
@@ -23,7 +24,7 @@ export default function EventTable({
           <th className='prodtabletdth prodtableth'>Trạng thái</th>
         </tr>
         {events?.map((event,index) => (
-          <TableRow key={event?.id} index={index} event={event} getEvents={getEvents} />
+          <TableRow key={event?.id} index={index} event={event} getEvents={getEvents} reload={reload} />
         ))}
       </table>
       <Pagination
@@ -41,4 +42,5 @@ EventTable.propTypes = {
   totalPage: PropTypes.number,
   currentPage: PropTypes.number,
   onPageChange: PropTypes.func,
+  reload: PropTypes.func,
 };
