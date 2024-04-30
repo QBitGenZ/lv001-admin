@@ -1,0 +1,64 @@
+#order-container {
+    justify-items: center;
+    justify-content: center;
+    width: 55%;
+    margin: auto;
+  }
+  
+  #order-container .th {
+    text-align: left;
+    padding-left: 5%;
+  }
+  
+  #order-container .infortable {
+    border-spacing: 15px;
+    background-color: #eeeeee;
+  }
+  
+  #order-container .table-name {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+  }
+  
+  #order-container td {
+    color: #000;
+    font-family: "Source Sans Pro";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  #order-container .delete-button {
+    margin: 5% 1% 0 0;
+    border-radius: 5px;
+    background: #002d87;
+    color: #fff;
+    text-align: center;
+    font-family: 'Inter';
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  #order-container .delete1-button {
+    margin: 2% 0 5% 0;
+    border-radius: 5px;
+    background: #002d87;
+    color: #fff;
+    text-align: center;
+    font-family: 'Inter';
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+ #order-container button:hover{
+    background-color: #0239a8 ;
+    cursor: pointer;
+ }

@@ -12,6 +12,7 @@ import { Login, } from './pages';
 import UpdateInformation from './sections/UpdateInformation';
 import TypeOfProductSection from './sections/typeofproduct';
 import AccountManagementSection from './sections/accountmanagement';
+import OrderManagementSection from './sections/orders';
 // import { LoginContainer, } from './pages';
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
       return <UpdateInformation setLogin={setLogin} />;
     if (title === 'Quản lý loại sản phẩm') return <TypeOfProductSection />;
     if (title === 'Quản lý tài khoản') return <AccountManagementSection />;
+    if (title === 'Quản lý đơn hàng') return <OrderManagementSection/>;
   };
   console.log(title);
   return (
