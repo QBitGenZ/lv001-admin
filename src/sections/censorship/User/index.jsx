@@ -101,11 +101,21 @@ export default function UserCencorSection() {
       })
       .catch((error) => console.log(error));
   };
+  const reload = () => {
+    getbaocao();
+    getchuaduyet();
+    gettuchoi();
+    getdaduyet();
+  };
   return (
     <div id={'UserSection'}>
       <div>
         <HeaderBar charities={charities} chuaduyet={chuaduyet} daduyet={daduyet} tuchoi={tuchoi} baocao={baocao} />
-        <UserTable charities={charities} getUsers={getUser} totalPage={totalPage}
+        <UserTable 
+          reload={reload}
+          charities={charities} 
+          getUsers={getUser} 
+          totalPage={totalPage}
           currentPage={currentPage}
           onPageChange={setCurrentPage}/>
       </div>

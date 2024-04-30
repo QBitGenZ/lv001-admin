@@ -114,7 +114,7 @@ function EventItem({ event, loadEvent, }) {
       {showDetail && (
         <Modal
           setShow={setShowDetail}
-          title={'Chi tiết thông báo'}
+          title={'Chi tiết sự kiện'}
           body={<EventDetail event={event} setShow={setShowDetail} />}
         />
       )}

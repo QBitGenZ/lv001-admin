@@ -9,6 +9,7 @@ export default function UserTable({
   totalPage,
   currentPage,
   onPageChange,
+  reload,
 }) {
   console.log(charities);
   return (
@@ -21,6 +22,7 @@ export default function UserTable({
         </tr>
         {charities?.map((charity) => (
           <UserTableRow
+            reload={reload}
             key={charity?.id}
             charity={charity}
             getUsers={getUsers}
@@ -41,4 +43,5 @@ UserTable.propTypes = {
   totalPage: PropTypes.number,
   currentPage: PropTypes.number,
   onPageChange: PropTypes.func,
+  reload: PropTypes.func,
 };

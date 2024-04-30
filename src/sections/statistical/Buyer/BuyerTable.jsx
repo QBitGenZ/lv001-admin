@@ -26,7 +26,7 @@ export default function BuyerTable() {
   }, [currentPage,]);
   return (
     <div>
-      <HeaderBar title={'Tổng số người mua: '} number={total} />
+      <HeaderBar title={'Tổng số người dùng: '} number={total} />
       <div className={'Seller-Table'}>
         <table id='SellerTable'>
           <tr className='propdtabletr'>

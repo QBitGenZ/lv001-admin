@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './ProductTable.css';
 import TableRow from './TableRow.jsx';
 import { Pagination, } from '../../../../../components/index.js';
-export default function ProductTable({ products, getProducts, currentPage, totalPage, onPageChange, }) {
+export default function ProductTable({ products, getProducts, currentPage, totalPage, onPageChange, reload, }) {
 
   return (
     <div className={'Product-Table'}>
@@ -16,6 +16,7 @@ export default function ProductTable({ products, getProducts, currentPage, total
         </tr>
         {products.map((product) => (
           <TableRow
+            reload={reload}
             key={product?.id}
             product={product}
             getProducts={getProducts}
@@ -38,4 +39,5 @@ ProductTable.propTypes = {
   currentPage: PropTypes.number,
   totalPage: PropTypes.number,
   onPageChange: PropTypes.func,
+  reload: PropTypes.func,
 };

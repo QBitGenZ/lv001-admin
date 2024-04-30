@@ -3,7 +3,7 @@ import React, { useState, } from 'react';
 import Modal from '../../../../../../components/Modal';
 import InfoUserModal from '../Modal/InfoUserModal';
 import moment from 'moment';
-export default function UserTableRow({ charity, getUsers, }) {
+export default function UserTableRow({ charity, getUsers, reload, }) {
   const [modal, setModal,] = useState(false);
 
   const toggleModal = () => {
@@ -45,6 +45,7 @@ export default function UserTableRow({ charity, getUsers, }) {
           title={'Kiểm duyệt thông tin tổ chức từ thiện'}
           body={
             <InfoUserModal
+              reload={reload}
               setModal={setModal}
               charity={charity}
               getUsers={getUsers}
@@ -60,4 +61,5 @@ export default function UserTableRow({ charity, getUsers, }) {
 UserTableRow.propTypes = {
   charity: PropTypes.object,
   getUsers: PropTypes.func,
+  reload: PropTypes.func,
 };

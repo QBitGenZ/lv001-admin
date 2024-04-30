@@ -4,7 +4,7 @@ import '../../../../Posts/components/ProductTable/ProductModal.css';
 import Modal from '../../../../../../components/Modal';
 import AcptModal from '../../../../Posts/components/Modal/AcptModal';
 import moment from 'moment';
-export default function InfoUserModal({ charity, getUsers, setModal, }) {
+export default function InfoUserModal({ charity, getUsers, setModal, reload, }) {
   const [rejmodal, setRejModal,] = useState(false);
   const [acptmodal, setAcptModal,] = useState(false);
 
@@ -33,6 +33,7 @@ export default function InfoUserModal({ charity, getUsers, setModal, }) {
       .then((res) => {
         if (res.status === 200) {
           alert('Kiểm duyệt tổ chức từ thiên thành công');
+          reload();
           getUsers();
         } else {
           Promise.reject('Kiểm duyệt tổ chức từ thiện không thành công');
@@ -97,4 +98,5 @@ InfoUserModal.propTypes = {
   setModal: PropTypes.func,
   charity: PropTypes.object,
   getUsers: PropTypes.func,
+  reload: PropTypes.func,
 };
