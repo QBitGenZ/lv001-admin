@@ -71,7 +71,9 @@ function MenuItem({ menuItem, setTitle, }) {
       setTitle('Quản lý loại sản phẩm');
     } else if (menuItem.label === 'Quản lý tài khoản') {
       setTitle('Quản lý tài khoản');
-    } else {
+    } else if (menuItem.label === 'Quản lý đơn hàng') {
+      setTitle('Quản lý đơn hàng');
+    }else {
       setShowSubs(!showSubs);
     }
   };
