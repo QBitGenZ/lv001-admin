@@ -16,12 +16,14 @@ export default function UserTable({
     <div className={'User-Table'}>
       <table id='ProductTable'>
         <tr className='propdtabletr'>
+          <th className='prodtabletdth prodtableth'>STT</th>
           <th className='prodtabletdth prodtableth'>Đơn vị từ thiện</th>
           <th className='prodtabletdth prodtableth'>Thời gian</th>
           <th className='prodtabletdth prodtableth'>Trạng thái</th>
         </tr>
-        {charities?.map((charity) => (
+        {charities?.map((charity,index) => (
           <UserTableRow
+            index={index+1}
             reload={reload}
             key={charity?.id}
             charity={charity}

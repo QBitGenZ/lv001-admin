@@ -28,16 +28,16 @@ export default function FoundationTable() {
       <div className={'Seller-Table'}>
         <table id='SellerTable'>
           <tr className='propdtabletr'>
-            <th className='prodtabletdth prodtableth'>UID</th>
-            <th className='prodtabletdth prodtableth prod'>Đơn vị từ thiện</th>
+            <th className='prodtabletdth prodtableth'>STT</th>
+            <th className='prodtabletdth prodtableth'>Đơn vị từ thiện</th>
             <th className='prodtabletdth prodtableth'>SDT</th>
-            <th className='prodtabletdth prodtableth prod'>Địa chỉ</th>
+            <th className='prodtabletdth prodtableth'>Địa chỉ</th>
           </tr>
-          {charities.map((charity) => (
+          {charities.map((charity,index) => (
             <BuyerTableRow
               key={charity.id}
               NameOrg={charity.full_name}
-              ID={charity.id}
+              index={index+1}
               SDT={charity.phone}
               Address={charity.email}
             />

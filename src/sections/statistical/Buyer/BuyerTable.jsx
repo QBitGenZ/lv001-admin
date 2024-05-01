@@ -30,13 +30,14 @@ export default function BuyerTable() {
       <div className={'Seller-Table'}>
         <table id='SellerTable'>
           <tr className='propdtabletr'>
-            <th className='prodtabletdth prodtableth'>UID</th>
-            <th className='prodtabletdth prodtableth prod'>Người mua</th>
+            <th className='prodtabletdth prodtableth'>STT</th>
+            <th className='prodtabletdth prodtableth'>Người dùng</th>
             <th className='prodtabletdth prodtableth'>SDT</th>
-            <th className='prodtabletdth prodtableth prod'>Địa chỉ</th>
+            <th className='prodtabletdth prodtableth'>Địa chỉ</th>
           </tr>
-          {buyers.map((buyer) => (
+          {buyers.map((buyer,index) => (
             <BuyerTableRow
+              index={index+1}
               key={buyer.id}
               NameOrg={buyer.full_name}
               ID={buyer.id}

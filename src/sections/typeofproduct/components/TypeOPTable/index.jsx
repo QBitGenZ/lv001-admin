@@ -7,11 +7,13 @@ export default function TypeOPTable({ typePs, loadTypeP, }) {
       <table id='ProductTable'>
         <tbody>
           <tr className='propdtabletr'>
+            <th className='prodtabletdth prodtableth'>STT</th>
             <th className='prodtabletdth prodtableth'>Loại sản phẩm</th>
             <th className='prodtabletdth prodtableth'>Ngày tạo</th>
           </tr>
-          {typePs?.map((typeP) => (
+          {typePs?.map((typeP,index) => (
             <TypeOPTableRow
+              index={index+1}
               key={typeP?.id}
               typeP={typeP}
               loadTypeP={loadTypeP}

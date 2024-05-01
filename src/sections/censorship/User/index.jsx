@@ -32,7 +32,7 @@ export default function UserCencorSection() {
   const [chuaduyet, setchuaduyet,] = useState(0);
   const getchuaduyet = async () => {
     fetch(
-      `${process.env.REACT_APP_HOST_IP}/statistics/count-event-by-status/?status=Chưa xác minh`,
+      `${process.env.REACT_APP_HOST_IP}/statistics/count-user-by-status/?status=Chưa xác minh`,
       {
         method: 'GET',
         headers: {

@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-export default function BuyerTableRow({ NameOrg, ID, SDT, Address, }) {
+export default function BuyerTableRow({ NameOrg, SDT, Address, index, }) {
   return (
     <>
       <tr className='ModalBtn propdtabletr'>
-        <td className='prodtabletd prodtabletdth'>{ID}</td>
+        <td className='prodtabletd prodtabletdth'>{index}</td>
         <td className='prod prodtabletdth'>{NameOrg}</td>
         <td className='prodtabletd prodtabletdth'>{SDT}</td>
         <td className='prod prodtabletd prodtabletdth'>{Address}</td>
@@ -18,4 +18,5 @@ BuyerTableRow.propTypes = {
   ID: PropTypes.string,
   SDT: PropTypes.string,
   Address: PropTypes.string,
+  index: PropTypes.number,
 };

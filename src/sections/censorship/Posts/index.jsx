@@ -11,35 +11,13 @@ export default function PostCencorSection() {
   const [size, setSize,] = useState('all');
   const [gender, setGender,] = useState('all');
   const [total, setTotal,] = useState(0);
+  const [pagination, setPagination,] = false;
   useEffect(() => {
-    if(degree!='all'||gender!='all'||total!='all'){
-      getProductsFilter();
-    }else{
-      getProducts();
-    } 
+    getProducts();
     reload();
   }, [currentPage, size, gender, degree,]);
 
   const getProducts = () => {
-    fetch(
-      `${process.env.REACT_APP_HOST_IP}/products/?page=${currentPage}`,
-      {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('access')}`,
-          Accept: 'application/json',
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setProduct(data?.data);
-        setTotalPage(data?.meta?.total_pages);
-        setTotal(data?.meta?.total);
-      })
-      .catch((error) => console.log(error));
-  };
-  const getProductsFilter = () => {
     fetch(
       `${process.env.REACT_APP_HOST_IP}/products/?page=${currentPage}&degree=${degree}&gender=${gender}&size=${size}&limit=12`,
       {
@@ -54,11 +32,17 @@ export default function PostCencorSection() {
       .then((data) => {
         setProduct(data?.data);
         setTotalPage(data?.meta?.total_pages);
+        setTotal(data?.meta?.total);
+        if (total > 0) {
+          setPagination(true);
+        } else {
+          setPagination(false);
+        }
       })
       .catch((error) => console.log(error));
   };
   const [chuaduyet, setchuaduyet,] = useState(0);
-  const reload =() => {
+  const reload = () => {
     getchuaduyet();
     getdaduyet();
     getbaocao();
@@ -138,7 +122,13 @@ export default function PostCencorSection() {
   return (
     <div id={'ProductSection'}>
       <div>
-        <HeaderBar total={tuchoi+daduyet+chuaduyet+baocao} tuchoi={tuchoi} baocao={baocao} chuaduyet={chuaduyet} daduyet={daduyet} />
+        <HeaderBar
+          total={tuchoi + daduyet + chuaduyet + baocao}
+          tuchoi={tuchoi}
+          baocao={baocao}
+          chuaduyet={chuaduyet}
+          daduyet={daduyet}
+        />
         <Filter
           gender={gender}
           setGender={setGender}
@@ -154,6 +144,7 @@ export default function PostCencorSection() {
           totalPage={totalPage}
           currentPage={currentPage}
           onPageChange={setCurrentPage}
+          pagination={pagination}
         />
       </div>
     </div>

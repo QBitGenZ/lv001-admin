@@ -75,7 +75,7 @@ export default function EventModal({ event, getEvents, setModal, reload, }) {
                 <td>{moment(event?.endAt).format('HH:mm DD/MM/YYYY')}</td>
               </tr>
               <tr className='inforow'>
-                <th className='inforth'>Mô tả sản phẩm: </th>
+                <th className='inforth'>Mô tả sự kiện: </th>
                 <td>
                   <p
                     className='spcontent'
