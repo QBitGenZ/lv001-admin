@@ -24,6 +24,7 @@ export default function BuyerTable() {
       })
       .catch((error) => console.log(error));
   }, [currentPage,]);
+  const pagination = total > 0 ? true : false;
   return (
     <div>
       <HeaderBar title={'Tổng số người dùng: '} number={total} />
@@ -35,9 +36,9 @@ export default function BuyerTable() {
             <th className='prodtabletdth prodtableth'>SDT</th>
             <th className='prodtabletdth prodtableth'>Địa chỉ</th>
           </tr>
-          {buyers.map((buyer,index) => (
+          {buyers.map((buyer, index) => (
             <BuyerTableRow
-              index={index+1}
+              index={index + 1}
               key={buyer.id}
               NameOrg={buyer.full_name}
               ID={buyer.id}
@@ -46,11 +47,13 @@ export default function BuyerTable() {
             />
           ))}
         </table>
-        <Pagination
-          totalPage={totalPage}
-          currentPage={currentPage}
-          onPageChange={setCurrentPage}
-        />
+        {pagination && (
+          <Pagination
+            totalPage={totalPage}
+            currentPage={currentPage}
+            onPageChange={setCurrentPage}
+          />
+        )}
       </div>
     </div>
   );

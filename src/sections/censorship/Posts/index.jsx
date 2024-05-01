@@ -11,7 +11,6 @@ export default function PostCencorSection() {
   const [size, setSize,] = useState('all');
   const [gender, setGender,] = useState('all');
   const [total, setTotal,] = useState(0);
-  const [pagination, setPagination,] = false;
   useEffect(() => {
     getProducts();
     reload();
@@ -33,11 +32,6 @@ export default function PostCencorSection() {
         setProduct(data?.data);
         setTotalPage(data?.meta?.total_pages);
         setTotal(data?.meta?.total);
-        if (total > 0) {
-          setPagination(true);
-        } else {
-          setPagination(false);
-        }
       })
       .catch((error) => console.log(error));
   };
@@ -144,7 +138,7 @@ export default function PostCencorSection() {
           totalPage={totalPage}
           currentPage={currentPage}
           onPageChange={setCurrentPage}
-          pagination={pagination}
+          total={total}
         />
       </div>
     </div>

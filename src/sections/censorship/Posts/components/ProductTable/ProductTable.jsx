@@ -10,11 +10,9 @@ export default function ProductTable({
   totalPage,
   onPageChange,
   reload,
+  total,
 }) {
-  // const kiemtra = () =>{
-  //   if (total > 0) return true;
-  //   return false;
-  // };
+  const pagination = total > 0 ? true : false;
   return (
     <div className={'Product-Table'}>
       <table id='ProductTable'>
@@ -35,7 +33,7 @@ export default function ProductTable({
           />
         ))}
       </table>
-      { false && (
+      { pagination && (
         <Pagination
           totalPage={totalPage}
           currentPage={currentPage}

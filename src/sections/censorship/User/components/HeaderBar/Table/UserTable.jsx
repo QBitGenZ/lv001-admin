@@ -10,8 +10,10 @@ export default function UserTable({
   currentPage,
   onPageChange,
   reload,
+  total,
 }) {
-  console.log(charities);
+  console.log(total);
+  const pagination = total > 0 ? true : false;
   return (
     <div className={'User-Table'}>
       <table id='ProductTable'>
@@ -21,9 +23,9 @@ export default function UserTable({
           <th className='prodtabletdth prodtableth'>Thời gian</th>
           <th className='prodtabletdth prodtableth'>Trạng thái</th>
         </tr>
-        {charities?.map((charity,index) => (
+        {charities?.map((charity, index) => (
           <UserTableRow
-            index={index+1}
+            index={index + 1}
             reload={reload}
             key={charity?.id}
             charity={charity}
@@ -31,11 +33,13 @@ export default function UserTable({
           />
         ))}
       </table>
-      <Pagination
-        totalPage={totalPage}
-        currentPage={currentPage}
-        onPageChange={onPageChange}
-      />
+      {pagination && (
+        <Pagination
+          totalPage={totalPage}
+          currentPage={currentPage}
+          onPageChange={onPageChange}
+        />
+      )}
     </div>
   );
 }
@@ -46,4 +50,5 @@ UserTable.propTypes = {
   currentPage: PropTypes.number,
   onPageChange: PropTypes.func,
   reload: PropTypes.func,
+  total: PropTypes.number,
 };

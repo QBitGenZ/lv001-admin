@@ -6,6 +6,7 @@ export default function UserCencorSection() {
   const [charities, setCharity,] = useState([]);
   const [currentPage, setCurrentPage,] = useState(1);
   const [totalPage, setTotalPage,] = useState(0);
+  const [total, setTotal,] = useState(0);
   useEffect(() => {
     getUser();
     getdaduyet();
@@ -26,6 +27,7 @@ export default function UserCencorSection() {
       .then((data) => {
         setCharity(data?.data);
         setTotalPage(data?.meta?.total_pages);
+        setTotal(data?.meta?.total);
       })
       .catch((error) => console.log(error));
   };
@@ -113,6 +115,7 @@ export default function UserCencorSection() {
         <HeaderBar charities={charities} chuaduyet={chuaduyet} daduyet={daduyet} tuchoi={tuchoi} baocao={baocao} />
         <UserTable 
           reload={reload}
+          total={total}
           charities={charities} 
           getUsers={getUser} 
           totalPage={totalPage}
