@@ -9,7 +9,7 @@ export default function EventCenSorSection() {
   const [totalPage, setTotalPage,] = useState(0);
   const [status, setStatus,] = useState('all');
   const [approval, setApproval,] = useState('all');
-  const [total, setTotal, ] = useState(0);
+  // const [total, setTotal, ] = useState(0);
   useEffect(() => {
     getEvents();
   }, [currentPage, status, approval, ]);
@@ -26,7 +26,7 @@ export default function EventCenSorSection() {
       .then((data) => {
         setEvent(data?.data);
         setTotalPage(data?.meta?.total_pages);
-        setTotal(data?.meta?.total);
+        // setTotal(data?.meta?.total);
       })
       .catch((error) => console.log(error));
   };
@@ -117,7 +117,7 @@ export default function EventCenSorSection() {
   return (
     <div id={'ProductSection'}>
       <div>
-        <HeaderBar total={total} chuaduyet={chuaduyet} daduyet={daduyet} tuchoi={tuchoi} baocao={baocao} />
+        <HeaderBar total={chuaduyet+daduyet+tuchoi+baocao} chuaduyet={chuaduyet} daduyet={daduyet} tuchoi={tuchoi} baocao={baocao} />
         <Filter setApproval={setApproval} setStatus={setStatus} status={status} approval={approval}/>
         <EventTable
           events={events}
