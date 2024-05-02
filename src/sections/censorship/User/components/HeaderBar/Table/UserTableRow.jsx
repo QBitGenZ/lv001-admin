@@ -3,7 +3,7 @@ import React, { useState, } from 'react';
 import Modal from '../../../../../../components/Modal';
 import InfoUserModal from '../Modal/InfoUserModal';
 import moment from 'moment';
-export default function UserTableRow({ charity, getUsers, reload, }) {
+export default function UserTableRow({ charity, getUsers, reload, index, }) {
   const [modal, setModal,] = useState(false);
 
   const toggleModal = () => {
@@ -13,6 +13,11 @@ export default function UserTableRow({ charity, getUsers, reload, }) {
   return (
     <>
       <tr onClick={toggleModal} className='ModalBtn propdtabletr'>
+        <td
+          className='prodtabletd prodtabletdth'
+        >
+          {index}
+        </td>
         <td
           className='prodtabletd prodtabletdth'
           style={{
@@ -62,4 +67,5 @@ UserTableRow.propTypes = {
   charity: PropTypes.object,
   getUsers: PropTypes.func,
   reload: PropTypes.func,
+  index: PropTypes.number,
 };

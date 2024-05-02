@@ -3,7 +3,7 @@ import React, { useState, } from 'react';
 import Modal from '../../../../components/Modal';
 import moment from 'moment';
 import EditTypeOP from '../EditTypeOP';
-export default function TypeOPTableRow({ typeP, loadTypeP, }) {
+export default function TypeOPTableRow({ typeP, loadTypeP, index, }) {
   const [modal, setModal,] = useState(false);
 
   const toggleModal = () => {
@@ -13,6 +13,7 @@ export default function TypeOPTableRow({ typeP, loadTypeP, }) {
     
     <>
       <tr onClick={toggleModal} className='ModalBtn propdtabletr'>
+        <td className='prodtabletd prodtabletdth'>{index}</td>
         <td className='prodtabletd prodtabletdth'>{typeP?.name}</td>
         <td className='prodtabletd prodtabletdth'>{moment(typeP.created_at).format('HH:mm DD/MM/YYYY')}</td>
       </tr>
@@ -30,4 +31,5 @@ export default function TypeOPTableRow({ typeP, loadTypeP, }) {
 TypeOPTableRow.propTypes = {
   typeP: PropTypes.object,
   loadTypeP: PropTypes.func,
+  index: PropTypes.number,
 };

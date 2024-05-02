@@ -22,7 +22,7 @@ export default function EventSection() {
     } else {
       loadEvent();
     }
-  }, [currentPage,search,]);
+  }, [currentPage, search,]);
 
   const loadEvent = () => {
     fetch(`${process.env.REACT_APP_HOST_IP}/events/?page=${currentPage}`, {
@@ -58,7 +58,7 @@ export default function EventSection() {
       })
       .catch((error) => console.log(error));
   };
-
+  const pagination = total > 0 ? true : false;
   return (
     <div id={'Event-Section'}>
       <div className={'header'}>
@@ -85,11 +85,14 @@ export default function EventSection() {
           <EventItem key={event?.id} event={event} loadEvent={loadEvent} />
         ))}
       </div>
-      <Pagination
-        totalPage={totalPage}
-        currentPage={currentPage}
-        onPageChange={setCurrentPage}
-      />
+      {pagination && (
+        <Pagination
+          totalPage={totalPage}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+        />
+      )}
+
       {showAdd && (
         <Modal
           setShow={setShowAdd}

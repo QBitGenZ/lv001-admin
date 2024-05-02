@@ -1,6 +1,5 @@
 import { faCircleCheck,
   faSquarePollVertical,
-  faGear,
   faHouse,
   faUser,
   faShirt,
@@ -79,11 +78,6 @@ const data = [
     id: 7,
     label: 'Quản lý đơn hàng',
     logo: faBoxOpen,
-  },
-  {
-    id: 8,
-    label: 'Cài đặt',
-    logo: faGear,
   },
 ];
 

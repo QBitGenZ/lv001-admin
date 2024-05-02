@@ -6,6 +6,7 @@ export default function UserCencorSection() {
   const [charities, setCharity,] = useState([]);
   const [currentPage, setCurrentPage,] = useState(1);
   const [totalPage, setTotalPage,] = useState(0);
+  const [total, setTotal,] = useState(0);
   useEffect(() => {
     getUser();
     getdaduyet();
@@ -26,13 +27,14 @@ export default function UserCencorSection() {
       .then((data) => {
         setCharity(data?.data);
         setTotalPage(data?.meta?.total_pages);
+        setTotal(data?.meta?.total);
       })
       .catch((error) => console.log(error));
   };
   const [chuaduyet, setchuaduyet,] = useState(0);
   const getchuaduyet = async () => {
     fetch(
-      `${process.env.REACT_APP_HOST_IP}/statistics/count-event-by-status/?status=Chưa xác minh`,
+      `${process.env.REACT_APP_HOST_IP}/statistics/count-user-by-status/?status=Chưa xác minh`,
       {
         method: 'GET',
         headers: {
@@ -113,6 +115,7 @@ export default function UserCencorSection() {
         <HeaderBar charities={charities} chuaduyet={chuaduyet} daduyet={daduyet} tuchoi={tuchoi} baocao={baocao} />
         <UserTable 
           reload={reload}
+          total={total}
           charities={charities} 
           getUsers={getUser} 
           totalPage={totalPage}

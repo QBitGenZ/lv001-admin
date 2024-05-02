@@ -5,7 +5,7 @@ export default function OrderManagementSection() {
   const [orders, setOrders,] = useState([]);
   const [currentPage, setCurrentPage,] = useState(1);
   const [totalPage, setTotalPage,] = useState(0);
-  const [total, setTotal, ] = useState(0);
+  const [total, setTotal,] = useState(0);
   useEffect(() => {
     loadOrder();
   }, [currentPage,]);
@@ -26,6 +26,7 @@ export default function OrderManagementSection() {
       .catch((error) => alert(error));
   };
   console.log(orders);
+  const pagination = total > 0 ? true : false;
   return (
     <div id={'Notification-Section'}>
       <div className={'header'}>
@@ -37,11 +38,13 @@ export default function OrderManagementSection() {
       <div className={'body'}>
         <OrderTable orders={orders} loadOrder={loadOrder} />
       </div>
-      <Pagination
-        totalPage={totalPage}
-        currentPage={currentPage}
-        onPageChange={setCurrentPage}
-      />
+      {pagination && (
+        <Pagination
+          totalPage={totalPage}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+        />
+      )}
     </div>
   );
 }

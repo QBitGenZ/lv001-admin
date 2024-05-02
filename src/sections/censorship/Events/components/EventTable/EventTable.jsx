@@ -10,8 +10,10 @@ export default function EventTable({
   currentPage,
   onPageChange,
   reload,
+  total,
 }) {
   console.log(events);
+  const pagination = total > 0 ? true : false;
   return (
     <div className={'event-Table'}>
       <table id='eventTable'>
@@ -23,15 +25,23 @@ export default function EventTable({
           <th className='prodtabletdth prodtableth'>Thời gian kết thúc</th>
           <th className='prodtabletdth prodtableth'>Trạng thái</th>
         </tr>
-        {events?.map((event,index) => (
-          <TableRow key={event?.id} index={index} event={event} getEvents={getEvents} reload={reload} />
+        {events?.map((event, index) => (
+          <TableRow
+            key={event?.id}
+            index={index}
+            event={event}
+            getEvents={getEvents}
+            reload={reload}
+          />
         ))}
       </table>
-      <Pagination
-        totalPage={totalPage}
-        currentPage={currentPage}
-        onPageChange={onPageChange}
-      />
+      {pagination && (
+        <Pagination
+          totalPage={totalPage}
+          currentPage={currentPage}
+          onPageChange={onPageChange}
+        />
+      )}
     </div>
   );
 }
@@ -43,4 +53,5 @@ EventTable.propTypes = {
   currentPage: PropTypes.number,
   onPageChange: PropTypes.func,
   reload: PropTypes.func,
+  total: PropTypes.number,
 };

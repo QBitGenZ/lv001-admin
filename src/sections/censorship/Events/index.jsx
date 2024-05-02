@@ -117,10 +117,11 @@ export default function EventCenSorSection() {
   return (
     <div id={'ProductSection'}>
       <div>
-        <HeaderBar total={total} chuaduyet={chuaduyet} daduyet={daduyet} tuchoi={tuchoi} baocao={baocao} />
+        <HeaderBar total={chuaduyet+daduyet+tuchoi+baocao} chuaduyet={chuaduyet} daduyet={daduyet} tuchoi={tuchoi} baocao={baocao} />
         <Filter setApproval={setApproval} setStatus={setStatus} status={status} approval={approval}/>
         <EventTable
           events={events}
+          total={total}
           getEvents={getEvents}
           totalPage={totalPage}
           currentPage={currentPage}

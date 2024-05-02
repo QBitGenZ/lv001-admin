@@ -13,6 +13,7 @@ export default function PostCencorSection() {
   const [total, setTotal,] = useState(0);
   useEffect(() => {
     getProducts();
+    reload();
   }, [currentPage, size, gender, degree,]);
 
   const getProducts = () => {
@@ -35,7 +36,7 @@ export default function PostCencorSection() {
       .catch((error) => console.log(error));
   };
   const [chuaduyet, setchuaduyet,] = useState(0);
-  const reload =() => {
+  const reload = () => {
     getchuaduyet();
     getdaduyet();
     getbaocao();
@@ -115,7 +116,13 @@ export default function PostCencorSection() {
   return (
     <div id={'ProductSection'}>
       <div>
-        <HeaderBar total={total} tuchoi={tuchoi} baocao={baocao} chuaduyet={chuaduyet} daduyet={daduyet} />
+        <HeaderBar
+          total={tuchoi + daduyet + chuaduyet + baocao}
+          tuchoi={tuchoi}
+          baocao={baocao}
+          chuaduyet={chuaduyet}
+          daduyet={daduyet}
+        />
         <Filter
           gender={gender}
           setGender={setGender}
@@ -131,6 +138,7 @@ export default function PostCencorSection() {
           totalPage={totalPage}
           currentPage={currentPage}
           onPageChange={setCurrentPage}
+          total={total}
         />
       </div>
     </div>

@@ -11,11 +11,11 @@ export default function AccountManagementSection() {
   const [accounts, setAccounts,] = useState([]);
   const [currentPage, setCurrentPage,] = useState(1);
   const [totalPage, setTotalPage,] = useState(0);
-  const [total, setTotal, ] = useState(0);
+  const [total, setTotal,] = useState(0);
   useEffect(() => {
     loadAccount();
   }, [currentPage,]);
-  const loadAccount= () => {
+  const loadAccount = () => {
     fetch(`${process.env.REACT_APP_HOST_IP}/user?page=${currentPage}`, {
       method: 'GET',
       headers: {
@@ -31,7 +31,7 @@ export default function AccountManagementSection() {
       })
       .catch((error) => alert(error));
   };
-
+  const pagination = total > 0 ? true : false;
   return (
     <div id={'Notification-Section'}>
       <div className={'header'}>
@@ -47,16 +47,21 @@ export default function AccountManagementSection() {
       <div className={'body'}>
         <AccountTable accounts={accounts} loadAccount={loadAccount} />
       </div>
-      <Pagination
-        totalPage={totalPage}
-        currentPage={currentPage}
-        onPageChange={setCurrentPage}
-      />
+      {pagination && (
+        <Pagination
+          totalPage={totalPage}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+        />
+      )}
+
       {showAdd && (
         <Modal
           setShow={setShowAdd}
           title={'Thêm tài khoản'}
-          body={<AddAccount setShowAdd={setShowAdd} loadAccount={loadAccount} />}
+          body={
+            <AddAccount setShowAdd={setShowAdd} loadAccount={loadAccount} />
+          }
         />
       )}
     </div>

@@ -12,28 +12,30 @@ export default function TypeOfProductSection() {
   const [typePs, setTypePs,] = useState([]);
   const [currentPage, setCurrentPage,] = useState(1);
   const [totalPage, setTotalPage,] = useState(0);
-  const [total,setTotal,] = useState(0);
+  const [total, setTotal,] = useState(0);
   useEffect(() => {
     loadTypeP();
   }, [currentPage,]);
   const loadTypeP = () => {
-    fetch(`${process.env.REACT_APP_HOST_IP}/products/types/?page=${currentPage}`, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('access')}`,
-        Accept: 'application/json',
-      },
-    })
+    fetch(
+      `${process.env.REACT_APP_HOST_IP}/products/types/?page=${currentPage}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access')}`,
+          Accept: 'application/json',
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setTypePs(data.data);
         setTotalPage(data?.meta?.total_pages);
         setTotal(data?.meta?.total);
-      }
-      )
+      })
       .catch((error) => alert(error));
   };
-
+  const pagination = total > 0 ? true : false;
   return (
     <div id={'Notification-Section'}>
       <div className={'header'}>
@@ -49,11 +51,14 @@ export default function TypeOfProductSection() {
       <div className={'body'}>
         <TypeOPTable typePs={typePs} loadTypeP={loadTypeP} />
       </div>
-      <Pagination
-        totalPage={totalPage}
-        currentPage={currentPage}
-        onPageChange={setCurrentPage}
-      />
+      {pagination && (
+        <Pagination
+          totalPage={totalPage}
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+        />
+      )}
+
       {showAdd && (
         <Modal
           setShow={setShowAdd}
@@ -64,4 +69,3 @@ export default function TypeOfProductSection() {
     </div>
   );
 }
-
