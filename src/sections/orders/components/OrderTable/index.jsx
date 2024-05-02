@@ -16,7 +16,7 @@ export default function OrderTable({ orders, loadOrder, }) {
         {orders?.map((order,index) => (
           <OrderTableRow
             key={order?.id}
-            index={index}
+            index={index+1}
             order={order}
             loadOrder={loadOrder}
           />
